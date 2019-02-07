@@ -12,7 +12,8 @@ import MapKit
 class MapViewController: UIViewController {
     let locationManager = CLLocationManager()
     
-
+    @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
@@ -34,20 +35,25 @@ class MapViewController: UIViewController {
     */
 
 }
+
 extension MapViewController : CLLocationManagerDelegate {
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("error:: \(error.localizedDescription)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
-            locationManager.requestLocation()
+            manager.requestLocation()
         }
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-            print("location:: (location)")
+            let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            let region = MKCoordinateRegion(center: location.coordinate, span: span)
+            mapView.setRegion(region, animated: true)
         }
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("error:: (error)")
-    }
 }
