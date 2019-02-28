@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D11A5BC022289D4B006A9BE7 /* PostDetailSelectorImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11A5BBF22289D4B006A9BE7 /* PostDetailSelectorImageCell.swift */; };
 		D146957721FBCBD400C09E93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146957621FBCBD400C09E93 /* AppDelegate.swift */; };
 		D146957C21FBCBD400C09E93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D146957A21FBCBD400C09E93 /* Main.storyboard */; };
 		D146957E21FBCBD600C09E93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D146957D21FBCBD600C09E93 /* Assets.xcassets */; };
 		D146958121FBCBD600C09E93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D146957F21FBCBD600C09E93 /* LaunchScreen.storyboard */; };
 		D146958C21FBCBD600C09E93 /* SeniorProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146958B21FBCBD600C09E93 /* SeniorProjectTests.swift */; };
 		D146959721FBCBD600C09E93 /* SeniorProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146959621FBCBD600C09E93 /* SeniorProjectUITests.swift */; };
+		D16EEAF3220CCC8E00D9F4E9 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16EEAF2220CCC8E00D9F4E9 /* LocationSearchTableViewController.swift */; };
 		D183CB2B2207CC660000BCE1 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D183CB2A2207CC660000BCE1 /* FirstPageViewController.swift */; };
 		D183CB2D2207CD9E0000BCE1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D183CB2C2207CD9E0000BCE1 /* MapViewController.swift */; };
+		D184036D221F5FF10058E740 /* PostLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D184036C221F5FF10058E740 /* PostLocationViewController.swift */; };
+		D1840371221F66A70058E740 /* PostLocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1840370221F66A70058E740 /* PostLocationSearchTableViewController.swift */; };
+		D1C620982225F3E4001D3857 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C620972225F3E4001D3857 /* PostDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D11A5BBF22289D4B006A9BE7 /* PostDetailSelectorImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailSelectorImageCell.swift; sourceTree = "<group>"; };
 		D146957321FBCBD400C09E93 /* SeniorProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeniorProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D146957621FBCBD400C09E93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D146957B21FBCBD400C09E93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -47,8 +53,12 @@
 		D146959221FBCBD600C09E93 /* SeniorProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeniorProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D146959621FBCBD600C09E93 /* SeniorProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeniorProjectUITests.swift; sourceTree = "<group>"; };
 		D146959821FBCBD600C09E93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D16EEAF2220CCC8E00D9F4E9 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 		D183CB2A2207CC660000BCE1 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		D183CB2C2207CD9E0000BCE1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		D184036C221F5FF10058E740 /* PostLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationViewController.swift; sourceTree = "<group>"; };
+		D1840370221F66A70058E740 /* PostLocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationSearchTableViewController.swift; sourceTree = "<group>"; };
+		D1C620972225F3E4001D3857 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +109,13 @@
 		D146957521FBCBD400C09E93 /* SeniorProject */ = {
 			isa = PBXGroup;
 			children = (
+				D1840370221F66A70058E740 /* PostLocationSearchTableViewController.swift */,
+				D16EEAF2220CCC8E00D9F4E9 /* LocationSearchTableViewController.swift */,
 				D146957621FBCBD400C09E93 /* AppDelegate.swift */,
 				D146957A21FBCBD400C09E93 /* Main.storyboard */,
+				D11A5BBF22289D4B006A9BE7 /* PostDetailSelectorImageCell.swift */,
+				D1C620972225F3E4001D3857 /* PostDetailViewController.swift */,
+				D184036C221F5FF10058E740 /* PostLocationViewController.swift */,
 				D183CB2C2207CD9E0000BCE1 /* MapViewController.swift */,
 				D183CB2A2207CC660000BCE1 /* FirstPageViewController.swift */,
 				D146957D21FBCBD600C09E93 /* Assets.xcassets */,
@@ -259,8 +274,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D16EEAF3220CCC8E00D9F4E9 /* LocationSearchTableViewController.swift in Sources */,
+				D1C620982225F3E4001D3857 /* PostDetailViewController.swift in Sources */,
 				D183CB2B2207CC660000BCE1 /* FirstPageViewController.swift in Sources */,
+				D11A5BC022289D4B006A9BE7 /* PostDetailSelectorImageCell.swift in Sources */,
 				D183CB2D2207CD9E0000BCE1 /* MapViewController.swift in Sources */,
+				D184036D221F5FF10058E740 /* PostLocationViewController.swift in Sources */,
+				D1840371221F66A70058E740 /* PostLocationSearchTableViewController.swift in Sources */,
 				D146957721FBCBD400C09E93 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

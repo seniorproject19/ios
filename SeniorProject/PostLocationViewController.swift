@@ -1,29 +1,29 @@
 //
-//  MapViewController.swift
+//  PostLocationViewController.swift
 //  SeniorProject
 //
-//  Created by Jiaqing Mo on 2/3/19.
+//  Created by Jiaqing Mo on 2/21/19.
 //  Copyright © 2019 Jiaqing Mo. All rights reserved.
 //
 
 import UIKit
 import MapKit
-
-class MapViewController: UIViewController {
+protocol HandleMapSearch {
+    func dropPinZoomIn(placemark:MKPlacemark)
+}
+class PostLocationViewController: UIViewController {
+    @IBOutlet weak var addressText: UITextField!
     let locationManager = CLLocationManager()
+    var selectedPin:MKPlacemark? = nil
     var resultSearchController:UISearchController? = nil
     @IBOutlet weak var mapView: MKMapView!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-        
-        
-        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTableViewController
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "PostLocationSearchTable") as! PostLocationSearchTableViewController
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
         resultSearchController?.searchResultsUpdater = locationSearchTable
         
@@ -37,7 +37,8 @@ class MapViewController: UIViewController {
         definesPresentationContext = true
         
         locationSearchTable.mapView = mapView
-        // Do any additional setup after loading the view.
+        
+        locationSearchTable.handleMapSearchDelegate = self
     }
     
 
@@ -52,16 +53,10 @@ class MapViewController: UIViewController {
     */
 
 }
-
-extension MapViewController : CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("error:: \(error.localizedDescription)")
-    }
-    
+extension PostLocationViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
-            manager.requestLocation()
+            locationManager.requestLocation()
         }
     }
     
@@ -73,4 +68,29 @@ extension MapViewController : CLLocationManagerDelegate {
         }
     }
     
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("error:: \(error)")
+    }
+}
+
+
+extension PostLocationViewController: HandleMapSearch {
+    func dropPinZoomIn(placemark:MKPlacemark){
+        // cache the pin
+        selectedPin = placemark
+        // clear existing pins
+        mapView.removeAnnotations(mapView.annotations)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        if let city = placemark.locality,
+            let state = placemark.administrativeArea {
+            annotation.subtitle = "\(city) \(state)"
+        }
+        addressText.text = placemark.title
+        mapView.addAnnotation(annotation)
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: placemark.coordinate, span: span)
+        mapView.setRegion(region, animated: true)
+    }
 }
