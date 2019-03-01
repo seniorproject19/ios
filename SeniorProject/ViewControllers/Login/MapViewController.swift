@@ -10,6 +10,8 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController {
+    
+    var currentUser: CurrentUserModel?
     let locationManager = CLLocationManager()
     
     @IBOutlet weak var mapView: MKMapView!

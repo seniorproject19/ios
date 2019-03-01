@@ -337,7 +337,7 @@
         <!--Login-->
         <scene sceneID="WrL-kp-bMr">
             <objects>
-                <viewController id="DRp-ot-t8a" sceneMemberID="viewController">
+                <viewController id="DRp-ot-t8a" customClass="LoginViewController" customModule="SeniorProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="60F-MH-2Yr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -370,7 +370,7 @@
                                 <rect key="frame" x="168.5" y="403" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
-                                    <segue destination="vPp-vI-zgw" kind="show" id="v5u-Fh-UmB"/>
+                                    <action selector="loginButtonClicked:" destination="DRp-ot-t8a" eventType="touchUpInside" id="bnd-ZV-Tgg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -392,6 +392,10 @@
                         <viewLayoutGuide key="safeArea" id="EA6-e0-HcT"/>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="zNE-kc-0JL"/>
+                    <connections>
+                        <outlet property="passwordTextField" destination="k5a-7d-lFD" id="Pt0-cA-KXk"/>
+                        <outlet property="userNameTextField" destination="vMS-aR-yjw" id="DTK-dW-vAV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lCX-rd-Chr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -400,7 +404,7 @@
         <!--Map View Controller-->
         <scene sceneID="f3b-Ju-Pa0">
             <objects>
-                <viewController id="fjq-xq-DTH" customClass="MapViewController" customModule="SeniorProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userMainMapView" id="fjq-xq-DTH" customClass="MapViewController" customModule="SeniorProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uKX-yu-63H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
