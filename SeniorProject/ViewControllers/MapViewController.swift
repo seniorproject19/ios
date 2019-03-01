@@ -12,8 +12,9 @@ import MapKit
 class MapViewController: UIViewController {
     
     var currentUser: CurrentUserModel?
-    let locationManager = CLLocationManager()
     
+    let locationManager = CLLocationManager()
+    var resultSearchController:UISearchController? = nil
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
@@ -22,6 +23,22 @@ class MapViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
+        
+        
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTableViewController
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController?.searchResultsUpdater = locationSearchTable
+        
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search for places"
+        navigationItem.titleView = resultSearchController?.searchBar
+        
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
+        
+        locationSearchTable.mapView = mapView
         // Do any additional setup after loading the view.
     }
     

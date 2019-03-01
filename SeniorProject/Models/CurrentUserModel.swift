@@ -12,15 +12,15 @@ class CurrentUserModel: ServerAccessModel, LocalStorageModel {
     
     var user: UserModel?
     
-    init() {
-        self.user = nil;
-    }
-    
     enum LoginResult {
         case success
         case wrongUsername
         case wrongPassword
         case serverError
+    }
+    
+    init() {
+        self.user = nil;
     }
     
     func login(username: String, password: String, onCompletion callback: @escaping (LoginResult) -> Void) {
