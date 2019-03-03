@@ -6,7 +6,7 @@ target 'SeniorProject' do
   use_frameworks!
 
   # Pods for SeniorProject
-  pod "TLPhotoPicker"
+  pod 'TLPhotoPicker'
 
   target 'SeniorProjectTests' do
     inherit! :search_paths
