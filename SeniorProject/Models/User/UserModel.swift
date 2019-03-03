@@ -11,20 +11,23 @@ import UIKit
 class UserModel: ServerAccessModel, LocalStorageModel {
     
     let uid: String
+    let username: String
     let email: String
     let isOwner: Bool
     
-    init(uid: String, email: String, isOwner: Bool) {
+    init(uid: String, username: String, email: String, isOwner: Bool) {
         self.uid = uid
+        self.username = username
         self.email = email
         self.isOwner = isOwner
     }
     
     init(userData: Data) {
         let jsonData = JSON(userData)
-        self.uid = jsonData["uid"].string!
-        self.email = jsonData["email"].string!
-        self.isOwner = jsonData["isOwner"].bool!
+        self.uid = jsonData["uid"].stringValue
+        self.username = jsonData["username"].stringValue
+        self.email = jsonData["email"].stringValue
+        self.isOwner = jsonData["is_owner"].boolValue
     }
     
 }

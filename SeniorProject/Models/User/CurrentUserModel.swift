@@ -34,7 +34,7 @@ class CurrentUserModel: ServerAccessModel, LocalStorageModel {
             if (statusCode != 200) {
                 if (responseData != nil) {
                     let jsonData = JSON(responseData!)
-                    let msg = jsonData["msg"].string
+                    let msg = jsonData["msg"].stringValue
                     if (msg == "incorrect_password") {
                         callback(.wrongPassword)
                     } else if (msg == "username_not_found") {
@@ -46,7 +46,21 @@ class CurrentUserModel: ServerAccessModel, LocalStorageModel {
                     callback(.serverError)
                 }
             } else {
-                callback(.success)
+                if (responseData != nil) {
+                    let jsonData = JSON(responseData!)
+                    let msg = jsonData["msg"].stringValue
+                    print(msg)
+                    self.loadUser(uid: msg) {
+                        (succeeded) in
+                        if succeeded {
+                            callback(.success)
+                        } else {
+                            callback(.serverError)
+                        }
+                    }
+                } else {
+                    callback(.serverError)
+                }
             }
         }
     }

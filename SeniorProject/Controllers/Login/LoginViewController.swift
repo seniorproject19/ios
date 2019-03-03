@@ -11,25 +11,36 @@ import UIKit
 class LoginViewController: UIViewController {
     
     let currentUser: CurrentUserModel = CurrentUserModel()
+    
+    var defaultUsername: String? = nil
 
-    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if defaultUsername != nil {
+            usernameTextField.text = defaultUsername
+        }
         // Do any additional setup after loading the view.
     }
     
     @IBAction func loginButtonClicked(_ sender: Any) {
-        self.currentUser.login(username: userNameTextField.text!, password: passwordTextField.text!) {
+        self.currentUser.login(username: usernameTextField.text!, password: passwordTextField.text!) {
             (result) in
             switch (result) {
             case .success:
                 self.updateUIAsync {
-                    let destination = self.storyboard?.instantiateViewController(withIdentifier: "userMainMapView") as! MapViewController
-                    destination.currentUser = self.currentUser
-                    self.navigationController?.pushViewController(destination, animated: true)
+                    if self.currentUser.user!.isOwner {
+                        let destination = self.storyboard?.instantiateViewController(withIdentifier: "ownerHomePageView") as! OwnerHomepageViewController
+                        destination.currentUser = self.currentUser
+                        self.navigationController?.pushViewController(destination, animated: true)
+                    } else {
+                        let destination = self.storyboard?.instantiateViewController(withIdentifier: "userMainMapView") as! MapViewController
+                        destination.currentUser = self.currentUser
+                        self.navigationController?.pushViewController(destination, animated: true)
+                    }
                 }
             case .wrongUsername:
                 self.updateUIAsync {

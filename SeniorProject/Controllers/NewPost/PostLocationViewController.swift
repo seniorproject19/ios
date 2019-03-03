@@ -8,9 +8,11 @@
 
 import UIKit
 import MapKit
+
 protocol HandleMapSearch {
     func dropPinZoomIn(placemark:MKPlacemark)
 }
+
 class PostLocationViewController: UIViewController {
     @IBOutlet weak var addressText: UITextField!
     let locationManager = CLLocationManager()
@@ -53,6 +55,7 @@ class PostLocationViewController: UIViewController {
     */
 
 }
+
 extension PostLocationViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
@@ -73,9 +76,8 @@ extension PostLocationViewController : CLLocationManagerDelegate {
     }
 }
 
-
 extension PostLocationViewController: HandleMapSearch {
-    func dropPinZoomIn(placemark:MKPlacemark){
+    func dropPinZoomIn(placemark:MKPlacemark) {
         // cache the pin
         selectedPin = placemark
         // clear existing pins

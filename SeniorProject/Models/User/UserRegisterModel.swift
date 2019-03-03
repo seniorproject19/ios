@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewUserModel: ServerAccessModel {
+class UserRegisterModel: ServerAccessModel {
     
     var username: String? = nil
     var email: String? = nil
@@ -24,13 +24,13 @@ class NewUserModel: ServerAccessModel {
     
     func validate() -> String? {
         // TODO: validate inputs
-        if username != nil {
+        if username == nil || username?.count == 0 {
             return "illegal username"
         }
-        if email != nil {
+        if email == nil || email?.count == 0 {
             return "illegal email"
         }
-        if password != nil {
+        if password == nil || password?.count == 0 {
             return "illegal password"
         }
         if password != confirmPassword {
@@ -44,7 +44,7 @@ class NewUserModel: ServerAccessModel {
         if validateResult != nil {
             callback(RegisterResult.illegalInput(msg: validateResult!))
         } else {
-            let data = JSON(["username": username!, "email": email!, "password": password!, "isOwner": isOwner!])
+            let data = JSON(["username": username!, "email": email!, "pwd": password!, "isOwner": isOwner!])
             let apiURLString = Configurations.AUTH_ROOT + "/register"
             sendPostRequest(toURL: apiURLString, withData: data.rawString(String.Encoding.utf8, options: [])!) {
                 (statusCode, responseData) in

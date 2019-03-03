@@ -9,7 +9,7 @@
 import UIKit
 
 
-class PostDetailViewController: UIViewController{
+class PostDetailViewController: UIViewController {
 
     var userSelectedPhotos: [UIImage] = [UIImage]()
     @IBOutlet weak var photoCollectionView: UICollectionView!
@@ -41,14 +41,14 @@ class PostDetailViewController: UIViewController{
 }
 
 extension PostDetailViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
-    {
-
+    
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image_data = info["UIImagePickerControllerOriginalImage"] as? UIImage
         let imageData:Data = image_data!.pngData()!
         let imageStr = imageData.base64EncodedString()
         self.dismiss(animated: true, completion: nil)
     }
+    
 }
 
 extension PostDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -59,6 +59,7 @@ extension PostDetailViewController: UICollectionViewDelegate, UICollectionViewDa
         }
         return userSelectedPhotos.count + 1
     }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -68,11 +69,7 @@ extension PostDetailViewController: UICollectionViewDelegate, UICollectionViewDa
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath)
             cell.backgroundColor = UIColor.blue
             return cell
-        }
-
-
-        
-        else {
+        } else {
             let image = userSelectedPhotos[indexPath.row - 1]
             // construct cell to show image
             let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier:  "photoCell", for: indexPath) as! PostDetailSelectorImageCell
@@ -82,10 +79,7 @@ extension PostDetailViewController: UICollectionViewDelegate, UICollectionViewDa
             photoCell.imageView.image = image
             return photoCell
         }
-        
-
     }
-    
     
 }
 

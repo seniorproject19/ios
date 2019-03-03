@@ -10,7 +10,7 @@ import UIKit
 
 class OwnerRegistrationViewController: UIViewController {
     
-    let model = NewUserModel()
+    let model = UserRegisterModel()
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -32,6 +32,22 @@ class OwnerRegistrationViewController: UIViewController {
         model.register {
             (result) in
             // TODO: register result
+            switch result {
+            case .success:
+                self.updateUIAsync {
+                    let destination = self.storyboard?.instantiateViewController(withIdentifier: "loginView") as! LoginViewController
+                    destination.defaultUsername = self.model.username
+                    self.navigationController?.pushViewController(destination, animated: false)
+                }
+            case .serverError:
+                self.updateUIAsync {
+                    self.showAlert(withTitle: "Something went wrong", message: "Please try again later")
+                }
+            case .illegalInput(let msg):
+                self.updateUIAsync {
+                    self.showAlert(withTitle: "Please double check your input", message: msg)
+                }
+            }
         }
     }
     

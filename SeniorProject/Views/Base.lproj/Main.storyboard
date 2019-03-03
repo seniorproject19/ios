@@ -275,7 +275,7 @@
         <!--Login-->
         <scene sceneID="WrL-kp-bMr">
             <objects>
-                <viewController id="DRp-ot-t8a" customClass="LoginViewController" customModule="SeniorProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginView" id="DRp-ot-t8a" customClass="LoginViewController" customModule="SeniorProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="60F-MH-2Yr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -332,7 +332,7 @@
                     <navigationItem key="navigationItem" title="Login" id="zNE-kc-0JL"/>
                     <connections>
                         <outlet property="passwordTextField" destination="k5a-7d-lFD" id="Pt0-cA-KXk"/>
-                        <outlet property="userNameTextField" destination="vMS-aR-yjw" id="DTK-dW-vAV"/>
+                        <outlet property="usernameTextField" destination="vMS-aR-yjw" id="nYF-JO-Exb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lCX-rd-Chr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -360,7 +360,7 @@
         <!--Parking Space Owner Home Page-->
         <scene sceneID="rEA-QE-hAQ">
             <objects>
-                <viewController id="IMY-6J-8ev" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ownerHomePageView" id="IMY-6J-8ev" customClass="OwnerHomepageViewController" customModule="SeniorProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qyg-uU-5rN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -661,7 +661,7 @@
         <!--Map View Controller-->
         <scene sceneID="rPD-0d-qWp">
             <objects>
-                <viewController id="ACk-On-VMg" customClass="MapViewController" customModule="SeniorProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userMainMapView" id="ACk-On-VMg" customClass="MapViewController" customModule="SeniorProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4mJ-K0-Ln5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
