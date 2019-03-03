@@ -90,6 +90,10 @@ extension PostLocationViewController: HandleMapSearch {
             annotation.subtitle = "\(city) \(state)"
         }
         addressText.text = placemark.title
+        let selectedLatitude =  placemark.coordinate.latitude
+        let selectedLongitude = placemark.coordinate.longitude
+        print(selectedLatitude)
+        print(selectedLongitude)
         mapView.addAnnotation(annotation)
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: placemark.coordinate, span: span)
