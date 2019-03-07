@@ -7,18 +7,25 @@
 //
 
 import UIKit
-
+import TLPhotoPicker
 
 class PostDetailViewController: UIViewController {
 
-    var userSelectedPhotos: [UIImage] = [UIImage]()
+    var model: NewPostModel? = nil
+    
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
     @IBAction func addPhotos(_ sender: Any) {
-        let myPickerController = UIImagePickerController()
-        myPickerController.delegate = self;
-        myPickerController.sourceType =  UIImagePickerController.SourceType.photoLibrary
-        self.present(myPickerController, animated: true, completion: nil)
+        let pickerViewController = PostDetailMultiplePickerViewController()
+        pickerViewController.delegate = self
+        pickerViewController.didExceedMaximumNumberOfSelection = { [weak self] (picker) in
+            self?.showAlert(withTitle: "Exceed Maximum Number Of Selection", message: "Please select less photo")
+        }
+        
+        var configure = TLPhotosPickerConfigure()
+        configure.numberOfColumn = 3
+        pickerViewController.configure = configure
+        self.present(pickerViewController, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -40,13 +47,17 @@ class PostDetailViewController: UIViewController {
 
 }
 
-extension PostDetailViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+extension PostDetailViewController: TLPhotosPickerViewControllerDelegate {
     
-    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let image_data = info["UIImagePickerControllerOriginalImage"] as? UIImage
-        let imageData:Data = image_data!.pngData()!
-        let imageStr = imageData.base64EncodedString()
-        self.dismiss(animated: true, completion: nil)
+    func dismissPhotoPicker(withTLPHAssets: [TLPHAsset]) {
+        for asset in withTLPHAssets {
+            if let model = model {
+                model.addImages(image: asset.fullResolutionImage!)
+            }
+            photoCollectionView.reloadData()
+        }
+        model?.createPost {
+        }
     }
     
 }
@@ -54,10 +65,14 @@ extension PostDetailViewController: UIImagePickerControllerDelegate,UINavigation
 extension PostDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if userSelectedPhotos.count >= 9 {
+        var count = 0
+        if let model = model {
+            count = model.countImages()
+        }
+        if count >= 9 {
             return 9
         }
-        return userSelectedPhotos.count + 1
+        return count + 1
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -70,7 +85,7 @@ extension PostDetailViewController: UICollectionViewDelegate, UICollectionViewDa
             cell.backgroundColor = UIColor.blue
             return cell
         } else {
-            let image = userSelectedPhotos[indexPath.row - 1]
+            let image = model?.getImage(atIndex: indexPath.row - 1)
             // construct cell to show image
             let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier:  "photoCell", for: indexPath) as! PostDetailSelectorImageCell
             

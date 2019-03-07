@@ -7,6 +7,7 @@ target 'SeniorProject' do
 
   # Pods for SeniorProject
   pod 'TLPhotoPicker'
+  pod 'Alamofire', '~> 5.0.0-beta.2'
 
   target 'SeniorProjectTests' do
     inherit! :search_paths

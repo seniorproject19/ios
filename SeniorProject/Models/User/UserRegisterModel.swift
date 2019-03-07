@@ -45,7 +45,7 @@ class UserRegisterModel: ServerAccessModel {
             callback(RegisterResult.illegalInput(msg: validateResult!))
         } else {
             let data = JSON(["username": username!, "email": email!, "pwd": password!, "isOwner": isOwner!])
-            let apiURLString = Configurations.AUTH_ROOT + "/register"
+            let apiURLString = Configurations.AUTH_ROOT + Configurations.AUTH_URL.register.rawValue
             sendPostRequest(toURL: apiURLString, withData: data.rawString(String.Encoding.utf8, options: [])!) {
                 (statusCode, responseData) in
                 if (statusCode != 200) {

@@ -14,5 +14,15 @@ class Configurations: NSObject {
     
     static let AUTH_ROOT = SERVER_ROOT + "/auth"
     static let API_ROOT = SERVER_ROOT + "/api"
+    
+    enum AUTH_URL: String {
+        case register = "/register"
+        case login = "/login"
+    }
+    
+    enum API_URL: String {
+        case getUser =  "/user"
+        case uploadImage = "/upload/images"
+    }
 
 }

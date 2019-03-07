@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 protocol ServerAccessModel {
     
@@ -52,6 +53,18 @@ extension ServerAccessModel {
         }
         
         task.resume()
+    }
+    
+    func uploadImage(toURL url: String, image: UIImage) {
+        AF.upload(multipartFormData: {
+            (multipartFormData) in
+            if let imageData = image.jpegData(compressionQuality: 0.5) {
+                multipartFormData.append(imageData, withName: "file", fileName: "test.jpg", mimeType: "image/jpeg")
+            }
+        }, to: url).response {
+            (response) in
+            print(response)
+        }
     }
     
 }

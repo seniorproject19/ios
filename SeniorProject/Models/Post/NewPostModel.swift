@@ -33,5 +33,23 @@ class NewPostModel: ServerAccessModel {
             images?.append(contentsOf: image)
         }
     }
+    
+    func countImages() -> Int {
+        if let images = images {
+            return images.count
+        }
+        return 0
+    }
+    
+    func getImage(atIndex index: Int) -> UIImage? {
+        if let images = images {
+            return images[index]
+        }
+        return nil
+    }
+    
+    func createPost(onCompletion callback: @escaping () -> Void) {
+        uploadImage(toURL: Configurations.API_ROOT + Configurations.API_URL.uploadImage.rawValue, image: images![0])
+    }
 
 }

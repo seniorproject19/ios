@@ -19,13 +19,46 @@ class CurrentUserModel: ServerAccessModel, LocalStorageModel {
         case serverError
     }
     
+    enum AuthenticationClass: String {
+        case user
+        case owner
+        case unauthorized
+    }
+    
+    let authenticatedUserIdDefaultsKey = "authenticatedUser"
+    let authenticationClassDefaultsKey = "authenticationClass"
+    
+    var authenticationStatus: AuthenticationClass {
+        get {
+            guard let status = UserDefaults.standard.value(forKey: authenticationClassDefaultsKey) as? String else {
+                return AuthenticationClass.unauthorized
+            }
+            return AuthenticationClass(rawValue: status) ?? AuthenticationClass.unauthorized
+        }
+        set(status) {
+            UserDefaults.standard.set(status.rawValue, forKey: authenticationClassDefaultsKey)
+        }
+    }
+    
+    var authenticatedUserId: String? {
+        get {
+            guard let uid = UserDefaults.standard.value(forKey: authenticatedUserIdDefaultsKey) as? String else {
+                return nil
+            }
+            return uid
+        }
+        set(status) {
+            UserDefaults.standard.set(status, forKey: authenticatedUserIdDefaultsKey)
+        }
+    }
+    
     init() {
         self.user = nil;
     }
     
     func login(username: String, password: String, onCompletion callback: @escaping (LoginResult) -> Void) {
         let data = JSON(["username": username, "pwd": password])
-        let apiURLString = Configurations.AUTH_ROOT + "/login"
+        let apiURLString = Configurations.AUTH_ROOT + Configurations.AUTH_URL.login.rawValue
         sendPostRequest(toURL: apiURLString, withData: data.rawString(String.Encoding.utf8, options: [])!) {
             (statusCode, responseData) in
             let url = URL(string: apiURLString)
@@ -49,7 +82,6 @@ class CurrentUserModel: ServerAccessModel, LocalStorageModel {
                 if (responseData != nil) {
                     let jsonData = JSON(responseData!)
                     let msg = jsonData["msg"].stringValue
-                    print(msg)
                     self.loadUser(uid: msg) {
                         (succeeded) in
                         if succeeded {
@@ -65,14 +97,27 @@ class CurrentUserModel: ServerAccessModel, LocalStorageModel {
         }
     }
     
+    func loadUser(callback: @escaping (Bool) -> Void) {
+        if let userId = authenticatedUserId {
+            loadUser(uid: userId) {
+                (result) in
+                callback(result)
+            }
+        } else {
+            callback(false)
+        }
+    }
+    
     func loadUser(uid: String, onCompletion callback: @escaping (Bool) -> Void) {
         restoreCookies()
-        sendGetRequest(toURL: Configurations.API_ROOT + "/user") {
+        sendGetRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.getUser.rawValue) {
             (statusCode, data) in
             if (statusCode != 200 || data == nil) {
                 callback(false)
             } else {
                 self.user = UserModel(userData: data!)
+                self.authenticatedUserId = uid
+                self.authenticationStatus = self.user!.isOwner ? .owner : .user
                 callback(true)
             }
         }

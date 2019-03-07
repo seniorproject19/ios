@@ -27,6 +27,7 @@
 		63FF40B32229312800F5861E /* OwnerRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF40B22229312800F5861E /* OwnerRegistrationViewController.swift */; };
 		63FF40B6222B50A800F5861E /* OwnerHomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF40B5222B50A800F5861E /* OwnerHomepageViewController.swift */; };
 		63FF40BB222B578200F5861E /* NewPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF40BA222B578200F5861E /* NewPostModel.swift */; };
+		63FF40BF222B92B500F5861E /* PostDetailMultiplePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF40BE222B92B500F5861E /* PostDetailMultiplePickerViewController.swift */; };
 		B86855BC971D74A156FF883C /* Pods_SeniorProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A97EBECB78F4BA83B13B4C3 /* Pods_SeniorProject.framework */; };
 		D146957721FBCBD400C09E93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146957621FBCBD400C09E93 /* AppDelegate.swift */; };
 		D146957C21FBCBD400C09E93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D146957A21FBCBD400C09E93 /* Main.storyboard */; };
@@ -77,6 +78,7 @@
 		63FF40B22229312800F5861E /* OwnerRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerRegistrationViewController.swift; sourceTree = "<group>"; };
 		63FF40B5222B50A800F5861E /* OwnerHomepageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerHomepageViewController.swift; sourceTree = "<group>"; };
 		63FF40BA222B578200F5861E /* NewPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostModel.swift; sourceTree = "<group>"; };
+		63FF40BE222B92B500F5861E /* PostDetailMultiplePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailMultiplePickerViewController.swift; sourceTree = "<group>"; };
 		66650404CC5AB3F42ABDCE64 /* Pods-SeniorProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProjectTests/Pods-SeniorProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		9ADB9C7FBAF13347E812A169 /* Pods-SeniorProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProjectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProjectUITests/Pods-SeniorProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D146957321FBCBD400C09E93 /* SeniorProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeniorProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +200,7 @@
 			children = (
 				63FF40A72229205000F5861E /* PostDetailViewController.swift */,
 				63FF40A9222920EA00F5861E /* PostDetailSelectorImageCell.swift */,
+				63FF40BE222B92B500F5861E /* PostDetailMultiplePickerViewController.swift */,
 			);
 			path = PostDetail;
 			sourceTree = "<group>";
@@ -437,10 +440,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SeniorProject/Pods-SeniorProject-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/TLPhotoPicker/TLPhotoPicker.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TLPhotoPicker.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,6 +517,7 @@
 				63A166E6220CEF590067BD89 /* Configurations.swift in Sources */,
 				63FF40A82229205000F5861E /* PostDetailViewController.swift in Sources */,
 				63A166E2220CEC310067BD89 /* ServerAccessModel.swift in Sources */,
+				63FF40BF222B92B500F5861E /* PostDetailMultiplePickerViewController.swift in Sources */,
 				6388B03522162781001E6DBA /* ViewControllerExtension.swift in Sources */,
 				63FF40AA222920EA00F5861E /* PostDetailSelectorImageCell.swift in Sources */,
 				D183CB2B2207CC660000BCE1 /* FirstPageViewController.swift in Sources */,

@@ -14,11 +14,16 @@ protocol HandleMapSearch {
 }
 
 class PostLocationViewController: UIViewController {
-    @IBOutlet weak var addressText: UITextField!
+    
+    let model = NewPostModel()
     let locationManager = CLLocationManager()
-    var selectedPin:MKPlacemark? = nil
-    var resultSearchController:UISearchController? = nil
+    
+    var selectedPin: MKPlacemark? = nil
+    var resultSearchController: UISearchController? = nil
+    
+    @IBOutlet weak var addressText: UITextField!
     @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
@@ -44,19 +49,22 @@ class PostLocationViewController: UIViewController {
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "showNewPostDetailSegue" {
+            let destination = segue.destination as! PostDetailViewController
+            destination.model = model
+        }
     }
-    */
 
 }
 
 extension PostLocationViewController : CLLocationManagerDelegate {
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             locationManager.requestLocation()
@@ -74,9 +82,11 @@ extension PostLocationViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error:: \(error)")
     }
+    
 }
 
 extension PostLocationViewController: HandleMapSearch {
+    
     func dropPinZoomIn(placemark:MKPlacemark) {
         // cache the pin
         selectedPin = placemark
@@ -95,4 +105,5 @@ extension PostLocationViewController: HandleMapSearch {
         let region = MKCoordinateRegion(center: placemark.coordinate, span: span)
         mapView.setRegion(region, animated: true)
     }
+    
 }

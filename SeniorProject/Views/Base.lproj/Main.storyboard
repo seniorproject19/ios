@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +13,7 @@
         <!--First Page View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="FirstPageViewController" customModule="SeniorProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="appHomePage" id="BYZ-38-t0r" customClass="FirstPageViewController" customModule="SeniorProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -342,7 +343,7 @@
         <!--Navigation Controller-->
         <scene sceneID="cFB-6g-kfL">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ciu-NH-d3Z" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="appHomePageNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="ciu-NH-d3Z" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yjw-3d-ruG">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -406,7 +407,7 @@
                                 <rect key="frame" x="164" y="617" width="46" height="30"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <segue destination="ZiI-H4-ldD" kind="show" id="xRk-g8-0FW"/>
+                                    <segue destination="ZiI-H4-ldD" kind="show" identifier="showNewPostDetailSegue" id="xRk-g8-0FW"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zgA-7b-pkZ">
@@ -756,7 +757,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Gox-z4-OWf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IUV-qW-zAD" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ownerHomePageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="IUV-qW-zAD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5MU-9F-OTE">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
