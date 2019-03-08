@@ -55,11 +55,11 @@ extension ServerAccessModel {
         task.resume()
     }
     
-    func uploadImage(toURL url: String, image: UIImage) {
+    func uploadImage(toURL url: String, image: UIImage, filename: String) {
         AF.upload(multipartFormData: {
             (multipartFormData) in
             if let imageData = image.jpegData(compressionQuality: 0.5) {
-                multipartFormData.append(imageData, withName: "file", fileName: "test.jpg", mimeType: "image/jpeg")
+                multipartFormData.append(imageData, withName: "file", fileName: filename, mimeType: "image/jpeg")
             }
         }, to: url).response {
             (response) in

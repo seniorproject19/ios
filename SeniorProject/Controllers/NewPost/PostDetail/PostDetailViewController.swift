@@ -56,8 +56,6 @@ extension PostDetailViewController: TLPhotosPickerViewControllerDelegate {
             }
             photoCollectionView.reloadData()
         }
-        model?.createPost {
-        }
     }
     
 }

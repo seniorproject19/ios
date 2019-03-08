@@ -48,8 +48,17 @@ class NewPostModel: ServerAccessModel {
         return nil
     }
     
-    func createPost(onCompletion callback: @escaping () -> Void) {
-        uploadImage(toURL: Configurations.API_ROOT + Configurations.API_URL.uploadImage.rawValue, image: images![0])
+    func post(onCompletion callback: @escaping () -> Void) {
+        let data = JSON([
+            "datePosted": datePosted!,
+            "address_1": address!,
+            "title": title!,
+            "description": description!,
+            "longitude": longitude!,
+            "latitude": latitude!
+        ])
+        sendPostRequest(toURL: toURL: Configurations.API_ROOT + Configurations.API_URL.getUser.rawValue, withData: <#T##String?#>, onCompletion: <#T##(Int, Data?) -> Void#>)
+        uploadImage(toURL: Configurations.API_ROOT + Configurations.API_URL.uploadImage.rawValue, image: images![0], filename: "a.jpg")
     }
 
 }
