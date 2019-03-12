@@ -12,6 +12,7 @@
 		634F396622358DD7000766D5 /* AddTimeSlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F396522358DD7000766D5 /* AddTimeSlotViewController.swift */; };
 		634F396822358DE0000766D5 /* TimeSlotListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F396722358DE0000766D5 /* TimeSlotListTableViewController.swift */; };
 		634F396A22358E22000766D5 /* TimeAvailabilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F396922358E22000766D5 /* TimeAvailabilityModel.swift */; };
+		634F397022385C01000766D5 /* PostRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F396F22385C01000766D5 /* PostRateViewController.swift */; };
 		6388B02D22161E7F001E6DBA /* CurrentUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388B02C22161E7F001E6DBA /* CurrentUserModel.swift */; };
 		6388B02F2216207A001E6DBA /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388B02E2216207A001E6DBA /* SwiftyJSON.swift */; };
 		6388B03322162672001E6DBA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388B03222162672001E6DBA /* LoginViewController.swift */; };
@@ -66,6 +67,7 @@
 		634F396522358DD7000766D5 /* AddTimeSlotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTimeSlotViewController.swift; sourceTree = "<group>"; };
 		634F396722358DE0000766D5 /* TimeSlotListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSlotListTableViewController.swift; sourceTree = "<group>"; };
 		634F396922358E22000766D5 /* TimeAvailabilityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAvailabilityModel.swift; sourceTree = "<group>"; };
+		634F396F22385C01000766D5 /* PostRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRateViewController.swift; sourceTree = "<group>"; };
 		6388B02C22161E7F001E6DBA /* CurrentUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserModel.swift; sourceTree = "<group>"; };
 		6388B02E2216207A001E6DBA /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		6388B03222162672001E6DBA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				63FF40A72229205000F5861E /* PostDetailViewController.swift */,
+				634F396F22385C01000766D5 /* PostRateViewController.swift */,
 				634F396722358DE0000766D5 /* TimeSlotListTableViewController.swift */,
 				634F396522358DD7000766D5 /* AddTimeSlotViewController.swift */,
 				63FF40A9222920EA00F5861E /* PostDetailSelectorImageCell.swift */,
@@ -542,6 +545,7 @@
 				D146957721FBCBD400C09E93 /* AppDelegate.swift in Sources */,
 				6388B03322162672001E6DBA /* LoginViewController.swift in Sources */,
 				634F396622358DD7000766D5 /* AddTimeSlotViewController.swift in Sources */,
+				634F397022385C01000766D5 /* PostRateViewController.swift in Sources */,
 				63FF40A32229201700F5861E /* PostLocationViewController.swift in Sources */,
 				63A166E4220CECDD0067BD89 /* LocalStorageModel.swift in Sources */,
 				63FF40BB222B578200F5861E /* NewPostModel.swift in Sources */,
