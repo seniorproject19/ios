@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ciu-NH-d3Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ciu-NH-d3Z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -228,7 +228,7 @@
                                 <rect key="frame" x="161" y="432" width="52" height="30"/>
                                 <state key="normal" title="Sign up"/>
                                 <connections>
-                                    <action selector="signUpButtonClicked:" destination="eqY-sk-eex" eventType="touchUpInside" id="DQ7-ya-HWY"/>
+                                    <action selector="signUpButtonClicked:" destination="eqY-sk-eex" eventType="touchUpInside" id="5RA-8j-2JE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -508,6 +508,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70r-gl-mkJ">
                                 <rect key="frame" x="233" y="573" width="32" height="30"/>
                                 <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="createButtonPressed:" destination="ZiI-H4-ldD" eventType="touchUpInside" id="o8X-hP-bVP"/>
+                                    <segue destination="bnY-L0-u9y" kind="show" id="yPP-3h-ZBE"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3aL-5x-1oY" userLabel="Photo Collection View">
                                 <rect key="frame" x="53" y="320" width="269" height="227"/>
@@ -789,6 +793,163 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n7B-Zw-nU3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4396" y="914"/>
+        </scene>
+        <!--Time Slots-->
+        <scene sceneID="SLm-sT-ebe">
+            <objects>
+                <tableViewController title="Time Slots" id="bnY-L0-u9y" customClass="TimeSlotListTableViewController" customModule="SeniorProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="z3z-qD-Qgr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="timeSlotCell" id="lSq-cw-qzA">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lSq-cw-qzA" id="5kx-Rx-o12">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bnY-L0-u9y" id="Aa2-NO-cHz"/>
+                            <outlet property="delegate" destination="bnY-L0-u9y" id="aM9-4W-1Bi"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Time Slots" id="PQs-Ma-4U6">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="iAz-d6-VUH">
+                            <connections>
+                                <segue destination="TEQ-ZL-tUp" kind="presentation" id="UnJ-cJ-TyR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z0F-Kv-x9w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7636" y="906"/>
+        </scene>
+        <!--Add Time Slot View Controller-->
+        <scene sceneID="qoK-i2-rm0">
+            <objects>
+                <viewController id="TEQ-ZL-tUp" customClass="AddTimeSlotViewController" customModule="SeniorProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Lb-FB-PvR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7S7-cr-mLZ">
+                                <rect key="frame" x="0.0" y="36" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Add Time Slot" id="TO6-3p-bgs">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="tcr-yG-H5V"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="ORQ-M3-YMi"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F9j-TH-Jmx">
+                                <rect key="frame" x="218" y="105" width="97" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TEQ-ZL-tUp" id="gyj-8I-cIT"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ed-5o-1p3">
+                                <rect key="frame" x="55" y="175" width="83" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="83" id="ekj-Px-lq1"/>
+                                </constraints>
+                                <state key="normal" title="Start Time"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yZJ-TN-Dmk">
+                                <rect key="frame" x="218" y="175" width="97" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TEQ-ZL-tUp" id="yyA-sq-r4R"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZkT-JX-6Ok">
+                                <rect key="frame" x="55" y="251" width="83" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="83" id="5YR-Ha-7hm"/>
+                                </constraints>
+                                <state key="normal" title="End Time"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tbJ-jm-O1q">
+                                <rect key="frame" x="218" y="251" width="97" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TEQ-ZL-tUp" id="JPx-2y-nXK"/>
+                                </connections>
+                            </textField>
+                            <pickerView tag="1" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hbp-Kp-LP4">
+                                <rect key="frame" x="0.0" y="389" width="375" height="140"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="TEQ-ZL-tUp" id="aYe-AX-kPc"/>
+                                    <outlet property="delegate" destination="TEQ-ZL-tUp" id="LSw-is-y2c"/>
+                                </connections>
+                            </pickerView>
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="WuK-tA-jLc">
+                                <rect key="frame" x="0.0" y="528" width="375" height="130"/>
+                                <date key="date" timeIntervalSinceReferenceDate="573287591.54794395">
+                                    <!--2019-03-03 06:33:11 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZv-tT-GCC">
+                                <rect key="frame" x="64" y="104" width="74" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="EEo-bP-jbH"/>
+                                    <constraint firstAttribute="height" constant="30" id="fMz-kp-sIh"/>
+                                </constraints>
+                                <state key="normal" title="Select Day"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pco-wA-hvx" firstAttribute="trailing" secondItem="F9j-TH-Jmx" secondAttribute="trailing" constant="60" id="26f-AH-gIG"/>
+                            <constraint firstItem="hbp-Kp-LP4" firstAttribute="width" secondItem="5Lb-FB-PvR" secondAttribute="width" id="5kX-3C-441"/>
+                            <constraint firstItem="WuK-tA-jLc" firstAttribute="centerX" secondItem="pco-wA-hvx" secondAttribute="centerX" id="7m1-6b-2hX"/>
+                            <constraint firstItem="hbp-Kp-LP4" firstAttribute="centerX" secondItem="pco-wA-hvx" secondAttribute="centerX" id="BDn-Ax-8fL"/>
+                            <constraint firstItem="yZJ-TN-Dmk" firstAttribute="top" secondItem="F9j-TH-Jmx" secondAttribute="bottom" constant="40" id="EYW-jh-CZL"/>
+                            <constraint firstItem="yZJ-TN-Dmk" firstAttribute="leading" secondItem="7Ed-5o-1p3" secondAttribute="trailing" constant="80" id="HRb-aU-gp9"/>
+                            <constraint firstItem="F9j-TH-Jmx" firstAttribute="leading" secondItem="eZv-tT-GCC" secondAttribute="trailing" constant="80" id="NOK-is-Qry"/>
+                            <constraint firstItem="7S7-cr-mLZ" firstAttribute="top" secondItem="pco-wA-hvx" secondAttribute="top" constant="16" id="QPB-4l-46H"/>
+                            <constraint firstItem="7Ed-5o-1p3" firstAttribute="top" secondItem="eZv-tT-GCC" secondAttribute="bottom" constant="41" id="Tdl-ZD-cUa"/>
+                            <constraint firstItem="pco-wA-hvx" firstAttribute="bottom" secondItem="WuK-tA-jLc" secondAttribute="bottom" constant="9" id="V5E-ZM-Ldp"/>
+                            <constraint firstItem="tbJ-jm-O1q" firstAttribute="leading" secondItem="ZkT-JX-6Ok" secondAttribute="trailing" constant="80" id="XcQ-yU-PPX"/>
+                            <constraint firstItem="7Ed-5o-1p3" firstAttribute="leading" secondItem="pco-wA-hvx" secondAttribute="leading" constant="55" id="YyR-CN-zMn"/>
+                            <constraint firstItem="WuK-tA-jLc" firstAttribute="width" secondItem="5Lb-FB-PvR" secondAttribute="width" id="Zph-q0-ea1"/>
+                            <constraint firstItem="eZv-tT-GCC" firstAttribute="leading" secondItem="pco-wA-hvx" secondAttribute="leading" constant="64" id="hHk-Gc-NKb"/>
+                            <constraint firstItem="eZv-tT-GCC" firstAttribute="top" secondItem="pco-wA-hvx" secondAttribute="top" constant="84" id="hR2-3G-841"/>
+                            <constraint firstItem="pco-wA-hvx" firstAttribute="trailing" secondItem="tbJ-jm-O1q" secondAttribute="trailing" constant="60" id="k1l-gb-Y2O"/>
+                            <constraint firstItem="ZkT-JX-6Ok" firstAttribute="leading" secondItem="pco-wA-hvx" secondAttribute="leading" constant="55" id="mMR-hx-3ar"/>
+                            <constraint firstItem="tbJ-jm-O1q" firstAttribute="top" secondItem="yZJ-TN-Dmk" secondAttribute="bottom" constant="46" id="mgx-qe-Xn5"/>
+                            <constraint firstItem="pco-wA-hvx" firstAttribute="bottom" secondItem="hbp-Kp-LP4" secondAttribute="bottom" constant="138" id="ohp-23-RiW"/>
+                            <constraint firstItem="pco-wA-hvx" firstAttribute="trailing" secondItem="yZJ-TN-Dmk" secondAttribute="trailing" constant="60" id="qhP-PV-4xJ"/>
+                            <constraint firstItem="F9j-TH-Jmx" firstAttribute="top" secondItem="pco-wA-hvx" secondAttribute="top" constant="85" id="vny-le-WBd"/>
+                            <constraint firstItem="ZkT-JX-6Ok" firstAttribute="top" secondItem="7Ed-5o-1p3" secondAttribute="bottom" constant="46" id="xDh-b5-QB2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pco-wA-hvx"/>
+                    </view>
+                    <connections>
+                        <outlet property="endTimeButton" destination="ZkT-JX-6Ok" id="U1Q-XZ-iY9"/>
+                        <outlet property="endTimeTextField" destination="tbJ-jm-O1q" id="CeA-tI-6ZT"/>
+                        <outlet property="selectDayButton" destination="eZv-tT-GCC" id="HQj-2W-A1Q"/>
+                        <outlet property="selectDayTextField" destination="F9j-TH-Jmx" id="i9u-tg-0t9"/>
+                        <outlet property="startTimeButton" destination="7Ed-5o-1p3" id="YK6-3s-NsI"/>
+                        <outlet property="startTimeTextField" destination="yZJ-TN-Dmk" id="3g4-Zt-nmg"/>
+                        <outlet property="timePicker" destination="WuK-tA-jLc" id="dTl-Hx-bKP"/>
+                        <outlet property="weekdayPicker" destination="hbp-Kp-LP4" id="xmz-3b-zku"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z1s-C4-ORC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8508" y="905"/>
         </scene>
     </scenes>
 </document>

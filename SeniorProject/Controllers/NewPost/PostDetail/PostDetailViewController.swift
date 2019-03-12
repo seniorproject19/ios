@@ -28,6 +28,17 @@ class PostDetailViewController: UIViewController {
         self.present(pickerViewController, animated: true, completion: nil)
     }
     
+    @IBAction func createButtonPressed(_ sender: Any) {
+        let utcDate = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        model?.datePosted = formatter.string(from: utcDate)
+        model?.post {
+            // TODO: error handling
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

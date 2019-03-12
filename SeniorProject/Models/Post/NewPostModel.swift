@@ -11,7 +11,7 @@ import UIKit
 class NewPostModel: ServerAccessModel {
     
     var postBy: UserModel? = nil
-    var datePosted: Date? = nil
+    var datePosted: String? = nil
     var title: String? = nil
     var description: String? = nil
     var longitude: Double? = nil
@@ -57,8 +57,11 @@ class NewPostModel: ServerAccessModel {
             "longitude": longitude!,
             "latitude": latitude!
         ])
-        sendPostRequest(toURL: toURL: Configurations.API_ROOT + Configurations.API_URL.getUser.rawValue, withData: <#T##String?#>, onCompletion: <#T##(Int, Data?) -> Void#>)
-        uploadImage(toURL: Configurations.API_ROOT + Configurations.API_URL.uploadImage.rawValue, image: images![0], filename: "a.jpg")
+        sendPostRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.getUser.rawValue, withData: data.rawString(String.Encoding.utf8, options: [])!) {
+            (statusCode, responseData) in
+            print(responseData)
+        }
+        // uploadImage(toURL: Configurations.API_ROOT + Configurations.API_URL.uploadImage.rawValue, image: images![0], filename: "a.jpg")
     }
 
 }
