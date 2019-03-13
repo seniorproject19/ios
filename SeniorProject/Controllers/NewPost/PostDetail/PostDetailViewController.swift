@@ -13,6 +13,7 @@ class PostDetailViewController: UIViewController {
 
     var model: NewPostModel? = nil
     
+    @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
     @IBAction func addPhotos(_ sender: Any) {
@@ -34,6 +35,8 @@ class PostDetailViewController: UIViewController {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         model?.datePosted = formatter.string(from: utcDate)
+        model?.title = ""
+        model?.description = descriptionTextView.text
         model?.post {
             // TODO: error handling
         }

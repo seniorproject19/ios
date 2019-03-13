@@ -50,18 +50,25 @@ class NewPostModel: ServerAccessModel {
     
     func post(onCompletion callback: @escaping () -> Void) {
         let data = JSON([
-            "datePosted": datePosted!,
+            "date_posted": datePosted!,
             "address_1": address!,
             "title": title!,
             "description": description!,
             "longitude": longitude!,
             "latitude": latitude!
         ])
-        sendPostRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.getUser.rawValue, withData: data.rawString(String.Encoding.utf8, options: [])!) {
+        sendPostRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.newPost.rawValue, withData: data.rawString(String.Encoding.utf8, options: [])!) {
             (statusCode, responseData) in
-            print(responseData)
+            let jsonData = JSON(responseData)
+            let postId = jsonData["msg"].stringValue
+            let timestamp = NSDate().timeIntervalSince1970
+            if statusCode == 200 && self.images != nil {
+                for i in 0..<self.images!.count {
+                    let filename = postId + "_" + String(Int(NSDate().timeIntervalSince1970)) + "_" + String(i) + ".jpg"
+                    self.uploadImage(toURL: Configurations.API_ROOT + Configurations.API_URL.uploadImage.rawValue, image: self.images![i], filename: filename, forPost: postId)
+                }
+            }
         }
-        // uploadImage(toURL: Configurations.API_ROOT + Configurations.API_URL.uploadImage.rawValue, image: images![0], filename: "a.jpg")
     }
 
 }
