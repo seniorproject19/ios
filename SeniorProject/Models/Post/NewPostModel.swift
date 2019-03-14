@@ -64,8 +64,8 @@ class NewPostModel: ServerAccessModel {
             let timestamp = NSDate().timeIntervalSince1970
             if statusCode == 200 && self.images != nil {
                 for i in 0..<self.images!.count {
-                    let filename = postId + "_" + String(Int(NSDate().timeIntervalSince1970)) + "_" + String(i) + ".jpg"
-                    self.uploadImage(toURL: Configurations.API_ROOT + Configurations.API_URL.uploadImage.rawValue, image: self.images![i], filename: filename, forPost: postId)
+                    let filename = postId + "_" + String(Int(timestamp)) + "_" + String(i) + ".jpg"
+                    self.uploadImage(toURL: Configurations.API_ROOT + Configurations.API_URL.uploadImage.rawValue + postId, image: self.images![i], filename: filename, forPost: postId)
                 }
             }
         }

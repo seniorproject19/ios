@@ -23,7 +23,7 @@ class AddTimeSlotViewController: UIViewController , UIPickerViewDataSource, UIPi
 
     // Now we specify the display format, e.g. "27-08-2015
     
-    let weekDayPickerOptions = ["Monday","Tuesday","Wednesday","Thursday","Friday", "Saturday", "Sunday"]
+    let weekDayPickerOptions = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

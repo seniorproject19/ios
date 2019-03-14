@@ -9,6 +9,19 @@
 import UIKit
 
 class TimeAvailabilityModel: NSObject {
-    //let start 
+    
+    var start: Int
+    var end: Int
+    var rate: Double
+    
+    init(start: Int, end: Int, rate: Double) {
+        self.start = start
+        self.end = end
+        self.rate = rate
+    }
+    
+    func getTimeAvailbilityTableItemList() -> [Double] {
+        return [1]
+    }
 
 }

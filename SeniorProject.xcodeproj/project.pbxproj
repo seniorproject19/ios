@@ -13,6 +13,7 @@
 		634F396822358DE0000766D5 /* TimeSlotListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F396722358DE0000766D5 /* TimeSlotListTableViewController.swift */; };
 		634F396A22358E22000766D5 /* TimeAvailabilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F396922358E22000766D5 /* TimeAvailabilityModel.swift */; };
 		634F397022385C01000766D5 /* PostRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F396F22385C01000766D5 /* PostRateViewController.swift */; };
+		636112EF223A1F0D003A32EC /* TimeAvailabilityTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636112EE223A1F0D003A32EC /* TimeAvailabilityTableModel.swift */; };
 		6388B02D22161E7F001E6DBA /* CurrentUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388B02C22161E7F001E6DBA /* CurrentUserModel.swift */; };
 		6388B02F2216207A001E6DBA /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388B02E2216207A001E6DBA /* SwiftyJSON.swift */; };
 		6388B03322162672001E6DBA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388B03222162672001E6DBA /* LoginViewController.swift */; };
@@ -68,6 +69,7 @@
 		634F396722358DE0000766D5 /* TimeSlotListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSlotListTableViewController.swift; sourceTree = "<group>"; };
 		634F396922358E22000766D5 /* TimeAvailabilityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAvailabilityModel.swift; sourceTree = "<group>"; };
 		634F396F22385C01000766D5 /* PostRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRateViewController.swift; sourceTree = "<group>"; };
+		636112EE223A1F0D003A32EC /* TimeAvailabilityTableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAvailabilityTableModel.swift; sourceTree = "<group>"; };
 		6388B02C22161E7F001E6DBA /* CurrentUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserModel.swift; sourceTree = "<group>"; };
 		6388B02E2216207A001E6DBA /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		6388B03222162672001E6DBA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				634F396922358E22000766D5 /* TimeAvailabilityModel.swift */,
+				636112EE223A1F0D003A32EC /* TimeAvailabilityTableModel.swift */,
 				63FF40BA222B578200F5861E /* NewPostModel.swift */,
 			);
 			path = Post;
@@ -530,6 +533,7 @@
 				634F396A22358E22000766D5 /* TimeAvailabilityModel.swift in Sources */,
 				63FF40A82229205000F5861E /* PostDetailViewController.swift in Sources */,
 				63A166E2220CEC310067BD89 /* ServerAccessModel.swift in Sources */,
+				636112EF223A1F0D003A32EC /* TimeAvailabilityTableModel.swift in Sources */,
 				63FF40BF222B92B500F5861E /* PostDetailMultiplePickerViewController.swift in Sources */,
 				6388B03522162781001E6DBA /* ViewControllerExtension.swift in Sources */,
 				63FF40AA222920EA00F5861E /* PostDetailSelectorImageCell.swift in Sources */,
