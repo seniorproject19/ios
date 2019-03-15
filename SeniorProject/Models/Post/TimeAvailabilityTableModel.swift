@@ -10,6 +10,8 @@ import UIKit
 
 class TimeAvailabilityTableModel: NSObject {
     
+    var timeAvailabilityEntries = [TimeAvailabilityModel]()
+    
     var timeAvailabilityTable = [
         "Monday": [Double: Double](),
         "Tuesday": [Double: Double](),
@@ -20,6 +22,11 @@ class TimeAvailabilityTableModel: NSObject {
     
     func addAvailability(weekday: String, availability: TimeAvailabilityModel) {
         // timeAvailabilityTable[weekday]?.append(availability)
+        let availabilityItemList = availability.discreteListRepresentation
+        timeAvailabilityEntries.append(availability)
+        for availabilityItem in availabilityItemList {
+            timeAvailabilityTable[weekday]![availabilityItem] = availability.rate
+        }
     }
 
 }

@@ -10,18 +10,24 @@ import UIKit
 
 class TimeAvailabilityModel: NSObject {
     
-    var start: Int
-    var end: Int
+    var start: Double
+    var end: Double
     var rate: Double
     
-    init(start: Int, end: Int, rate: Double) {
+    var discreteListRepresentation: [Double] {
+        get {
+            var availabilityItemList = [Double]()
+            for i in stride(from: start, to: end, by: 0.5) {
+                availabilityItemList.append(i)
+            }
+            return availabilityItemList
+        }
+    }
+    
+    init(start: Double, end: Double, rate: Double) {
         self.start = start
         self.end = end
         self.rate = rate
-    }
-    
-    func getTimeAvailbilityTableItemList() -> [Double] {
-        return [1]
     }
 
 }
