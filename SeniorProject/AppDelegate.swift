@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if currentUserModel.authenticationStatus == .owner {
             viewController = storyboard.instantiateViewController(withIdentifier: "ownerHomePageViewNavigationController")
         } else if currentUserModel.authenticationStatus == .user {
-            viewController = storyboard.instantiateViewController(withIdentifier: "userMainMapView")
+            viewController = storyboard.instantiateViewController(withIdentifier: "userMainNavigationController")
         } else {
             viewController = storyboard.instantiateViewController(withIdentifier: "appHomePageNavigationController")
         }

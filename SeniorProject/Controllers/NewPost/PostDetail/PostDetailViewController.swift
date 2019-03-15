@@ -34,9 +34,9 @@ class PostDetailViewController: UIViewController {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         model?.datePosted = formatter.string(from: utcDate)
-        model?.post {
+        // model?.post {
             // TODO: error handling
-        }
+        // }
     }
     
     override func viewDidLoad() {

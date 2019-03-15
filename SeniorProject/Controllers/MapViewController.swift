@@ -8,11 +8,13 @@
 
 import UIKit
 import MapKit
-
+protocol ChangeUserLocation {
+    func changeUserLocationZoomIn(placemark:MKPlacemark)
+}
 class MapViewController: UIViewController {
-    
+    var currentLocation:CLLocation?
     var currentUser: CurrentUserModel?
-    
+    var selectedPin:MKPlacemark? = nil
     let locationManager = CLLocationManager()
     var resultSearchController:UISearchController? = nil
     @IBOutlet weak var mapView: MKMapView!
@@ -23,7 +25,7 @@ class MapViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-        
+        currentLocation = locationManager.location
         
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTableViewController
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
@@ -39,6 +41,7 @@ class MapViewController: UIViewController {
         definesPresentationContext = true
         
         locationSearchTable.mapView = mapView
+        locationSearchTable.ChangeUserLocationDelegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -73,6 +76,30 @@ extension MapViewController : CLLocationManagerDelegate {
             let region = MKCoordinateRegion(center: location.coordinate, span: span)
             mapView.setRegion(region, animated: true)
         }
+    }
+    
+}
+extension MapViewController: ChangeUserLocation {
+    func changeUserLocationZoomIn(placemark: MKPlacemark) {
+        // cache the pin
+        selectedPin = placemark
+        mapView.removeAnnotations(mapView.annotations)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        if let city = placemark.locality,
+            let state = placemark.administrativeArea {
+            annotation.subtitle = "\(city) \(state)"
+        }
+        currentLocation = placemark.location
+        let selectedLatitude =  placemark.coordinate.latitude
+        let selectedLongitude = placemark.coordinate.longitude
+        print(selectedLatitude)
+        print(selectedLongitude)
+        mapView.addAnnotation(annotation)
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: placemark.coordinate, span: span)
+        mapView.setRegion(region, animated: true)
     }
     
 }
