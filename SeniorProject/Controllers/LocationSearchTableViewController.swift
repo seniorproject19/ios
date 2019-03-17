@@ -13,8 +13,8 @@ class LocationSearchTableViewController: UITableViewController {
     
     var matchingItems:[MKMapItem] = []
     var mapView: MKMapView? = nil
-    // var ChangeUserLocationDelegate: ChangeUserLocation? = nil
-    
+    var ChangeUserLocationDelegate:ChangeUserLocation? = nil
+  
     func parseAddress(selectedItem:MKPlacemark) -> String {
         // put a space between "4" and "Melrose Place"
         let firstSpace = (selectedItem.subThoroughfare != nil && selectedItem.thoroughfare != nil) ? " " : ""
@@ -84,4 +84,12 @@ extension LocationSearchTableViewController {
         }
     } */
     
+}
+extension LocationSearchTableViewController {
+    override func tableView(_ tableView: UITableView,
+                            didSelectRowAt indexPath: IndexPath){
+        let selectedItem = matchingItems[indexPath.row].placemark
+        ChangeUserLocationDelegate?.changeUserLocationZoomIn(placemark: selectedItem)
+        dismiss(animated: true, completion: nil)
+    }
 }

@@ -16,6 +16,10 @@ class TimeSlotListTableViewController: UITableViewController {
         tableView.reloadData()
     }
 
+
+    @IBAction func DissmissVC(segue:UIStoryboardSegue) {
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
