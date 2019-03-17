@@ -23,7 +23,9 @@ class Configurations: NSObject {
     enum API_URL: String {
         case getUser =  "/user"
         case newPost = "/post/new"
-        case uploadImage = "/upload/images"
+        case uploadImage = "/upload/images/"
+        case updateAvailability = "/post/availability"
+        case getPostList = "/post/get_list"
     }
 
 }

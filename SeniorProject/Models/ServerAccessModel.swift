@@ -55,7 +55,7 @@ extension ServerAccessModel {
         task.resume()
     }
     
-    func uploadImage(toURL url: String, image: UIImage, filename: String) {
+    func uploadImage(toURL url: String, image: UIImage, filename: String, forPost postId: String) {
         AF.upload(multipartFormData: {
             (multipartFormData) in
             if let imageData = image.jpegData(compressionQuality: 0.5) {

@@ -44,7 +44,6 @@ class PostLocationViewController: UIViewController {
         definesPresentationContext = true
         
         locationSearchTable.mapView = mapView
-        
         locationSearchTable.handleMapSearchDelegate = self
     }
     
@@ -56,6 +55,7 @@ class PostLocationViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "showNewPostDetailSegue" {
+            model.address = addressText.text
             let destination = segue.destination as! PostDetailViewController
             destination.model = model
         }
@@ -102,6 +102,8 @@ extension PostLocationViewController: HandleMapSearch {
         addressText.text = placemark.title
         let selectedLatitude =  placemark.coordinate.latitude
         let selectedLongitude = placemark.coordinate.longitude
+        model.latitude = selectedLatitude
+        model.longitude = selectedLongitude
         print(selectedLatitude)
         print(selectedLongitude)
         mapView.addAnnotation(annotation)

@@ -9,9 +9,13 @@
 import UIKit
 
 class PostRateViewController: UIViewController {
-    @IBOutlet weak var RateLabel: UILabel!
     
+    var model: NewPostModel? = nil
+    var availabilityModel: TimeAvailabilityModel? = nil
+    
+    @IBOutlet weak var RateLabel: UILabel!
     @IBOutlet weak var rateSlider: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +24,17 @@ class PostRateViewController: UIViewController {
     
     @IBAction func sliderValueChanged(_ sender: Any) {
         RateLabel.text = "$, \(rateSlider.value) per hour"
+    }
+    
+    @IBAction func doneButtonClicked(_ sender: Any) {
+        if let availabilityModel = availabilityModel {
+            availabilityModel.rate = Double(rateSlider.value)
+            if model?.availabilityTableModel.addAvailability(availability: availabilityModel) == .timeConflict {
+                showAlert(withTitle: "Error", message: "The time you entered is in conflict with another time you entered before. Please choose another time or remove an existing time.")
+            } else {
+                performSegue(withIdentifier: "unwindToTimeSlotTable", sender: self)
+            }
+        }
     }
     
     /*

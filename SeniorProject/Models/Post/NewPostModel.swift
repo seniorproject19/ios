@@ -10,6 +10,7 @@ import UIKit
 
 class NewPostModel: ServerAccessModel {
     
+    var pid: String? = nil
     var postBy: UserModel? = nil
     var datePosted: String? = nil
     var title: String? = nil
@@ -18,6 +19,7 @@ class NewPostModel: ServerAccessModel {
     var latitude: Double? = nil
     var address: String? = nil
     var images: [UIImage]? = nil
+    var availabilityTableModel = TimeAvailabilityTableModel()
     
     func addImages(image: UIImage) {
         if images == nil {
@@ -50,18 +52,34 @@ class NewPostModel: ServerAccessModel {
     
     func post(onCompletion callback: @escaping () -> Void) {
         let data = JSON([
-            "datePosted": datePosted!,
+            "date_posted": datePosted!,
             "address_1": address!,
             "title": title!,
             "description": description!,
             "longitude": longitude!,
             "latitude": latitude!
         ])
-        sendPostRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.getUser.rawValue, withData: data.rawString(String.Encoding.utf8, options: [])!) {
+        sendPostRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.newPost.rawValue, withData: data.rawString(String.Encoding.utf8, options: [])!) {
             (statusCode, responseData) in
-            print(responseData)
+            let jsonData = JSON(responseData)
+            let postId = jsonData["msg"].stringValue
+            let timestamp = NSDate().timeIntervalSince1970
+            if statusCode == 200 && self.images != nil {
+                for i in 0..<self.images!.count {
+                    let filename = postId + "_" + String(Int(timestamp)) + "_" + String(i) + ".jpg"
+                    self.uploadImage(toURL: Configurations.API_ROOT + Configurations.API_URL.uploadImage.rawValue + postId, image: self.images![i], filename: filename, forPost: postId)
+                }
+            }
+            self.pid = postId
+            callback()
         }
-        // uploadImage(toURL: Configurations.API_ROOT + Configurations.API_URL.uploadImage.rawValue, image: images![0], filename: "a.jpg")
+    }
+    
+    func postTimeAvailability(onCompletion callback: @escaping () -> Void) {
+        availabilityTableModel.post(pid: pid!) {
+            print("GOING BACK HOME")
+            callback()
+        }
     }
 
 }

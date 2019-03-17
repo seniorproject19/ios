@@ -12,11 +12,14 @@ protocol ChangeUserLocation {
     func changeUserLocationZoomIn(placemark:MKPlacemark)
 }
 class MapViewController: UIViewController {
-    var currentLocation:CLLocation?
-    var currentUser: CurrentUserModel?
-    var selectedPin:MKPlacemark? = nil
+
     let locationManager = CLLocationManager()
+    var currentLocation: CLLocation?
+    var currentUser: CurrentUserModel?
+    
+    var selectedPin:MKPlacemark? = nil
     var resultSearchController:UISearchController? = nil
+    
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {

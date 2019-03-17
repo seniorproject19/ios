@@ -13,7 +13,15 @@ class PostDetailViewController: UIViewController {
 
     var model: NewPostModel? = nil
     
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var photoCollectionView: UICollectionView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
     
     @IBAction func addPhotos(_ sender: Any) {
         let pickerViewController = PostDetailMultiplePickerViewController()
@@ -34,18 +42,25 @@ class PostDetailViewController: UIViewController {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         model?.datePosted = formatter.string(from: utcDate)
-        // model?.post {
+        model?.title = titleTextField.text
+        model?.description = descriptionTextView.text
+        model?.post {
             // TODO: error handling
-        // }
+        }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBAction func nextButtonClicked(_ sender: Any) {
+        performSegue(withIdentifier: "showTimeSlotsTableViewSegue", sender: self)
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showTimeSlotsTableViewSegue" {
+            if let destination = segue.destination as? TimeSlotListTableViewController {
+                destination.model = model
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
