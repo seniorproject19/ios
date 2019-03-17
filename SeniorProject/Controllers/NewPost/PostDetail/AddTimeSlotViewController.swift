@@ -9,6 +9,11 @@
 import UIKit
 
 class AddTimeSlotViewController: UIViewController , UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+    
+    let weekDayPickerOptions = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    
+    var model: NewPostModel? = nil
+    var availabilityModel = TimeAvailabilityModel()
    
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var weekdayPicker: UIPickerView!
@@ -20,10 +25,6 @@ class AddTimeSlotViewController: UIViewController , UIPickerViewDataSource, UIPi
     @IBOutlet weak var endTimeButton: UIButton!
     @IBOutlet weak var startTimeButton: UIButton!
     @IBOutlet weak var selectDayButton: UIButton!
-
-    // Now we specify the display format, e.g. "27-08-2015
-    
-    let weekDayPickerOptions = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,10 +84,19 @@ class AddTimeSlotViewController: UIViewController , UIPickerViewDataSource, UIPi
         }
         return true
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        availabilityModel.weekday = selectDayTextField.text
+        availabilityModel.startString = startTimeTextField.text
+        availabilityModel.endString = endTimeTextField.text
+        if segue.identifier == "showHourlyRateSegue" {
+            if let destination = segue.destination as? PostRateViewController {
+                destination.model = model
+                destination.availabilityModel = availabilityModel
+            }
+        }
+    }
 
-        
-    
-    
     /*
     // MARK: - Navigation
 

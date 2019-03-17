@@ -11,10 +11,13 @@ import MapKit
 
 class MapViewController: UIViewController {
     
+    let locationManager = CLLocationManager()
+    var currentLocation: CLLocation?
     var currentUser: CurrentUserModel?
     
-    let locationManager = CLLocationManager()
+    var selectedPin:MKPlacemark? = nil
     var resultSearchController:UISearchController? = nil
+    
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
@@ -23,7 +26,7 @@ class MapViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-        
+        currentLocation = locationManager.location
         
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTableViewController
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)

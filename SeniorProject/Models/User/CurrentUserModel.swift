@@ -117,10 +117,7 @@ class CurrentUserModel: ServerAccessModel, LocalStorageModel {
             } else {
                 self.user = UserModel(userData: data!)
                 self.authenticatedUserId = uid
-                print("fffff")
-                print(self.user!.isOwner)
                 self.authenticationStatus = self.user!.isOwner ? .owner : .user
-                print(self.authenticationStatus)
                 callback(true)
             }
         }

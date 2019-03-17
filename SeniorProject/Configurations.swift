@@ -24,6 +24,8 @@ class Configurations: NSObject {
         case getUser =  "/user"
         case newPost = "/post/new"
         case uploadImage = "/upload/images/"
+        case updateAvailability = "/post/availability"
+        case getPostList = "/post/get_list"
     }
 
 }

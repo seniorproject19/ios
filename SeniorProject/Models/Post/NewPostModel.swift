@@ -10,6 +10,7 @@ import UIKit
 
 class NewPostModel: ServerAccessModel {
     
+    var pid: String? = nil
     var postBy: UserModel? = nil
     var datePosted: String? = nil
     var title: String? = nil
@@ -18,6 +19,7 @@ class NewPostModel: ServerAccessModel {
     var latitude: Double? = nil
     var address: String? = nil
     var images: [UIImage]? = nil
+    var availabilityTableModel = TimeAvailabilityTableModel()
     
     func addImages(image: UIImage) {
         if images == nil {
@@ -68,6 +70,15 @@ class NewPostModel: ServerAccessModel {
                     self.uploadImage(toURL: Configurations.API_ROOT + Configurations.API_URL.uploadImage.rawValue + postId, image: self.images![i], filename: filename, forPost: postId)
                 }
             }
+            self.pid = postId
+            callback()
+        }
+    }
+    
+    func postTimeAvailability(onCompletion callback: @escaping () -> Void) {
+        availabilityTableModel.post(pid: pid!) {
+            print("GOING BACK HOME")
+            callback()
         }
     }
 
