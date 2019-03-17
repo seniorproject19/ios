@@ -40,5 +40,11 @@ class PostListModel: ServerAccessModel {
             }
         }
     }
+    
+    func loadTestData() {
+        self.entries.append(PostListEntryModel(pid: "1", title: "Test Data 1", address: "747 Howard St, San Francisco, CA 94103, United States", longitude: 37.783558, latitude: -122.400969))
+        self.entries.append(PostListEntryModel(pid: "2", title: "Test Data 2", address: "900 Market St, San Francisco, CA 94102, United States", longitude: 37.784280, latitude: -122.408784))
+        self.entries.append(PostListEntryModel(pid: "2", title: "Test Data 3", address: "845 Market St, San Francisco, CA 94103, United States", longitude: 37.783395, latitude: -122.405672))
+    }
 
 }

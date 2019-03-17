@@ -8,14 +8,17 @@
 
 import UIKit
 import MapKit
+
 protocol ChangeUserLocation {
     func changeUserLocationZoomIn(placemark:MKPlacemark)
 }
+
 class MapViewController: UIViewController {
 
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     var currentUser: CurrentUserModel?
+    var postList = PostListModel()
     
     var selectedPin:MKPlacemark? = nil
     var resultSearchController:UISearchController? = nil
@@ -24,6 +27,9 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        postList.loadTestData()
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
