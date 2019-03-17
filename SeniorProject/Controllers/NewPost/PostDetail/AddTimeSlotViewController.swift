@@ -25,9 +25,7 @@ class AddTimeSlotViewController: UIViewController , UIPickerViewDataSource, UIPi
     @IBOutlet weak var endTimeButton: UIButton!
     @IBOutlet weak var startTimeButton: UIButton!
     @IBOutlet weak var selectDayButton: UIButton!
-    
-    let weekDayPickerOptions = ["Monday","Tuesday","Wednesday","Thursday","Friday", "Saturday", "Sunday"]
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         timePicker.tag = 0

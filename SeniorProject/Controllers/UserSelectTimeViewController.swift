@@ -9,18 +9,22 @@
 import UIKit
 
 class UserSelectTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
-
+    
+    let weekDayPickerOptions = ["Monday","Tuesday","Wednesday","Thursday","Friday", "Saturday", "Sunday"]
+    
+    var currentUser: CurrentUserModel? = nil
     
     @IBOutlet weak var selectDayTextField: UITextField!
     @IBOutlet weak var startTimeTextField: UITextField!
     @IBOutlet weak var endTimeTextField: UITextField!
     @IBOutlet weak var weekdayPicker: UIPickerView!
     @IBOutlet weak var timePicker: UIDatePicker!
-    let weekDayPickerOptions = ["Monday","Tuesday","Wednesday","Thursday","Friday", "Saturday", "Sunday"]
+    
     @IBAction func NextButtonClicked(_ sender: Any) {
         print(selectDayTextField.text ?? "N/A"," ",startTimeTextField.text ?? "N/A" , " ", endTimeTextField.text ?? "N/A")
         print("Hi \n")
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         timePicker.tag = 5

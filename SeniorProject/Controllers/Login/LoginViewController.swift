@@ -37,9 +37,10 @@ class LoginViewController: UIViewController {
                         destination.currentUser = self.currentUser
                         self.navigationController?.pushViewController(destination, animated: true)
                     } else {
-                        let destination = self.storyboard?.instantiateViewController(withIdentifier: "userMainMapView") as! MapViewController
-                        destination.currentUser = self.currentUser
-                        self.navigationController?.pushViewController(destination, animated: true)
+                        let destination = self.storyboard?.instantiateViewController(withIdentifier: "userMainNavigationController") as! UINavigationController
+                        let selectDayDestination = destination.viewControllers.first as! UserSelectTimeViewController
+                        selectDayDestination.currentUser = self.currentUser
+                        self.navigationController?.pushViewController(selectDayDestination, animated: true)
                     }
                 }
             case .wrongUsername:
