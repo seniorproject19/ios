@@ -28,6 +28,7 @@ class Configurations: NSObject {
         case getPostList = "/post/get_list"
         case getPost = "/post/get/"
         case getPostImagePathsList = "/post/image/list/"
+        case getPostListInRegion = "/post/get_list/region"
     }
 
 }

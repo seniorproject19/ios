@@ -9,13 +9,15 @@
 import UIKit
 import MapKit
 
-protocol ChangeUserLocation{
-    func changeUserLocationZoomIn(placemark:MKPlacemark)
+protocol ChangeUserLocation {
+    
+    func changeUserLocationZoomIn(placemark: MKPlacemark)
+    
 }
 
 class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
 
-    
+    let annotation = MKPointAnnotation()
     let locationManager = CLLocationManager()
     let defaultLocation = CLLocationCoordinate2D(latitude: 37.7840, longitude: -122.405)
     var userLocation: CLLocationCoordinate2D?
@@ -28,7 +30,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
-    let annotation = MKPointAnnotation()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,10 +64,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        postList.loadTestData()
-        poi = postList.entries
-        centerMapInInitialCoordinates()
-        showPointsOfInterestInMap()
+        postList.loadDataInRegion(longitude: 0.0, latitude: 0.0) {
+            (result) in
+            if result == .success {
+                self.updateUIAsync {
+                    self.poi = self.postList.entries
+                    self.centerMapInInitialCoordinates()
+                    self.showPointsOfInterestInMap()
+                }
+            } else {
+                self.updateUIAsync {
+                    self.showAlert(withTitle: "Error", message: "Unable to load post list")
+                    let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! FirstPageViewController
+                    self.navigationController?.pushViewController(destination, animated: true)
+                }
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

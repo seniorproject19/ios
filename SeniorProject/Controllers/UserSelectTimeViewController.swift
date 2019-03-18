@@ -27,6 +27,30 @@ class UserSelectTimeViewController: UIViewController, UIPickerViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if currentUser == nil {
+            currentUser = CurrentUserModel()
+            currentUser?.loadUser {
+                (succeeded) in
+                if !succeeded {
+                    self.updateUIAsync {
+                        let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! FirstPageViewController
+                        self.navigationController?.pushViewController(destination, animated: true)
+                    }
+                } else {
+                    self.updateUIAsync {
+                        self.setup()
+                    }
+                }
+            }
+        } else {
+            setup()
+        }
+
+        // Do any additional setup after loading the view.
+    }
+    
+    func setup() {
         timePicker.tag = 5
         weekdayPicker.tag = 6
         selectDayTextField.tag = 7
@@ -34,8 +58,6 @@ class UserSelectTimeViewController: UIViewController, UIPickerViewDataSource, UI
         endTimeTextField.tag = 9
         timePicker.isHidden = true
         weekdayPicker.isHidden = true
-
-        // Do any additional setup after loading the view.
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
