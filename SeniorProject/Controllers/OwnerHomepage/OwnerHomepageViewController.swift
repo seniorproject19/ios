@@ -83,6 +83,22 @@ class OwnerHomepageViewController: UITableViewController {
 
         return cell
     }
+  
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            // delete item at indexPath
+            self.postList.entries.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            print(self.postList.entries)
+        }
+        let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
+            // share item at indexPath
+            print("I want to edit: \(self.postList.entries[indexPath.row])")
+        }
+        
+        edit.backgroundColor = UIColor.lightGray
+        return [delete, edit]
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let postId = postList.get(indexPath.row).pid

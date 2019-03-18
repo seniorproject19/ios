@@ -12,7 +12,7 @@ class PostRateViewController: UIViewController {
     
     var model: PostModel? = nil
     var availabilityModel: TimeAvailabilityModel? = nil
-    
+    let step: Float = 1
     @IBOutlet weak var RateLabel: UILabel!
     @IBOutlet weak var rateSlider: UISlider!
     
@@ -22,7 +22,9 @@ class PostRateViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func sliderValueChanged(_ sender: Any) {
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        let roundedValue = round(sender.value / step) * step
+        sender.value = roundedValue
         RateLabel.text = "$, \(rateSlider.value) per hour"
     }
     
