@@ -17,9 +17,6 @@ class TimeSlotListTableViewController: UITableViewController {
     }
 
 
-    @IBAction func DissmissVC(segue:UIStoryboardSegue) {
-        
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

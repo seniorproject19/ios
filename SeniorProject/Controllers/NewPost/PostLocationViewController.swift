@@ -24,6 +24,9 @@ class PostLocationViewController: UIViewController {
     @IBOutlet weak var addressText: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBAction func cancelButtonClicked(_ sender: Any) {
+        performSegue(withIdentifier: "unwindToOwnerHomepageFromMap", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
