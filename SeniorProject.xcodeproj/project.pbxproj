@@ -48,6 +48,7 @@
 		63FF40BB222B578200F5861E /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF40BA222B578200F5861E /* PostModel.swift */; };
 		63FF40BF222B92B500F5861E /* PostDetailMultiplePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF40BE222B92B500F5861E /* PostDetailMultiplePickerViewController.swift */; };
 		B86855BC971D74A156FF883C /* Pods_SeniorProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A97EBECB78F4BA83B13B4C3 /* Pods_SeniorProject.framework */; };
+		D13652032240523200B9F19A /* EditTimeSlotListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13652022240523200B9F19A /* EditTimeSlotListTableViewController.swift */; };
 		D146957721FBCBD400C09E93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146957621FBCBD400C09E93 /* AppDelegate.swift */; };
 		D146957C21FBCBD400C09E93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D146957A21FBCBD400C09E93 /* Main.storyboard */; };
 		D146957E21FBCBD600C09E93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D146957D21FBCBD600C09E93 /* Assets.xcassets */; };
@@ -122,6 +123,7 @@
 		63FF40BE222B92B500F5861E /* PostDetailMultiplePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailMultiplePickerViewController.swift; sourceTree = "<group>"; };
 		66650404CC5AB3F42ABDCE64 /* Pods-SeniorProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProjectTests/Pods-SeniorProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		9ADB9C7FBAF13347E812A169 /* Pods-SeniorProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProjectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProjectUITests/Pods-SeniorProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D13652022240523200B9F19A /* EditTimeSlotListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTimeSlotListTableViewController.swift; sourceTree = "<group>"; };
 		D146957321FBCBD400C09E93 /* SeniorProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeniorProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D146957621FBCBD400C09E93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D146957B21FBCBD400C09E93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 		6388B0302216263D001E6DBA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D13652022240523200B9F19A /* EditTimeSlotListTableViewController.swift */,
 				D151399622402E4C00654311 /* EditPostDetailViewController.swift */,
 				630D8C6D223F6536003CF5F5 /* Post */,
 				63611306223F07B9003A32EC /* Sidebar */,
@@ -628,6 +631,7 @@
 				D1513995223F48C800654311 /* POIAnnotation.swift in Sources */,
 				630D8C78223F6976003CF5F5 /* OwnerPostMapViewTableViewCell.swift in Sources */,
 				630D8C74223F68E7003CF5F5 /* OwnerPostTitleAddressTableViewCell.swift in Sources */,
+				D13652032240523200B9F19A /* EditTimeSlotListTableViewController.swift in Sources */,
 				63A166E2220CEC310067BD89 /* ServerAccessModel.swift in Sources */,
 				630D8C6F223F655A003CF5F5 /* OwnerPostTableViewController.swift in Sources */,
 				636112EF223A1F0D003A32EC /* TimeAvailabilityTableModel.swift in Sources */,

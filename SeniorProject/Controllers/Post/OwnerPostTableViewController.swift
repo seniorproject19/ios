@@ -34,7 +34,13 @@ class OwnerPostTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 6
     }
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.row == 4){
+            let destination = self.storyboard?.instantiateViewController(withIdentifier: "EditPostDetailView") as! EditPostDetailViewController
+            destination.model = model
+            self.navigationController?.pushViewController(destination, animated: true)
+        }
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ownerPostMapViewCell", for: indexPath) as! OwnerPostMapViewTableViewCell
