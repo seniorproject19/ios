@@ -47,6 +47,7 @@
 		D146958C21FBCBD600C09E93 /* SeniorProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146958B21FBCBD600C09E93 /* SeniorProjectTests.swift */; };
 		D146959721FBCBD600C09E93 /* SeniorProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146959621FBCBD600C09E93 /* SeniorProjectUITests.swift */; };
 		D151398F223AFDD200654311 /* UserSelectTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151398E223AFDD200654311 /* UserSelectTimeViewController.swift */; };
+		D1513995223F48C800654311 /* POIAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1513994223F48C800654311 /* POIAnnotation.swift */; };
 		D183CB2B2207CC660000BCE1 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D183CB2A2207CC660000BCE1 /* FirstPageViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +118,7 @@
 		D146959621FBCBD600C09E93 /* SeniorProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeniorProjectUITests.swift; sourceTree = "<group>"; };
 		D146959821FBCBD600C09E93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D151398E223AFDD200654311 /* UserSelectTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectTimeViewController.swift; sourceTree = "<group>"; };
+		D1513994223F48C800654311 /* POIAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIAnnotation.swift; sourceTree = "<group>"; };
 		D183CB2A2207CC660000BCE1 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		E10C7E462D554EFD8E5FC9B1 /* Pods-SeniorProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProject/Pods-SeniorProject.release.xcconfig"; sourceTree = "<group>"; };
 		F29907D31978349848ABC6DF /* Pods-SeniorProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProjectTests/Pods-SeniorProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				63FF40BA222B578200F5861E /* NewPostModel.swift */,
 				636112FB223ED8F6003A32EC /* PostListEntryModel.swift */,
 				636112FD223EDB39003A32EC /* PostListModel.swift */,
+				D1513994223F48C800654311 /* POIAnnotation.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				63A166E6220CEF590067BD89 /* Configurations.swift in Sources */,
 				634F396A22358E22000766D5 /* TimeAvailabilityModel.swift in Sources */,
 				63FF40A82229205000F5861E /* PostDetailViewController.swift in Sources */,
+				D1513995223F48C800654311 /* POIAnnotation.swift in Sources */,
 				63A166E2220CEC310067BD89 /* ServerAccessModel.swift in Sources */,
 				636112EF223A1F0D003A32EC /* TimeAvailabilityTableModel.swift in Sources */,
 				63FF40BF222B92B500F5861E /* PostDetailMultiplePickerViewController.swift in Sources */,

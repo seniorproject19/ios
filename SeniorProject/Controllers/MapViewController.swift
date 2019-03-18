@@ -13,19 +13,22 @@ protocol ChangeUserLocation{
     func changeUserLocationZoomIn(placemark:MKPlacemark)
 }
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
+
     
     let locationManager = CLLocationManager()
     let defaultLocation = CLLocationCoordinate2D(latitude: 37.7840, longitude: -122.405)
     var userLocation: CLLocationCoordinate2D?
     var currentUser: CurrentUserModel?
     var postList = PostListModel()
-    
+    var poi: [PostListEntryModel] = [] { didSet { visiblePOI = poi; filterVisiblePOI() } }
+    var visiblePOI: [PostListEntryModel] = []
     var selectedPin:MKPlacemark? = nil
     var resultSearchController:UISearchController? = nil
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
-    
+    let annotation = MKPointAnnotation()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,11 +63,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         postList.loadTestData()
+        poi = postList.entries
         centerMapInInitialCoordinates()
         showPointsOfInterestInMap()
     }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        filterVisiblePOI()
+    }
     /*
      // MARK: - Navigation
      
@@ -78,26 +85,26 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func centerMapInInitialCoordinates() {
         // fixed user location at latitude: -77.01639, longitude: 38.88833
         mapView.setCenter(userLocation!, animated: true)
-        let visibleRegion = MKCoordinateRegion(center: userLocation!, latitudinalMeters: 100000, longitudinalMeters: 100000)
+        let visibleRegion = MKCoordinateRegion(center: userLocation!, latitudinalMeters: 1000, longitudinalMeters: 1000)
         self.mapView.setRegion(self.mapView.regionThatFits(visibleRegion), animated: true)
     }
     
     func showPointsOfInterestInMap() {
         mapView.removeAnnotations(mapView.annotations)
         
-        for point in postList.entries {
-            //let pin = POIAnnotation(point: point)
-            let pin = MKPointAnnotation()
-            pin.coordinate = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
-            pin.title = point.title
-            print(point.latitude)
+        for point in poi {
+            let pin = POIAnnotation(point: point)
+            //let pin = MKPointAnnotation()
+            //pin.coordinate = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
+            //pin.title = point.title
+            //print(point.latitude)
             mapView.addAnnotation(pin)
         }
         
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard annotation is MKPointAnnotation else {
+        guard annotation is POIAnnotation else {
             return nil
         }
         
@@ -112,6 +119,51 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         
         return annotationView
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return visiblePOI.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PointOfInterestCell", for: indexPath)
+        
+        // configure cell
+        let point = visiblePOI[indexPath.row]
+        cell.textLabel?.text = point.title
+        //cell.detailTextLabel?.text = "(\(point.latitude), \(point.longitude))"
+        cell.detailTextLabel?.text = point.address
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let point = visiblePOI[indexPath.row]
+        
+        if let annotation = (mapView.annotations as? [POIAnnotation])?.filter({ $0.coordinate.latitude == point.latitude && $0.coordinate.longitude == point.longitude}).first {
+            selectPinPointInTheMap(annotation: annotation)
+        }
+    }
+  
+    func selectPinPointInTheMap(annotation: POIAnnotation) {
+        mapView.selectAnnotation(annotation, animated: true)
+        if CLLocationCoordinate2DIsValid(annotation.coordinate) {
+            self.mapView.setCenter(annotation.coordinate, animated: true)
+        }
+    }
+    
+    func filterVisiblePOI() {
+        let visibleAnnotations = self.mapView.annotations(in: self.mapView.visibleMapRect)
+        var annotations = [POIAnnotation]()
+        for visibleAnnotation in visibleAnnotations {
+            if let annotation = visibleAnnotation as? POIAnnotation {
+                annotations.append(annotation)
+            }
+        }
+        self.visiblePOI = annotations.map({$0.pointOfInterest})
+        self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+    }
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        filterVisiblePOI()
     }
     
 }
@@ -142,8 +194,8 @@ extension MapViewController: ChangeUserLocation {
     func changeUserLocationZoomIn(placemark: MKPlacemark) {
         // cache the pin
         selectedPin = placemark
-        mapView.removeAnnotations(mapView.annotations)
-        let annotation = MKPointAnnotation()
+        mapView.removeAnnotation(annotation as MKAnnotation)
+        //let annotation = MKAnnotation()
         annotation.coordinate = placemark.coordinate
         annotation.title = placemark.name
         if let city = placemark.locality,
