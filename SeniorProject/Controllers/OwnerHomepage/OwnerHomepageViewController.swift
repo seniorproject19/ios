@@ -83,6 +83,7 @@ class OwnerHomepageViewController: UITableViewController {
 
         return cell
     }
+  
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             // delete item at indexPath
@@ -98,6 +99,26 @@ class OwnerHomepageViewController: UITableViewController {
         edit.backgroundColor = UIColor.lightGray
         return [delete, edit]
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let postId = postList.get(indexPath.row).pid
+        let postModel = PostModel()
+        
+        postModel.pid = postId
+        postModel.loadData {
+            (result) in
+            if result == .success {
+                self.updateUIAsync {
+                    let destination = self.storyboard?.instantiateViewController(withIdentifier: "ownerPostTableView") as! OwnerPostTableViewController
+                    destination.model = postModel
+                    self.navigationController?.pushViewController(destination, animated: true)
+                }
+            } else {
+                self.showAlert(withTitle: "Error", message: "Unable to Load Post Info")
+            }
+        }
+    }
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

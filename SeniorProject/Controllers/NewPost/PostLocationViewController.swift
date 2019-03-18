@@ -15,7 +15,7 @@ protocol HandleMapSearch {
 
 class PostLocationViewController: UIViewController {
     
-    let model = NewPostModel()
+    let model = PostModel()
     let locationManager = CLLocationManager()
     
     var selectedPin: MKPlacemark? = nil

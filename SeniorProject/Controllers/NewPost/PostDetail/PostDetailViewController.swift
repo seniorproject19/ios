@@ -11,7 +11,7 @@ import TLPhotoPicker
 
 class PostDetailViewController: UIViewController {
 
-    var model: NewPostModel? = nil
+    var model: PostModel? = nil
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!

@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		3BDBA14B1DEEA96BDBC86537 /* Pods_SeniorProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F26713836ABDB7A3802681 /* Pods_SeniorProjectUITests.framework */; };
 		44AF5AF2A4400EC3B71F15B0 /* Pods_SeniorProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A38DE6103F17BAECE3205CB /* Pods_SeniorProjectTests.framework */; };
+		630D8C6F223F655A003CF5F5 /* OwnerPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D8C6E223F655A003CF5F5 /* OwnerPostTableViewController.swift */; };
+		630D8C74223F68E7003CF5F5 /* OwnerPostTitleAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D8C73223F68E7003CF5F5 /* OwnerPostTitleAddressTableViewCell.swift */; };
+		630D8C76223F6917003CF5F5 /* OwnerPostDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D8C75223F6917003CF5F5 /* OwnerPostDescriptionTableViewCell.swift */; };
+		630D8C78223F6976003CF5F5 /* OwnerPostMapViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D8C77223F6976003CF5F5 /* OwnerPostMapViewTableViewCell.swift */; };
+		630D8C7A223F9327003CF5F5 /* OwnerPostImageScrollViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D8C79223F9327003CF5F5 /* OwnerPostImageScrollViewTableViewCell.swift */; };
+		630D8C7C223F973C003CF5F5 /* PostImageScrollViewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D8C7B223F973C003CF5F5 /* PostImageScrollViewImageView.swift */; };
+		630D8C7E223F9A57003CF5F5 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D8C7D223F9A57003CF5F5 /* UIImageExtension.swift */; };
 		634F396622358DD7000766D5 /* AddTimeSlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F396522358DD7000766D5 /* AddTimeSlotViewController.swift */; };
 		634F396822358DE0000766D5 /* TimeSlotListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F396722358DE0000766D5 /* TimeSlotListTableViewController.swift */; };
 		634F396A22358E22000766D5 /* TimeAvailabilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F396922358E22000766D5 /* TimeAvailabilityModel.swift */; };
@@ -38,7 +45,7 @@
 		63FF40AE2229212500F5861E /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF40AD2229212500F5861E /* LocationSearchTableViewController.swift */; };
 		63FF40B022292AB200F5861E /* UserRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF40AF22292AB200F5861E /* UserRegisterModel.swift */; };
 		63FF40B32229312800F5861E /* OwnerRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF40B22229312800F5861E /* OwnerRegistrationViewController.swift */; };
-		63FF40BB222B578200F5861E /* NewPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF40BA222B578200F5861E /* NewPostModel.swift */; };
+		63FF40BB222B578200F5861E /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF40BA222B578200F5861E /* PostModel.swift */; };
 		63FF40BF222B92B500F5861E /* PostDetailMultiplePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF40BE222B92B500F5861E /* PostDetailMultiplePickerViewController.swift */; };
 		B86855BC971D74A156FF883C /* Pods_SeniorProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A97EBECB78F4BA83B13B4C3 /* Pods_SeniorProject.framework */; };
 		D146957721FBCBD400C09E93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146957621FBCBD400C09E93 /* AppDelegate.swift */; };
@@ -75,6 +82,13 @@
 		13937683297BF9FFDA46EDAD /* Pods-SeniorProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProject/Pods-SeniorProject.debug.xcconfig"; sourceTree = "<group>"; };
 		39F26713836ABDB7A3802681 /* Pods_SeniorProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeniorProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A97EBECB78F4BA83B13B4C3 /* Pods_SeniorProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeniorProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		630D8C6E223F655A003CF5F5 /* OwnerPostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerPostTableViewController.swift; sourceTree = "<group>"; };
+		630D8C73223F68E7003CF5F5 /* OwnerPostTitleAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerPostTitleAddressTableViewCell.swift; sourceTree = "<group>"; };
+		630D8C75223F6917003CF5F5 /* OwnerPostDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerPostDescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		630D8C77223F6976003CF5F5 /* OwnerPostMapViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerPostMapViewTableViewCell.swift; sourceTree = "<group>"; };
+		630D8C79223F9327003CF5F5 /* OwnerPostImageScrollViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerPostImageScrollViewTableViewCell.swift; sourceTree = "<group>"; };
+		630D8C7B223F973C003CF5F5 /* PostImageScrollViewImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageScrollViewImageView.swift; sourceTree = "<group>"; };
+		630D8C7D223F9A57003CF5F5 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		634F396522358DD7000766D5 /* AddTimeSlotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTimeSlotViewController.swift; sourceTree = "<group>"; };
 		634F396722358DE0000766D5 /* TimeSlotListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSlotListTableViewController.swift; sourceTree = "<group>"; };
 		634F396922358E22000766D5 /* TimeAvailabilityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAvailabilityModel.swift; sourceTree = "<group>"; };
@@ -104,7 +118,7 @@
 		63FF40AD2229212500F5861E /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 		63FF40AF22292AB200F5861E /* UserRegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegisterModel.swift; sourceTree = "<group>"; };
 		63FF40B22229312800F5861E /* OwnerRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerRegistrationViewController.swift; sourceTree = "<group>"; };
-		63FF40BA222B578200F5861E /* NewPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostModel.swift; sourceTree = "<group>"; };
+		63FF40BA222B578200F5861E /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		63FF40BE222B92B500F5861E /* PostDetailMultiplePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailMultiplePickerViewController.swift; sourceTree = "<group>"; };
 		66650404CC5AB3F42ABDCE64 /* Pods-SeniorProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProjectTests/Pods-SeniorProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		9ADB9C7FBAF13347E812A169 /* Pods-SeniorProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProjectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProjectUITests/Pods-SeniorProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +194,26 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		630D8C6D223F6536003CF5F5 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				630D8C6E223F655A003CF5F5 /* OwnerPostTableViewController.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		630D8C70223F6871003CF5F5 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				630D8C73223F68E7003CF5F5 /* OwnerPostTitleAddressTableViewCell.swift */,
+				630D8C75223F6917003CF5F5 /* OwnerPostDescriptionTableViewCell.swift */,
+				630D8C77223F6976003CF5F5 /* OwnerPostMapViewTableViewCell.swift */,
+				630D8C79223F9327003CF5F5 /* OwnerPostImageScrollViewTableViewCell.swift */,
+				630D8C7B223F973C003CF5F5 /* PostImageScrollViewImageView.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
 		636112F4223C9746003A32EC /* NewPost */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				D151399622402E4C00654311 /* EditPostDetailViewController.swift */,
+				630D8C6D223F6536003CF5F5 /* Post */,
 				63611306223F07B9003A32EC /* Sidebar */,
 				636112F0223B8539003A32EC /* UserSelectTimeViewController.swift */,
 				63FF40B4222B508F00F5861E /* OwnerHomepage */,
@@ -240,6 +275,7 @@
 				63A166E1220CEC310067BD89 /* ServerAccessModel.swift */,
 				63A166E3220CECDD0067BD89 /* LocalStorageModel.swift */,
 				6388B02E2216207A001E6DBA /* SwiftyJSON.swift */,
+				630D8C7D223F9A57003CF5F5 /* UIImageExtension.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -286,6 +322,7 @@
 		63FF40B7222B50BB00F5861E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				630D8C70223F6871003CF5F5 /* Post */,
 				63611301223EE2DA003A32EC /* OwnerHomepage */,
 				636112F4223C9746003A32EC /* NewPost */,
 				D146957A21FBCBD400C09E93 /* Main.storyboard */,
@@ -308,7 +345,7 @@
 			children = (
 				634F396922358E22000766D5 /* TimeAvailabilityModel.swift */,
 				636112EE223A1F0D003A32EC /* TimeAvailabilityTableModel.swift */,
-				63FF40BA222B578200F5861E /* NewPostModel.swift */,
+				63FF40BA222B578200F5861E /* PostModel.swift */,
 				636112FB223ED8F6003A32EC /* PostListEntryModel.swift */,
 				636112FD223EDB39003A32EC /* PostListModel.swift */,
 				D1513994223F48C800654311 /* POIAnnotation.swift */,
@@ -589,7 +626,10 @@
 				634F396A22358E22000766D5 /* TimeAvailabilityModel.swift in Sources */,
 				63FF40A82229205000F5861E /* PostDetailViewController.swift in Sources */,
 				D1513995223F48C800654311 /* POIAnnotation.swift in Sources */,
+				630D8C78223F6976003CF5F5 /* OwnerPostMapViewTableViewCell.swift in Sources */,
+				630D8C74223F68E7003CF5F5 /* OwnerPostTitleAddressTableViewCell.swift in Sources */,
 				63A166E2220CEC310067BD89 /* ServerAccessModel.swift in Sources */,
+				630D8C6F223F655A003CF5F5 /* OwnerPostTableViewController.swift in Sources */,
 				636112EF223A1F0D003A32EC /* TimeAvailabilityTableModel.swift in Sources */,
 				63FF40BF222B92B500F5861E /* PostDetailMultiplePickerViewController.swift in Sources */,
 				6388B03522162781001E6DBA /* ViewControllerExtension.swift in Sources */,
@@ -605,8 +645,10 @@
 				6388B02F2216207A001E6DBA /* SwiftyJSON.swift in Sources */,
 				636112FC223ED8F6003A32EC /* PostListEntryModel.swift in Sources */,
 				636112FE223EDB39003A32EC /* PostListModel.swift in Sources */,
+				630D8C7E223F9A57003CF5F5 /* UIImageExtension.swift in Sources */,
 				63FF40B022292AB200F5861E /* UserRegisterModel.swift in Sources */,
 				63611305223EF7DE003A32EC /* UserRegistrationViewController.swift in Sources */,
+				630D8C76223F6917003CF5F5 /* OwnerPostDescriptionTableViewCell.swift in Sources */,
 				D151398F223AFDD200654311 /* UserSelectTimeViewController.swift in Sources */,
 				D151399722402E4C00654311 /* EditPostDetailViewController.swift in Sources */,
 				D146957721FBCBD400C09E93 /* AppDelegate.swift in Sources */,
@@ -617,10 +659,12 @@
 				63A166E4220CECDD0067BD89 /* LocalStorageModel.swift in Sources */,
 				63611303223EE302003A32EC /* PostListEntryTableViewCell.swift in Sources */,
 				636112F1223B8539003A32EC /* UserSelectTimeViewController.swift in Sources */,
-				63FF40BB222B578200F5861E /* NewPostModel.swift in Sources */,
+				630D8C7C223F973C003CF5F5 /* PostImageScrollViewImageView.swift in Sources */,
+				63FF40BB222B578200F5861E /* PostModel.swift in Sources */,
 				63FF40AC2229210700F5861E /* MapViewController.swift in Sources */,
 				636112F8223C97A0003A32EC /* TimeSlotTableViewCell.swift in Sources */,
 				634F396822358DE0000766D5 /* TimeSlotListTableViewController.swift in Sources */,
+				630D8C7A223F9327003CF5F5 /* OwnerPostImageScrollViewTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

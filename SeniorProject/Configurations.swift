@@ -26,6 +26,8 @@ class Configurations: NSObject {
         case uploadImage = "/upload/images/"
         case updateAvailability = "/post/availability"
         case getPostList = "/post/get_list"
+        case getPost = "/post/get/"
+        case getPostImagePathsList = "/post/image/list/"
     }
 
 }

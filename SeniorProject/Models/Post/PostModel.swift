@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewPostModel: ServerAccessModel {
+class PostModel: ServerAccessModel {
     
     var pid: String? = nil
     var postBy: UserModel? = nil
@@ -19,6 +19,7 @@ class NewPostModel: ServerAccessModel {
     var latitude: Double? = nil
     var address: String? = nil
     var images: [UIImage]? = nil
+    var imagePaths: [String]? = nil
     var availabilityTableModel = TimeAvailabilityTableModel()
     
     func addImages(image: UIImage) {
@@ -50,6 +51,40 @@ class NewPostModel: ServerAccessModel {
         return nil
     }
     
+    enum LoadPostResult {
+        case success
+        case failure
+    }
+    
+    func loadData(onCompletion callback: @escaping (LoadPostResult) -> Void) {
+        sendGetRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.getPost.rawValue + pid!) {
+            (statusCode, responseData) in
+            if statusCode == 200 {
+                let jsonData = JSON(responseData)
+                self.title = jsonData["title"].stringValue
+                self.datePosted = jsonData["date_posted"].stringValue
+                self.description = jsonData["description"].stringValue
+                self.longitude = jsonData["longitude"].doubleValue
+                self.latitude = jsonData["latitude"].doubleValue
+                self.address = jsonData["address"].stringValue
+                self.sendGetRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.getPostImagePathsList.rawValue + self.pid!) {
+                    (statusCode, responseData) in
+                    if (statusCode == 200) {
+                        let jsonData = JSON(responseData)
+                        let pathsArray = jsonData["file_paths"].arrayValue
+                        self.imagePaths = [String]()
+                        for filePath in pathsArray {
+                            self.imagePaths?.append(filePath.stringValue)
+                        }
+                    }
+                    callback(.success)
+                }
+            } else {
+                callback(.failure)
+            }
+        }
+    }
+    
     func post(onCompletion callback: @escaping () -> Void) {
         let data = JSON([
             "date_posted": datePosted!,
@@ -72,6 +107,13 @@ class NewPostModel: ServerAccessModel {
             }
             self.pid = postId
             callback()
+        }
+    }
+    
+    func getImageFromServer(at path: String, onCompletion callback: @escaping (UIImage) -> Void) {
+        downloadImage(fromURL: Configurations.SERVER_ROOT + path) {
+            (image) in
+            callback(image)
         }
     }
     

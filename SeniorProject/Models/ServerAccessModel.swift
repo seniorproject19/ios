@@ -67,4 +67,16 @@ extension ServerAccessModel {
         }
     }
     
+    func downloadImage(fromURL url: String, onCompletion callback: @escaping (UIImage) -> Void) {
+        AF.download(url).responseData {
+            (response) in
+            if let data = response.result.value {
+                let image = UIImage(data: data)
+                if image != nil {
+                    callback(image!)
+                }
+            }
+        }
+    }
+    
 }
