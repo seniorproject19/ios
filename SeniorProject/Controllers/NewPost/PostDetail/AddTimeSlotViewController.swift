@@ -12,7 +12,7 @@ class AddTimeSlotViewController: UIViewController , UIPickerViewDataSource, UIPi
     
     let weekDayPickerOptions = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     
-    var model: NewPostModel? = nil
+    var model: PostModel? = nil
     var availabilityModel = TimeAvailabilityModel()
    
     @IBOutlet weak var timePicker: UIDatePicker!

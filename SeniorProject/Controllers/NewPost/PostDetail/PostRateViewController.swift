@@ -10,7 +10,7 @@ import UIKit
 
 class PostRateViewController: UIViewController {
     
-    var model: NewPostModel? = nil
+    var model: PostModel? = nil
     var availabilityModel: TimeAvailabilityModel? = nil
     
     @IBOutlet weak var RateLabel: UILabel!

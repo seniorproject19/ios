@@ -10,7 +10,7 @@ import UIKit
 
 class TimeSlotListTableViewController: UITableViewController {
     
-    var model: NewPostModel? = nil
+    var model: PostModel? = nil
     
     @IBAction func unwindToTimeSlotTableViewController(segue: UIStoryboardSegue) {
         tableView.reloadData()
