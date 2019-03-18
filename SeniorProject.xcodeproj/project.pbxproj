@@ -21,6 +21,7 @@
 		63611300223EE099003A32EC /* OwnerHomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636112FF223EE099003A32EC /* OwnerHomepageViewController.swift */; };
 		63611303223EE302003A32EC /* PostListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63611302223EE302003A32EC /* PostListEntryTableViewCell.swift */; };
 		63611305223EF7DE003A32EC /* UserRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63611304223EF7DE003A32EC /* UserRegistrationViewController.swift */; };
+		63611308223F07D1003A32EC /* OwnerSidebarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63611307223F07D1003A32EC /* OwnerSidebarTableViewController.swift */; };
 		6388B02D22161E7F001E6DBA /* CurrentUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388B02C22161E7F001E6DBA /* CurrentUserModel.swift */; };
 		6388B02F2216207A001E6DBA /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388B02E2216207A001E6DBA /* SwiftyJSON.swift */; };
 		6388B03322162672001E6DBA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388B03222162672001E6DBA /* LoginViewController.swift */; };
@@ -85,6 +86,7 @@
 		636112FF223EE099003A32EC /* OwnerHomepageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerHomepageViewController.swift; sourceTree = "<group>"; };
 		63611302223EE302003A32EC /* PostListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		63611304223EF7DE003A32EC /* UserRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationViewController.swift; sourceTree = "<group>"; };
+		63611307223F07D1003A32EC /* OwnerSidebarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerSidebarTableViewController.swift; sourceTree = "<group>"; };
 		6388B02C22161E7F001E6DBA /* CurrentUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserModel.swift; sourceTree = "<group>"; };
 		6388B02E2216207A001E6DBA /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		6388B03222162672001E6DBA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -193,9 +195,18 @@
 			path = OwnerHomepage;
 			sourceTree = "<group>";
 		};
+		63611306223F07B9003A32EC /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				63611307223F07D1003A32EC /* OwnerSidebarTableViewController.swift */,
+			);
+			path = Sidebar;
+			sourceTree = "<group>";
+		};
 		6388B0302216263D001E6DBA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				63611306223F07B9003A32EC /* Sidebar */,
 				636112F0223B8539003A32EC /* UserSelectTimeViewController.swift */,
 				63FF40B4222B508F00F5861E /* OwnerHomepage */,
 				6388B03422162781001E6DBA /* ViewControllerExtension.swift */,
@@ -496,11 +507,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SeniorProject/Pods-SeniorProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/TLPhotoPicker/TLPhotoPicker.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TLPhotoPicker.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -580,6 +593,7 @@
 				63FF40AA222920EA00F5861E /* PostDetailSelectorImageCell.swift in Sources */,
 				D183CB2B2207CC660000BCE1 /* FirstPageViewController.swift in Sources */,
 				6388B02D22161E7F001E6DBA /* CurrentUserModel.swift in Sources */,
+				63611308223F07D1003A32EC /* OwnerSidebarTableViewController.swift in Sources */,
 				63FF40B32229312800F5861E /* OwnerRegistrationViewController.swift in Sources */,
 				63A166DF220CEBF40067BD89 /* UserModel.swift in Sources */,
 				63611300223EE099003A32EC /* OwnerHomepageViewController.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  OwnerHomepageViewController.swift
+//  OwnerSidebarTableViewController.swift
 //  SeniorProject
 //
 //  Created by Zuoyuan Huang on 3/17/19.
@@ -7,82 +7,50 @@
 //
 
 import UIKit
-import SideMenu
 
-class OwnerHomepageViewController: UITableViewController {
-    
-    var postList = PostListModel()
-    var currentUser: CurrentUserModel?
-    
+class OwnerSidebarTableViewController: UITableViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        SideMenuManager.default.menuFadeStatusBar = false
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 45
-        
-        if currentUser == nil {
-            currentUser = CurrentUserModel()
-            currentUser?.loadUser {
-                (succeeded) in
-                if !succeeded {
-                    self.updateUIAsync {
-                        let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! FirstPageViewController
-                        self.navigationController?.pushViewController(destination, animated: true)
-                    }
-                } else {
-                    self.setup()
-                }
-            }
-        } else {
-            setup()
-        }
-        // Do any additional setup after loading the view.
-    }
-    
-    @IBAction func unwindToOwnerHomepageViewController(segue: UIStoryboardSegue) {
-        self.setup()
-    }
-    
-    func setup() {
-        postList = PostListModel()
-        postList.loadData {
-            (result) in
-            if result == .success {
-                self.updateUIAsync {
-                    self.tableView.reloadData()
-                }
-            } else {
-                self.updateUIAsync {
-                    let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! FirstPageViewController
-                    self.navigationController?.pushViewController(destination, animated: true)
-                }
-            }
-        }
-    }
 
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return postList.count()
+        return 0
     }
 
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "postListEntryCell", for: indexPath) as! PostListEntryTableViewCell
-        let postModel = postList.get(indexPath.row)
-        
-        cell.titleLabel.text = postModel.title
-        cell.addressLabel.text = postModel.address
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
 
         return cell
     }
+    */
 
     /*
     // Override to support conditional editing of the table view.
