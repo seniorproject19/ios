@@ -9,14 +9,15 @@
 import UIKit
 import MapKit
 
-protocol ChangeUserLocation {
+protocol ChangeUserLocation{
     func changeUserLocationZoomIn(placemark:MKPlacemark)
 }
 
-class MapViewController: UIViewController {
-
+class MapViewController: UIViewController, MKMapViewDelegate {
+    
     let locationManager = CLLocationManager()
-    var currentLocation: CLLocation?
+    let defaultLocation = CLLocationCoordinate2D(latitude: 37.7840, longitude: -122.405)
+    var userLocation: CLLocationCoordinate2D?
     var currentUser: CurrentUserModel?
     var postList = PostListModel()
     
@@ -28,13 +29,13 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        postList.loadTestData()
-        
+        mapView.delegate = self
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-        currentLocation = locationManager.location
+        let currentLocation = locationManager.location
+        userLocation = currentLocation?.coordinate ?? defaultLocation
         
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTableViewController
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
@@ -52,19 +53,67 @@ class MapViewController: UIViewController {
         locationSearchTable.mapView = mapView
         locationSearchTable.ChangeUserLocationDelegate = self
         // Do any additional setup after loading the view.
+        
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        postList.loadTestData()
+        centerMapInInitialCoordinates()
+        showPointsOfInterestInMap()
     }
-    */
-
+    
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+    func centerMapInInitialCoordinates() {
+        // fixed user location at latitude: -77.01639, longitude: 38.88833
+        mapView.setCenter(userLocation!, animated: true)
+        let visibleRegion = MKCoordinateRegion(center: userLocation!, latitudinalMeters: 100000, longitudinalMeters: 100000)
+        self.mapView.setRegion(self.mapView.regionThatFits(visibleRegion), animated: true)
+    }
+    
+    func showPointsOfInterestInMap() {
+        mapView.removeAnnotations(mapView.annotations)
+        
+        for point in postList.entries {
+            //let pin = POIAnnotation(point: point)
+            let pin = MKPointAnnotation()
+            pin.coordinate = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
+            pin.title = point.title
+            print(point.latitude)
+            mapView.addAnnotation(pin)
+        }
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else {
+            return nil
+        }
+        
+        let identifier = "annotationView"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView!.canShowCallout = true
+        } else {
+            annotationView!.annotation = annotation
+        }
+        
+        return annotationView
+    }
+    
 }
 
 extension MapViewController : CLLocationManagerDelegate {
@@ -87,6 +136,7 @@ extension MapViewController : CLLocationManagerDelegate {
         }
     }
     
+    
 }
 extension MapViewController: ChangeUserLocation {
     func changeUserLocationZoomIn(placemark: MKPlacemark) {
@@ -100,7 +150,7 @@ extension MapViewController: ChangeUserLocation {
             let state = placemark.administrativeArea {
             annotation.subtitle = "\(city) \(state)"
         }
-        currentLocation = placemark.location
+        userLocation = (placemark.location?.coordinate)!
         let selectedLatitude =  placemark.coordinate.latitude
         let selectedLongitude = placemark.coordinate.longitude
         print(selectedLatitude)
