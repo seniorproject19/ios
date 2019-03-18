@@ -7,6 +7,7 @@ target 'SeniorProject' do
 
   # Pods for SeniorProject
   pod 'TLPhotoPicker'
+  pod 'SideMenu'
   pod 'Alamofire', '~> 5.0.0-beta.2'
 
   target 'SeniorProjectTests' do
