@@ -109,6 +109,14 @@ class OwnerPostTableViewController: UITableViewController {
             }
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.row == 5) {
+            let destination = self.storyboard?.instantiateViewController(withIdentifier: "editPostDetailView") as! EditPostDetailViewController
+            destination.model = model
+            self.navigationController?.pushViewController(destination, animated: true)
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
