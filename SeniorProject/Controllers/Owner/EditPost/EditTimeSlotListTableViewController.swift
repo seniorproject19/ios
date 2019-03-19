@@ -65,6 +65,30 @@ class EditTimeSlotListTableViewController: UITableViewController {
             return cell
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editNewAvailabilitySegue" {
+            if let navigationController = segue.destination as? UINavigationController {
+                if let destination = navigationController.viewControllers.first as? EditAddTimeSlotViewController {
+                    destination.model = model
+                }
+            }
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            model?.postTimeAvailability {
+                self.updateUIAsync {
+                    self.performSegue(withIdentifier: "unwindToOwnerHomepageSegue", sender: self)
+                }
+            }
+        }
+    }
+    
+    @IBAction func unwindToEditTimeSlotListViewController(segue: UIStoryboardSegue) {
+        tableView.reloadData()
+    }
     /*
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {

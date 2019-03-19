@@ -19,7 +19,7 @@ class AddTimeSlotViewController: UIViewController , UIPickerViewDataSource, UIPi
     @IBOutlet weak var selectDayTextField: UITextField!
     @IBOutlet weak var endTimeTextField: UITextField!
     @IBOutlet weak var startTimeTextField: UITextField!
-    
+    /*
     lazy var datePicker : UIDatePicker = {
         let picker = UIDatePicker()
         picker.datePickerMode = .time
@@ -27,31 +27,30 @@ class AddTimeSlotViewController: UIViewController , UIPickerViewDataSource, UIPi
         picker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
         return picker
     }()
+    */
+    let datePicker = UIDatePicker()
+    let endTimePicker = UIDatePicker()
+    let dateFormatter = DateFormatter()
     
-    lazy var endTimePicker : UIDatePicker = {
-        let picker = UIDatePicker()
-        picker.datePickerMode = .time
-        picker.minuteInterval = 30
-        picker.addTarget(self, action: #selector(endTimePickerChanged(_:)), for: .valueChanged)
-        return picker
-    }()
-    
-    lazy var dateFormatter: DateFormatter = {
-        let dateFormatr = DateFormatter()
-        dateFormatr.dateFormat = "h:mm a"
-        return dateFormatr
-    }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let dayPicker = UIPickerView()
         dayPicker.delegate = self
         selectDayTextField.inputView = dayPicker
-        selectDayTextField.tag = 2
-        startTimeTextField.tag = 3
-        endTimeTextField.tag = 4
+        
+        datePicker.datePickerMode = .time
+        datePicker.minuteInterval = 30
+        datePicker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
+
+        endTimePicker.datePickerMode = .time
+        endTimePicker.minuteInterval = 30
+        endTimePicker.addTarget(self, action: #selector(endTimePickerChanged(_:)), for: .valueChanged)
+        
         startTimeTextField.inputView = datePicker
         endTimeTextField.inputView = endTimePicker
+        dateFormatter.dateFormat = "h:mm a"
 
         // Do any additional setup after loading the view.
     }

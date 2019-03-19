@@ -9,14 +9,33 @@
 import UIKit
 
 class EditPostRateViewController: UIViewController {
-
+    var model: PostModel? = nil
+    var availabilityModel: TimeAvailabilityModel? = nil
+    let step: Float = 1
+    @IBOutlet weak var RateLabel: UILabel!
+    @IBOutlet weak var rateSlider: UISlider!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func doneButtonClicked(_ sender: Any) {
+        if let availabilityModel = availabilityModel {
+            availabilityModel.rate = Double(rateSlider.value)
+            if model?.availabilityTableModel.addAvailability(availability: availabilityModel) == .timeConflict {
+                showAlert(withTitle: "Error", message: "The time you entered is in conflict with another time you entered before. Please choose another time or remove an existing time.")
+            } else {
+                performSegue(withIdentifier: "backToEditTimeSlotListSegue", sender: self)
+            }
+        }
+    }
+    
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        let roundedValue = round(sender.value / step) * step
+        sender.value = roundedValue
+        RateLabel.text = "$, \(rateSlider.value) per hour"
+    }
     /*
     // MARK: - Navigation
 

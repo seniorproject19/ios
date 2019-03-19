@@ -52,6 +52,8 @@
 		63FF40BB222B578200F5861E /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF40BA222B578200F5861E /* PostModel.swift */; };
 		63FF40BF222B92B500F5861E /* PostDetailMultiplePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF40BE222B92B500F5861E /* PostDetailMultiplePickerViewController.swift */; };
 		B86855BC971D74A156FF883C /* Pods_SeniorProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A97EBECB78F4BA83B13B4C3 /* Pods_SeniorProject.framework */; };
+		D1365205224086CD00B9F19A /* EditAddTimeSlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1365204224086CD00B9F19A /* EditAddTimeSlotViewController.swift */; };
+		D136520722408FAD00B9F19A /* EditPostRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D136520622408FAD00B9F19A /* EditPostRateViewController.swift */; };
 		D146957721FBCBD400C09E93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146957621FBCBD400C09E93 /* AppDelegate.swift */; };
 		D146957C21FBCBD400C09E93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D146957A21FBCBD400C09E93 /* Main.storyboard */; };
 		D146957E21FBCBD600C09E93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D146957D21FBCBD600C09E93 /* Assets.xcassets */; };
@@ -128,6 +130,8 @@
 		63FF40BE222B92B500F5861E /* PostDetailMultiplePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailMultiplePickerViewController.swift; sourceTree = "<group>"; };
 		66650404CC5AB3F42ABDCE64 /* Pods-SeniorProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProjectTests/Pods-SeniorProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		9ADB9C7FBAF13347E812A169 /* Pods-SeniorProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProjectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProjectUITests/Pods-SeniorProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D1365204224086CD00B9F19A /* EditAddTimeSlotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddTimeSlotViewController.swift; sourceTree = "<group>"; };
+		D136520622408FAD00B9F19A /* EditPostRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostRateViewController.swift; sourceTree = "<group>"; };
 		D146957321FBCBD400C09E93 /* SeniorProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeniorProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D146957621FBCBD400C09E93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D146957B21FBCBD400C09E93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -262,6 +266,8 @@
 		631DE4BD224079EF00A78677 /* EditPost */ = {
 			isa = PBXGroup;
 			children = (
+				D136520622408FAD00B9F19A /* EditPostRateViewController.swift */,
+				D1365204224086CD00B9F19A /* EditAddTimeSlotViewController.swift */,
 				631DE4BE22407A0200A78677 /* EditTimeSlotListTableViewController.swift */,
 				631DE4C022407A0C00A78677 /* EditPostDetailViewController.swift */,
 			);
@@ -699,6 +705,7 @@
 				63611305223EF7DE003A32EC /* UserRegistrationViewController.swift in Sources */,
 				630D8C76223F6917003CF5F5 /* OwnerPostDescriptionTableViewCell.swift in Sources */,
 				631DE4C322407A2800A78677 /* AddTimeSlotViewController.swift in Sources */,
+				D1365205224086CD00B9F19A /* EditAddTimeSlotViewController.swift in Sources */,
 				D146957721FBCBD400C09E93 /* AppDelegate.swift in Sources */,
 				6388B03322162672001E6DBA /* LoginViewController.swift in Sources */,
 				634F397022385C01000766D5 /* PostRateViewController.swift in Sources */,
@@ -710,6 +717,7 @@
 				630D8C7C223F973C003CF5F5 /* PostImageScrollViewImageView.swift in Sources */,
 				63FF40BB222B578200F5861E /* PostModel.swift in Sources */,
 				63FF40AC2229210700F5861E /* MapViewController.swift in Sources */,
+				D136520722408FAD00B9F19A /* EditPostRateViewController.swift in Sources */,
 				636112F8223C97A0003A32EC /* TimeSlotTableViewCell.swift in Sources */,
 				634F396822358DE0000766D5 /* TimeSlotListTableViewController.swift in Sources */,
 				630D8C7A223F9327003CF5F5 /* OwnerPostImageScrollViewTableViewCell.swift in Sources */,
