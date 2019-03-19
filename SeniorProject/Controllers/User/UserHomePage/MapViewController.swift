@@ -149,13 +149,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PointOfInterestCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "pointOfInterestCell", for: indexPath) as! PointOfInterestTableViewCell
         
         // configure cell
         let point = visiblePOI[indexPath.row]
-        cell.textLabel?.text = point.title
+        cell.titleLabel.text = point.title
         //cell.detailTextLabel?.text = "(\(point.latitude), \(point.longitude))"
-        cell.detailTextLabel?.text = point.address
+        cell.addressLabel.text = point.address
+        cell.rateLabel.text = "$" + String(point.totalRate!)
         return cell
     }
     
@@ -164,6 +165,28 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
         
         if let annotation = (mapView.annotations as? [POIAnnotation])?.filter({ $0.coordinate.latitude == point.latitude && $0.coordinate.longitude == point.longitude}).first {
             selectPinPointInTheMap(annotation: annotation)
+        }
+        
+        let postModel = PostModel()
+        let reservationModel = ReservationDetailModel()
+        reservationModel.postModel = postModel
+        reservationModel.totalRate = point.totalRate
+        reservationModel.requestedDate = postList?.requestedDate
+        reservationModel.requestedStartHour = postList?.requestedStartHour
+        reservationModel.requestedEndHour = postList?.requestedEndHour
+        postModel.pid = point.pid
+        postModel.loadData {
+            (result) in
+            if result == .success {
+                self.updateUIAsync {
+                    let destination = self.storyboard?.instantiateViewController(withIdentifier: "userPostDetailTableView") as! UserPostTableViewController
+                    destination.model = postModel
+                    destination.reservationModel = reservationModel
+                    self.navigationController?.pushViewController(destination, animated: true)
+                }
+            } else {
+                self.showAlert(withTitle: "Error", message: "Unable to Load Post Info")
+            }
         }
     }
   
@@ -214,6 +237,7 @@ extension MapViewController : CLLocationManagerDelegate {
     
     
 }
+
 extension MapViewController: ChangeUserLocation {
     
     func changeUserLocationZoomIn(placemark: MKPlacemark) {

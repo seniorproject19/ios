@@ -53,7 +53,12 @@ class TimeAvailabilityTableModel: ServerAccessModel {
     func post(pid: String, onCompletion callback: @escaping () -> Void) {
         var availabilityItemList: [[String: String]] = []
         for availabilityModel in timeAvailabilityEntries {
-            availabilityItemList.append(["weekday": String(availabilityModel.weekday!.prefix(3)), "start": String(availabilityModel.start!), "end": String(availabilityModel.end!), "rate": String(availabilityModel.rate!)])
+            availabilityItemList.append([
+                "weekday": String(availabilityModel.weekday!.prefix(3)),
+                "start": String(availabilityModel.start!),
+                "end": String(availabilityModel.end!),
+                "rate": String(availabilityModel.rate!)
+            ])
         }
         let data = JSON(["pid": pid, "availabilityData": availabilityItemList])
         sendPostRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.updateAvailability.rawValue, withData: data.rawString(String.Encoding.utf8, options: [])!) {

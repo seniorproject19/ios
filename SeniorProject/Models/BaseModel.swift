@@ -72,5 +72,15 @@ extension BaseModel {
         }
         return hour + ":" + minute + " " + amPm
     }
+    
+    func getDayOfWeek(_ dateString: String) -> String {
+        let daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        let formatter  = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy"
+        guard let todayDate = formatter.date(from: dateString) else { return "" }
+        let myCalendar = Calendar(identifier: .gregorian)
+        let weekDay = myCalendar.component(.weekday, from: todayDate)
+        return daysOfWeek[weekDay - 1]
+    }
 
 }

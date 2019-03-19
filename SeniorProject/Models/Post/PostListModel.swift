@@ -84,7 +84,11 @@ class PostListModel: ServerAccessModel, BaseModel {
             "top_left_long": topLeft.longitude,
             "top_left_lat": topLeft.latitude,
             "bottom_right_long": bottomRight.longitude,
-            "bottom_right_lat": bottomRight.latitude
+            "bottom_right_lat": bottomRight.latitude,
+            "date": requestedDate!,
+            "weekday": getDayOfWeek(requestedDate!).prefix(3),
+            "start": requestedStartHourValue!,
+            "end": requestedEndHourValue!
         ])
         sendPostRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.getPostListInRegion.rawValue, withData: data.rawString(String.Encoding.utf8, options: [])!) {
             (statusCode, responseData) in

@@ -16,12 +16,15 @@ class PostListEntryModel: NSObject {
     let longitude: Double
     let latitude: Double
     
+    var totalRate: Double?
+    
     init(pid: String, title: String, address: String, longitude: Double, latitude: Double) {
         self.pid = pid
         self.title = title
         self.address = address
         self.longitude = longitude
         self.latitude = latitude
+        self.totalRate = nil
     }
     
     init(jsonData: JSON) {
@@ -30,6 +33,11 @@ class PostListEntryModel: NSObject {
         self.address = jsonData["address"].stringValue
         self.longitude = jsonData["longitude"].doubleValue
         self.latitude = jsonData["latitude"].doubleValue
+        if jsonData["total_rate"].exists() {
+            self.totalRate = jsonData["total_rate"].doubleValue
+        } else {
+            self.totalRate = nil
+        }
     }
 
 }
