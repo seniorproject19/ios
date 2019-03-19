@@ -1082,9 +1082,6 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="5WB-ie-zcK" id="i4B-Cd-74P"/>
-                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2b9-RE-r5b">
                                 <rect key="frame" x="55" y="219" width="83" height="30"/>
@@ -1098,9 +1095,6 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="5WB-ie-zcK" id="2Gg-6N-Duh"/>
-                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUz-Da-c6S">
                                 <rect key="frame" x="55" y="295" width="83" height="30"/>
@@ -1114,23 +1108,7 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="5WB-ie-zcK" id="JJd-sb-rwb"/>
-                                </connections>
                             </textField>
-                            <pickerView tag="1" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qbh-dL-JFN">
-                                <rect key="frame" x="0.0" y="389" width="375" height="140"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="5WB-ie-zcK" id="jj6-hs-pGF"/>
-                                    <outlet property="delegate" destination="5WB-ie-zcK" id="pab-gw-fuJ"/>
-                                </connections>
-                            </pickerView>
-                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="99J-9m-Tce">
-                                <rect key="frame" x="0.0" y="528" width="375" height="130"/>
-                                <date key="date" timeIntervalSinceReferenceDate="573287591.54794395">
-                                    <!--2019-03-03 06:33:11 +0000-->
-                                </date>
-                            </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m49-cJ-Vov">
                                 <rect key="frame" x="64" y="148" width="74" height="30"/>
                                 <constraints>
@@ -1143,23 +1121,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Acf-Q8-430" firstAttribute="leading" secondItem="xUz-Da-c6S" secondAttribute="trailing" constant="80" id="4W1-cx-D8e"/>
-                            <constraint firstItem="99J-9m-Tce" firstAttribute="width" secondItem="0SG-t2-a7I" secondAttribute="width" id="5PA-kz-Lrk"/>
                             <constraint firstItem="xUz-Da-c6S" firstAttribute="top" secondItem="2b9-RE-r5b" secondAttribute="bottom" constant="46" id="5lt-XG-wsQ"/>
                             <constraint firstItem="KME-lE-Kt9" firstAttribute="top" secondItem="Bqc-k2-GjJ" secondAttribute="top" constant="85" id="7Ke-GZ-Phj"/>
                             <constraint firstItem="2b9-RE-r5b" firstAttribute="leading" secondItem="Bqc-k2-GjJ" secondAttribute="leading" constant="55" id="7VJ-7d-sZT"/>
-                            <constraint firstItem="qbh-dL-JFN" firstAttribute="width" secondItem="0SG-t2-a7I" secondAttribute="width" id="Aqx-kR-Ec8"/>
-                            <constraint firstItem="Bqc-k2-GjJ" firstAttribute="bottom" secondItem="qbh-dL-JFN" secondAttribute="bottom" constant="138" id="FaL-4V-axh"/>
                             <constraint firstItem="KME-lE-Kt9" firstAttribute="leading" secondItem="m49-cJ-Vov" secondAttribute="trailing" constant="80" id="Iby-dN-zU9"/>
-                            <constraint firstItem="Bqc-k2-GjJ" firstAttribute="bottom" secondItem="99J-9m-Tce" secondAttribute="bottom" constant="9" id="Njk-Et-gtW"/>
                             <constraint firstItem="xUz-Da-c6S" firstAttribute="leading" secondItem="Bqc-k2-GjJ" secondAttribute="leading" constant="55" id="PvU-QC-Xm3"/>
                             <constraint firstItem="Acf-Q8-430" firstAttribute="top" secondItem="tWL-hQ-LAb" secondAttribute="bottom" constant="46" id="Qo7-YV-4Lf"/>
                             <constraint firstItem="tWL-hQ-LAb" firstAttribute="top" secondItem="KME-lE-Kt9" secondAttribute="bottom" constant="40" id="RUl-1k-iy5"/>
                             <constraint firstItem="m49-cJ-Vov" firstAttribute="top" secondItem="Bqc-k2-GjJ" secondAttribute="top" constant="84" id="XbV-iL-AZg"/>
                             <constraint firstItem="Bqc-k2-GjJ" firstAttribute="trailing" secondItem="KME-lE-Kt9" secondAttribute="trailing" constant="60" id="gzI-gK-VnK"/>
                             <constraint firstItem="Bqc-k2-GjJ" firstAttribute="trailing" secondItem="tWL-hQ-LAb" secondAttribute="trailing" constant="60" id="kNC-OH-IZs"/>
-                            <constraint firstItem="99J-9m-Tce" firstAttribute="centerX" secondItem="Bqc-k2-GjJ" secondAttribute="centerX" id="lRj-SL-Keg"/>
                             <constraint firstItem="m49-cJ-Vov" firstAttribute="leading" secondItem="Bqc-k2-GjJ" secondAttribute="leading" constant="64" id="pKh-A9-l8h"/>
-                            <constraint firstItem="qbh-dL-JFN" firstAttribute="centerX" secondItem="Bqc-k2-GjJ" secondAttribute="centerX" id="phL-HY-GjI"/>
                             <constraint firstItem="2b9-RE-r5b" firstAttribute="top" secondItem="m49-cJ-Vov" secondAttribute="bottom" constant="41" id="r7f-jI-jBq"/>
                             <constraint firstItem="tWL-hQ-LAb" firstAttribute="leading" secondItem="2b9-RE-r5b" secondAttribute="trailing" constant="80" id="wd0-pR-hBG"/>
                             <constraint firstItem="Bqc-k2-GjJ" firstAttribute="trailing" secondItem="Acf-Q8-430" secondAttribute="trailing" constant="60" id="xEh-Y0-0ib"/>
@@ -1180,14 +1152,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="endTimeButton" destination="xUz-Da-c6S" id="XNF-Qh-p2T"/>
                         <outlet property="endTimeTextField" destination="Acf-Q8-430" id="plA-73-uoY"/>
-                        <outlet property="selectDayButton" destination="m49-cJ-Vov" id="CY3-On-9MK"/>
                         <outlet property="selectDayTextField" destination="KME-lE-Kt9" id="2eE-YM-b9T"/>
-                        <outlet property="startTimeButton" destination="2b9-RE-r5b" id="drZ-7P-Cau"/>
                         <outlet property="startTimeTextField" destination="tWL-hQ-LAb" id="ryz-dS-yHm"/>
-                        <outlet property="timePicker" destination="99J-9m-Tce" id="uoN-Rw-kgz"/>
-                        <outlet property="weekdayPicker" destination="qbh-dL-JFN" id="M3K-4i-agA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ft-Le-6Mu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1837,7 +1804,7 @@
         <!--Add Time Slot-->
         <scene sceneID="zjY-gW-HOj">
             <objects>
-                <viewController id="Dnm-90-FX7" customClass="AddTimeSlotViewController" customModule="SeniorProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Dnm-90-FX7" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qDs-tk-WAY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1963,7 +1930,7 @@
         <!--Hourly Rate-->
         <scene sceneID="cKV-hn-587">
             <objects>
-                <viewController id="iUM-KO-3Se" customClass="PostRateViewController" customModule="SeniorProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iUM-KO-3Se" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sKj-pb-a4P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
