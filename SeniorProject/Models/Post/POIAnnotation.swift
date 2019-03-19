@@ -8,8 +8,11 @@
 
 import UIKit
 import MapKit
+
 class POIAnnotation: NSObject, MKAnnotation {
+    
     let pointOfInterest: PostListEntryModel
+    
     var coordinate: CLLocationCoordinate2D { return CLLocationCoordinate2D(latitude: pointOfInterest.latitude, longitude: pointOfInterest.longitude)  }
     
     init(point: PostListEntryModel) {
@@ -21,4 +24,5 @@ class POIAnnotation: NSObject, MKAnnotation {
     var subtitle: String? {
         return "(\(pointOfInterest.latitude), \(pointOfInterest.longitude))"
     }
+    
 }

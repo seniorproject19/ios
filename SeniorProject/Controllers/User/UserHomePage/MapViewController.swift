@@ -16,13 +16,15 @@ protocol ChangeUserLocation {
 }
 
 class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
+    
+    var postList: PostListModel? = nil
+    var currentUser: CurrentUserModel?
 
     let annotation = MKPointAnnotation()
     let locationManager = CLLocationManager()
     let defaultLocation = CLLocationCoordinate2D(latitude: 37.7840, longitude: -122.405)
+    
     var userLocation: CLLocationCoordinate2D?
-    var currentUser: CurrentUserModel?
-    var postList = PostListModel()
     var poi: [PostListEntryModel] = [] { didSet { visiblePOI = poi; filterVisiblePOI() } }
     var visiblePOI: [PostListEntryModel] = []
     var selectedPin:MKPlacemark? = nil
@@ -64,14 +66,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.centerMapInInitialCoordinates()
+        centerMapInInitialCoordinates()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         loadAnnotationsForCurrentView()
-        /* postList.loadDataInRegion(longitude: 0.0, latitude: 0.0) {
+    }
+    
+    func loadAnnotationsForCurrentView() {
+        let topLeftCorner = mapView.topLeftCoordinate()
+        let bottomRightCorner = mapView.bottomRightCoordinate()
+        postList!.loadDataInRegion(topLeft: topLeftCorner, bottomRight: bottomRightCorner) {
             (result) in
             if result == .success {
                 self.updateUIAsync {
-                    self.poi = self.postList.entries
+                    self.poi = self.postList!.entries
                     self.showPointsOfInterestInMap()
+                    self.filterVisiblePOI()
                 }
             } else {
                 self.updateUIAsync {
@@ -80,19 +92,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
                     self.navigationController?.pushViewController(destination, animated: true)
                 }
             }
-        } */
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        filterVisiblePOI()
-    }
-    
-    func loadAnnotationsForCurrentView() {
-        let topLeftCorner = mapView.topLeftCoordinate()
-        let bottomRightCorner = mapView.bottomRightCoordinate()
-        print(topLeftCorner)
-        print(bottomRightCorner)
+        }
     }
     
     /*
@@ -185,8 +185,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
         self.visiblePOI = annotations.map({$0.pointOfInterest})
         self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
     }
+    
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        filterVisiblePOI()
+        loadAnnotationsForCurrentView()
     }
     
 }
@@ -214,6 +215,7 @@ extension MapViewController : CLLocationManagerDelegate {
     
 }
 extension MapViewController: ChangeUserLocation {
+    
     func changeUserLocationZoomIn(placemark: MKPlacemark) {
         // cache the pin
         selectedPin = placemark

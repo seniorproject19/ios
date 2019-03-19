@@ -10,9 +10,17 @@ import UIKit
 
 class UserSelectTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
-    let weekDayPickerOptions = ["Monday","Tuesday","Wednesday","Thursday","Friday", "Saturday", "Sunday"]
-    
     var currentUser: CurrentUserModel? = nil
+    
+    var weekDayPickerOptions: [String] {
+        get {
+            var result = ["Today"]
+            for i in 1...6 {
+                result.append(getNextDate(offset: i))
+            }
+            return result
+        }
+    }
     
     @IBOutlet weak var selectDayTextField: UITextField!
     @IBOutlet weak var startTimeTextField: UITextField!
@@ -111,5 +119,17 @@ class UserSelectTimeViewController: UIViewController, UIPickerViewDataSource, UI
             textField.text = strDate
         }
         return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showUserMapViewSegue" {
+            let destination = segue.destination as! MapViewController
+            let destinationModel = PostListModel()
+            destinationModel.requestedDate = selectDayTextField.text
+            destinationModel.requestedStartHour = startTimeTextField.text
+            destinationModel.requestedEndHour = endTimeTextField.text
+            destination.postList = destinationModel
+            destination.currentUser = currentUser
+        }
     }
 }
