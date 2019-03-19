@@ -42,6 +42,7 @@ class LocationSearchTableViewController: UITableViewController {
 
 }
 extension LocationSearchTableViewController : UISearchResultsUpdating {
+    
     func updateSearchResults(for searchController: UISearchController) {
         guard let mapView = mapView,
             let searchBarText = searchController.searchBar.text else { return }
@@ -58,10 +59,12 @@ extension LocationSearchTableViewController : UISearchResultsUpdating {
             self.tableView.reloadData()
         }
     }
+    
 }
 
 
 extension LocationSearchTableViewController {
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return matchingItems.count
     }
@@ -85,11 +88,14 @@ extension LocationSearchTableViewController {
     } */
     
 }
+
 extension LocationSearchTableViewController {
+    
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath){
         let selectedItem = matchingItems[indexPath.row].placemark
         ChangeUserLocationDelegate?.changeUserLocationZoomIn(placemark: selectedItem)
         dismiss(animated: true, completion: nil)
     }
+    
 }

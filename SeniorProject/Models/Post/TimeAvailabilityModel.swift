@@ -43,6 +43,13 @@ class TimeAvailabilityModel: NSObject {
         }
     }
     
+    override var description: String {
+        if weekday == nil || startString == nil || endString == nil || rate == nil {
+            return ""
+        }
+        return weekday! + " " + startString! + " - " + endString! + ", $" + String(rate!) + "/hr"
+    }
+    
     override init() {
         super.init()
         self.weekday = nil
@@ -59,6 +66,23 @@ class TimeAvailabilityModel: NSObject {
         self.start = start
         self.end = end
         self.rate = rate
+    }
+    
+    init(jsonData: JSON) {
+        super.init()
+        let weekdayFormatConversionTable = [
+            "Mon": "Monday",
+            "Tue": "Tuesday",
+            "Wed": "Wednesday",
+            "Thu": "Thursday",
+            "Fri": "Friday",
+            "Sat": "Saturday",
+            "Sun": "Sunday"
+        ]
+        self.weekday = weekdayFormatConversionTable[jsonData["weekday"].stringValue]
+        self.start = jsonData["start_time"].doubleValue
+        self.end = jsonData["end_time"].doubleValue
+        self.rate = jsonData["hourly_rate"].doubleValue
     }
     
     func timeStringRepresentationToDoubleRepresentation(time: String?) -> Double? {

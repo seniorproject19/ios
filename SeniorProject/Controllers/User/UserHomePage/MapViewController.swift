@@ -64,12 +64,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        postList.loadDataInRegion(longitude: 0.0, latitude: 0.0) {
+        self.centerMapInInitialCoordinates()
+        loadAnnotationsForCurrentView()
+        /* postList.loadDataInRegion(longitude: 0.0, latitude: 0.0) {
             (result) in
             if result == .success {
                 self.updateUIAsync {
                     self.poi = self.postList.entries
-                    self.centerMapInInitialCoordinates()
                     self.showPointsOfInterestInMap()
                 }
             } else {
@@ -79,13 +80,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
                     self.navigationController?.pushViewController(destination, animated: true)
                 }
             }
-        }
+        } */
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         filterVisiblePOI()
     }
+    
+    func loadAnnotationsForCurrentView() {
+        let topLeftCorner = mapView.topLeftCoordinate()
+        let bottomRightCorner = mapView.bottomRightCoordinate()
+        print(topLeftCorner)
+        print(bottomRightCorner)
+    }
+    
     /*
      // MARK: - Navigation
      
