@@ -8,36 +8,62 @@
 
 import UIKit
 
-class AddTimeSlotViewController: UIViewController , UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class AddTimeSlotViewController: UIViewController , UIPickerViewDataSource, UIPickerViewDelegate{
     
     let weekDayPickerOptions = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     
     var model: PostModel? = nil
     var availabilityModel = TimeAvailabilityModel()
-   
-    @IBOutlet weak var timePicker: UIDatePicker!
-    @IBOutlet weak var weekdayPicker: UIPickerView!
+
 
     @IBOutlet weak var selectDayTextField: UITextField!
     @IBOutlet weak var endTimeTextField: UITextField!
     @IBOutlet weak var startTimeTextField: UITextField!
-
-    @IBOutlet weak var endTimeButton: UIButton!
-    @IBOutlet weak var startTimeButton: UIButton!
-    @IBOutlet weak var selectDayButton: UIButton!
+    
+    lazy var datePicker : UIDatePicker = {
+        let picker = UIDatePicker()
+        picker.datePickerMode = .time
+        picker.minuteInterval = 30
+        picker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
+        return picker
+    }()
+    
+    lazy var endTimePicker : UIDatePicker = {
+        let picker = UIDatePicker()
+        picker.datePickerMode = .time
+        picker.minuteInterval = 30
+        picker.addTarget(self, action: #selector(endTimePickerChanged(_:)), for: .valueChanged)
+        return picker
+    }()
+    
+    lazy var dateFormatter: DateFormatter = {
+        let dateFormatr = DateFormatter()
+        dateFormatr.dateFormat = "h:mm a"
+        return dateFormatr
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        timePicker.tag = 0
-        weekdayPicker.tag = 1
+        let dayPicker = UIPickerView()
+        dayPicker.delegate = self
+        selectDayTextField.inputView = dayPicker
         selectDayTextField.tag = 2
         startTimeTextField.tag = 3
         endTimeTextField.tag = 4
-        timePicker.isHidden = true
-        weekdayPicker.isHidden = true
+        startTimeTextField.inputView = datePicker
+        endTimeTextField.inputView = endTimePicker
+
         // Do any additional setup after loading the view.
     }
 
+    @objc func datePickerChanged(_ sender: UIDatePicker){
+        startTimeTextField.text = dateFormatter.string(from: sender.date)
+    }
+    
+    @objc func endTimePickerChanged(_ sender: UIDatePicker){
+        endTimeTextField.text = dateFormatter.string(from: sender.date)
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -50,7 +76,13 @@ class AddTimeSlotViewController: UIViewController , UIPickerViewDataSource, UIPi
         return weekDayPickerOptions[row]
     }
     
-
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectDayTextField.text = weekDayPickerOptions[row]
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+/*
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if (textField.tag == 2){
             timePicker.isHidden = true
@@ -61,11 +93,9 @@ class AddTimeSlotViewController: UIViewController , UIPickerViewDataSource, UIPi
         }
         return true
     }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectDayTextField.text = weekDayPickerOptions[row]
-    }
-    
+    */
+
+    /*
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if (textField.tag == 3) {
             
@@ -84,7 +114,7 @@ class AddTimeSlotViewController: UIViewController , UIPickerViewDataSource, UIPi
         }
         return true
     }
-    
+    */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         availabilityModel.weekday = selectDayTextField.text
         availabilityModel.startString = startTimeTextField.text
