@@ -60,17 +60,18 @@ class PostModel: ServerAccessModel {
         sendGetRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.getPost.rawValue + pid!) {
             (statusCode, responseData) in
             if statusCode == 200 {
-                let jsonData = JSON(responseData)
+                let jsonData = JSON(responseData!)
                 self.title = jsonData["title"].stringValue
                 self.datePosted = jsonData["date_posted"].stringValue
                 self.description = jsonData["description"].stringValue
                 self.longitude = jsonData["longitude"].doubleValue
                 self.latitude = jsonData["latitude"].doubleValue
                 self.address = jsonData["address"].stringValue
+                self.availabilityTableModel.loadData(jsonData: jsonData["availability"])
                 self.sendGetRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.getPostImagePathsList.rawValue + self.pid!) {
                     (statusCode, responseData) in
                     if (statusCode == 200) {
-                        let jsonData = JSON(responseData)
+                        let jsonData = JSON(responseData!)
                         let pathsArray = jsonData["file_paths"].arrayValue
                         self.imagePaths = [String]()
                         for filePath in pathsArray {
@@ -96,7 +97,7 @@ class PostModel: ServerAccessModel {
         ])
         sendPostRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.newPost.rawValue, withData: data.rawString(String.Encoding.utf8, options: [])!) {
             (statusCode, responseData) in
-            let jsonData = JSON(responseData)
+            let jsonData = JSON(responseData!)
             let postId = jsonData["msg"].stringValue
             let timestamp = NSDate().timeIntervalSince1970
             if statusCode == 200 && self.images != nil {
@@ -119,7 +120,6 @@ class PostModel: ServerAccessModel {
     
     func postTimeAvailability(onCompletion callback: @escaping () -> Void) {
         availabilityTableModel.post(pid: pid!) {
-            print("GOING BACK HOME")
             callback()
         }
     }

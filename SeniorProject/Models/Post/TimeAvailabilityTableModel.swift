@@ -22,6 +22,16 @@ class TimeAvailabilityTableModel: ServerAccessModel {
         "Sunday": [Double: Double]()
     ]
     
+    var description: String {
+        get {
+            var result = ""
+            for availabilityModel in timeAvailabilityEntries {
+                result += availabilityModel.description + "\n"
+            }
+            return result.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+    }
+    
     enum AvailabilityPostResult {
         case success
         case timeConflict
@@ -49,6 +59,16 @@ class TimeAvailabilityTableModel: ServerAccessModel {
         sendPostRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.updateAvailability.rawValue, withData: data.rawString(String.Encoding.utf8, options: [])!) {
             (statusCode, responseData) in
             callback()
+        }
+    }
+    
+    func loadData(jsonData: JSON) {
+        let dataArray = jsonData.arrayValue
+        for entry in dataArray {
+            let availabilityModel = TimeAvailabilityModel(jsonData: entry)
+            if addAvailability(availability: availabilityModel) != .success {
+                continue
+            }
         }
     }
     

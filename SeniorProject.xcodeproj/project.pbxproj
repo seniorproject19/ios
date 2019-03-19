@@ -16,6 +16,8 @@
 		630D8C7A223F9327003CF5F5 /* OwnerPostImageScrollViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D8C79223F9327003CF5F5 /* OwnerPostImageScrollViewTableViewCell.swift */; };
 		630D8C7C223F973C003CF5F5 /* PostImageScrollViewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D8C7B223F973C003CF5F5 /* PostImageScrollViewImageView.swift */; };
 		630D8C7E223F9A57003CF5F5 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D8C7D223F9A57003CF5F5 /* UIImageExtension.swift */; };
+		631DE4B6224050EA00A78677 /* OwnerPostAvailabilityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631DE4B5224050EA00A78677 /* OwnerPostAvailabilityTableViewCell.swift */; };
+		631DE4BC22405BF300A78677 /* MKMapViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631DE4BB22405BF300A78677 /* MKMapViewExtension.swift */; };
 		634F396622358DD7000766D5 /* AddTimeSlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F396522358DD7000766D5 /* AddTimeSlotViewController.swift */; };
 		634F396822358DE0000766D5 /* TimeSlotListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F396722358DE0000766D5 /* TimeSlotListTableViewController.swift */; };
 		634F396A22358E22000766D5 /* TimeAvailabilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F396922358E22000766D5 /* TimeAvailabilityModel.swift */; };
@@ -54,7 +56,6 @@
 		D146958121FBCBD600C09E93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D146957F21FBCBD600C09E93 /* LaunchScreen.storyboard */; };
 		D146958C21FBCBD600C09E93 /* SeniorProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146958B21FBCBD600C09E93 /* SeniorProjectTests.swift */; };
 		D146959721FBCBD600C09E93 /* SeniorProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146959621FBCBD600C09E93 /* SeniorProjectUITests.swift */; };
-		D151398F223AFDD200654311 /* UserSelectTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151398E223AFDD200654311 /* UserSelectTimeViewController.swift */; };
 		D1513995223F48C800654311 /* POIAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1513994223F48C800654311 /* POIAnnotation.swift */; };
 		D151399722402E4C00654311 /* EditPostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151399622402E4C00654311 /* EditPostDetailViewController.swift */; };
 		D183CB2B2207CC660000BCE1 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D183CB2A2207CC660000BCE1 /* FirstPageViewController.swift */; };
@@ -89,6 +90,8 @@
 		630D8C79223F9327003CF5F5 /* OwnerPostImageScrollViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerPostImageScrollViewTableViewCell.swift; sourceTree = "<group>"; };
 		630D8C7B223F973C003CF5F5 /* PostImageScrollViewImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageScrollViewImageView.swift; sourceTree = "<group>"; };
 		630D8C7D223F9A57003CF5F5 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		631DE4B5224050EA00A78677 /* OwnerPostAvailabilityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerPostAvailabilityTableViewCell.swift; sourceTree = "<group>"; };
+		631DE4BB22405BF300A78677 /* MKMapViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapViewExtension.swift; sourceTree = "<group>"; };
 		634F396522358DD7000766D5 /* AddTimeSlotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTimeSlotViewController.swift; sourceTree = "<group>"; };
 		634F396722358DE0000766D5 /* TimeSlotListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSlotListTableViewController.swift; sourceTree = "<group>"; };
 		634F396922358E22000766D5 /* TimeAvailabilityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAvailabilityModel.swift; sourceTree = "<group>"; };
@@ -134,9 +137,8 @@
 		D146959221FBCBD600C09E93 /* SeniorProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeniorProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D146959621FBCBD600C09E93 /* SeniorProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeniorProjectUITests.swift; sourceTree = "<group>"; };
 		D146959821FBCBD600C09E93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D151398E223AFDD200654311 /* UserSelectTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectTimeViewController.swift; sourceTree = "<group>"; };
 		D1513994223F48C800654311 /* POIAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIAnnotation.swift; sourceTree = "<group>"; };
-		D151399622402E4C00654311 /* EditPostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditPostDetailViewController.swift; path = EditPost/EditPostDetailViewController.swift; sourceTree = "<group>"; };
+		D151399622402E4C00654311 /* EditPostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostDetailViewController.swift; sourceTree = "<group>"; };
 		D183CB2A2207CC660000BCE1 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		E10C7E462D554EFD8E5FC9B1 /* Pods-SeniorProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProject/Pods-SeniorProject.release.xcconfig"; sourceTree = "<group>"; };
 		F29907D31978349848ABC6DF /* Pods-SeniorProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProjectTests/Pods-SeniorProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -209,9 +211,48 @@
 				630D8C75223F6917003CF5F5 /* OwnerPostDescriptionTableViewCell.swift */,
 				630D8C77223F6976003CF5F5 /* OwnerPostMapViewTableViewCell.swift */,
 				630D8C79223F9327003CF5F5 /* OwnerPostImageScrollViewTableViewCell.swift */,
+				631DE4B5224050EA00A78677 /* OwnerPostAvailabilityTableViewCell.swift */,
 				630D8C7B223F973C003CF5F5 /* PostImageScrollViewImageView.swift */,
 			);
 			path = Post;
+			sourceTree = "<group>";
+		};
+		631DE4B7224058D500A78677 /* Owner */ = {
+			isa = PBXGroup;
+			children = (
+				63FF40A122291FE900F5861E /* NewPost */,
+				63FF40B4222B508F00F5861E /* OwnerHomepage */,
+				63611306223F07B9003A32EC /* Sidebar */,
+			);
+			path = Owner;
+			sourceTree = "<group>";
+		};
+		631DE4B8224058FA00A78677 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				631DE4B92240590400A78677 /* UserHomePage */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		631DE4B92240590400A78677 /* UserHomePage */ = {
+			isa = PBXGroup;
+			children = (
+				636112F0223B8539003A32EC /* UserSelectTimeViewController.swift */,
+				63FF40AB2229210700F5861E /* MapViewController.swift */,
+				63FF40AD2229212500F5861E /* LocationSearchTableViewController.swift */,
+			);
+			path = UserHomePage;
+			sourceTree = "<group>";
+		};
+		631DE4BA22405BB300A78677 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				630D8C7D223F9A57003CF5F5 /* UIImageExtension.swift */,
+				6388B03422162781001E6DBA /* ViewControllerExtension.swift */,
+				631DE4BB22405BF300A78677 /* MKMapViewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		636112F4223C9746003A32EC /* NewPost */ = {
@@ -242,19 +283,13 @@
 		6388B0302216263D001E6DBA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D151399622402E4C00654311 /* EditPostDetailViewController.swift */,
-				630D8C6D223F6536003CF5F5 /* Post */,
-				63611306223F07B9003A32EC /* Sidebar */,
-				636112F0223B8539003A32EC /* UserSelectTimeViewController.swift */,
-				63FF40B4222B508F00F5861E /* OwnerHomepage */,
-				6388B03422162781001E6DBA /* ViewControllerExtension.swift */,
-				63FF40B1222930EA00F5861E /* Register */,
-				63FF40AB2229210700F5861E /* MapViewController.swift */,
 				D183CB2A2207CC660000BCE1 /* FirstPageViewController.swift */,
-				63FF40AD2229212500F5861E /* LocationSearchTableViewController.swift */,
-				63FF40A122291FE900F5861E /* NewPost */,
+				D151399622402E4C00654311 /* EditPostDetailViewController.swift */,
+				631DE4B8224058FA00A78677 /* User */,
+				631DE4B7224058D500A78677 /* Owner */,
+				630D8C6D223F6536003CF5F5 /* Post */,
+				63FF40B1222930EA00F5861E /* Register */,
 				6388B0312216265B001E6DBA /* Login */,
-				D151398E223AFDD200654311 /* UserSelectTimeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -275,7 +310,6 @@
 				63A166E1220CEC310067BD89 /* ServerAccessModel.swift */,
 				63A166E3220CECDD0067BD89 /* LocalStorageModel.swift */,
 				6388B02E2216207A001E6DBA /* SwiftyJSON.swift */,
-				630D8C7D223F9A57003CF5F5 /* UIImageExtension.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -378,6 +412,7 @@
 		D146957521FBCBD400C09E93 /* SeniorProject */ = {
 			isa = PBXGroup;
 			children = (
+				631DE4BA22405BB300A78677 /* Extensions */,
 				63FF40B7222B50BB00F5861E /* Views */,
 				6388B0302216263D001E6DBA /* Controllers */,
 				63A166DD220CEBB90067BD89 /* Models */,
@@ -627,7 +662,9 @@
 				63FF40A82229205000F5861E /* PostDetailViewController.swift in Sources */,
 				D1513995223F48C800654311 /* POIAnnotation.swift in Sources */,
 				630D8C78223F6976003CF5F5 /* OwnerPostMapViewTableViewCell.swift in Sources */,
+				631DE4BC22405BF300A78677 /* MKMapViewExtension.swift in Sources */,
 				630D8C74223F68E7003CF5F5 /* OwnerPostTitleAddressTableViewCell.swift in Sources */,
+				631DE4B6224050EA00A78677 /* OwnerPostAvailabilityTableViewCell.swift in Sources */,
 				63A166E2220CEC310067BD89 /* ServerAccessModel.swift in Sources */,
 				630D8C6F223F655A003CF5F5 /* OwnerPostTableViewController.swift in Sources */,
 				636112EF223A1F0D003A32EC /* TimeAvailabilityTableModel.swift in Sources */,
@@ -649,7 +686,6 @@
 				63FF40B022292AB200F5861E /* UserRegisterModel.swift in Sources */,
 				63611305223EF7DE003A32EC /* UserRegistrationViewController.swift in Sources */,
 				630D8C76223F6917003CF5F5 /* OwnerPostDescriptionTableViewCell.swift in Sources */,
-				D151398F223AFDD200654311 /* UserSelectTimeViewController.swift in Sources */,
 				D151399722402E4C00654311 /* EditPostDetailViewController.swift in Sources */,
 				D146957721FBCBD400C09E93 /* AppDelegate.swift in Sources */,
 				6388B03322162672001E6DBA /* LoginViewController.swift in Sources */,

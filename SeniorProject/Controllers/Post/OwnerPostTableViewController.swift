@@ -32,7 +32,7 @@ class OwnerPostTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 6
+        return 7
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -50,6 +50,10 @@ class OwnerPostTableViewController: UITableViewController {
             cell.descriptionContentLabel.text = model?.description
             return cell
         } else if indexPath.row == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ownerPostAvailabilityCell", for: indexPath) as! OwnerPostAvailabilityTableViewCell
+            cell.availabilityContentLabel.text = model?.availabilityTableModel.description
+            return cell
+        } else if indexPath.row == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ownerPostImageScrollViewCell", for: indexPath) as! OwnerPostImageScrollViewTableViewCell
             let imageViews = loadScrollImageViews()
             setupImageScrollView(scrollView: cell.scrollView, imageViews: imageViews)
@@ -57,7 +61,7 @@ class OwnerPostTableViewController: UITableViewController {
             cell.pageControl.numberOfPages = model!.imagePaths!.count
             cell.pageControl.currentPage = 0
             return cell
-        } else if indexPath.row == 4 {
+        } else if indexPath.row == 5 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ownerPostEditPostCell", for: indexPath)
             return cell
         } else {

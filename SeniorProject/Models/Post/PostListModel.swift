@@ -29,7 +29,7 @@ class PostListModel: ServerAccessModel {
         sendGetRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.getPostList.rawValue) {
             (statusCode, responseData) in
             if statusCode == 200 {
-                let jsonData = JSON(responseData)
+                let jsonData = JSON(responseData!)
                 let listData = jsonData["data"].arrayValue
                 for postEntry in listData {
                     self.entries.append(PostListEntryModel(jsonData: postEntry))
@@ -45,7 +45,7 @@ class PostListModel: ServerAccessModel {
         sendGetRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.getPostListInRegion.rawValue) {
             (statusCode, responseData) in
             if statusCode == 200 {
-                let jsonData = JSON(responseData)
+                let jsonData = JSON(responseData!)
                 let listData = jsonData["data"].arrayValue
                 for postEntry in listData {
                     self.entries.append(PostListEntryModel(jsonData: postEntry))
