@@ -94,6 +94,22 @@ class OwnerHomepageViewController: UITableViewController {
         let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
             // share item at indexPath
             print("I want to edit: \(self.postList.entries[indexPath.row])")
+            let postId = self.postList.get(indexPath.row).pid
+            let postModel = PostModel()
+            
+            postModel.pid = postId
+            postModel.loadData {
+                (result) in
+                if result == .success {
+                    self.updateUIAsync {
+                        let destination = self.storyboard?.instantiateViewController(withIdentifier: "editPostDetailView") as! EditPostDetailViewController
+                        destination.model = postModel
+                        self.navigationController?.pushViewController(destination, animated: true)
+                    }
+                } else {
+                    self.showAlert(withTitle: "Error", message: "Unable to Load Post Info")
+                }
+            }
         }
         
         edit.backgroundColor = UIColor.lightGray

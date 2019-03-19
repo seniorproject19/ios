@@ -1,38 +1,40 @@
 //
-//  AddTimeSlotViewController.swift
+//  EditAddTimeSlotViewController.swift
 //  SeniorProject
 //
-//  Created by Jiaqing Mo on 3/2/19.
+//  Created by Jiaqing Mo on 3/18/19.
 //  Copyright © 2019 Jiaqing Mo. All rights reserved.
 //
 
 import UIKit
 
-class AddTimeSlotViewController: UIViewController , UIPickerViewDataSource, UIPickerViewDelegate{
-    
+class EditAddTimeSlotViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+
+
+
     let weekDayPickerOptions = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     
     var model: PostModel? = nil
     var availabilityModel = TimeAvailabilityModel()
-
-
+    
+    
     @IBOutlet weak var selectDayTextField: UITextField!
     @IBOutlet weak var endTimeTextField: UITextField!
     @IBOutlet weak var startTimeTextField: UITextField!
     /*
-    lazy var datePicker : UIDatePicker = {
-        let picker = UIDatePicker()
-        picker.datePickerMode = .time
-        picker.minuteInterval = 30
-        picker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
-        return picker
-    }()
-    */
-    let datePicker = UIDatePicker()
+     lazy var datePicker : UIDatePicker = {
+     let picker = UIDatePicker()
+     picker.datePickerMode = .time
+     picker.minuteInterval = 30
+     picker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
+     return picker
+     }()
+     */
+    let startTimePicker = UIDatePicker()
     let endTimePicker = UIDatePicker()
     let dateFormatter = DateFormatter()
     
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,22 +42,22 @@ class AddTimeSlotViewController: UIViewController , UIPickerViewDataSource, UIPi
         dayPicker.delegate = self
         selectDayTextField.inputView = dayPicker
         
-        datePicker.datePickerMode = .time
-        datePicker.minuteInterval = 30
-        datePicker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
-
+        startTimePicker.datePickerMode = .time
+        startTimePicker.minuteInterval = 30
+        startTimePicker.addTarget(self, action: #selector(startTimePickerChanged(_:)), for: .valueChanged)
+        
         endTimePicker.datePickerMode = .time
         endTimePicker.minuteInterval = 30
         endTimePicker.addTarget(self, action: #selector(endTimePickerChanged(_:)), for: .valueChanged)
         
-        startTimeTextField.inputView = datePicker
+        startTimeTextField.inputView = startTimePicker
         endTimeTextField.inputView = endTimePicker
         dateFormatter.dateFormat = "h:mm a"
-
+        
         // Do any additional setup after loading the view.
     }
-
-    @objc func datePickerChanged(_ sender: UIDatePicker){
+    
+    @objc func startTimePickerChanged(_ sender: UIDatePicker){
         startTimeTextField.text = dateFormatter.string(from: sender.date)
     }
     
@@ -81,59 +83,48 @@ class AddTimeSlotViewController: UIViewController , UIPickerViewDataSource, UIPi
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-/*
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if (textField.tag == 2){
-            timePicker.isHidden = true
-            weekdayPicker.isHidden = false
-        } else {
-            timePicker.isHidden = false
-            weekdayPicker.isHidden = true
-        }
-        return true
-    }
-    */
-
     /*
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if (textField.tag == 3) {
-            
-            let dateFormatr = DateFormatter()
-            dateFormatr.dateFormat = "h:mm a"
-            let strDate = dateFormatr.string(from: (timePicker?.date)!)
-            textField.text = strDate
-            print("3 ended")
-            
-        } else if (textField.tag == 4) {
-            let dateFormatr = DateFormatter()
-            dateFormatr.dateFormat = "h:mm a"
-            let strDate = dateFormatr.string(from: (timePicker?.date)!)
-            textField.text = strDate
-            print("4 ended")
-        }
-        return true
-    }
-    */
+     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+     if (textField.tag == 2){
+     timePicker.isHidden = true
+     weekdayPicker.isHidden = false
+     } else {
+     timePicker.isHidden = false
+     weekdayPicker.isHidden = true
+     }
+     return true
+     }
+     */
+    
+    /*
+     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+     if (textField.tag == 3) {
+     
+     let dateFormatr = DateFormatter()
+     dateFormatr.dateFormat = "h:mm a"
+     let strDate = dateFormatr.string(from: (timePicker?.date)!)
+     textField.text = strDate
+     print("3 ended")
+     
+     } else if (textField.tag == 4) {
+     let dateFormatr = DateFormatter()
+     dateFormatr.dateFormat = "h:mm a"
+     let strDate = dateFormatr.string(from: (timePicker?.date)!)
+     textField.text = strDate
+     print("4 ended")
+     }
+     return true
+     }
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         availabilityModel.weekday = selectDayTextField.text
         availabilityModel.startString = startTimeTextField.text
         availabilityModel.endString = endTimeTextField.text
-        if segue.identifier == "showHourlyRateSegue" {
-            if let destination = segue.destination as? PostRateViewController {
+        if segue.identifier == "editShowHourlyRateSegue" {
+            if let destination = segue.destination as? EditPostRateViewController {
                 destination.model = model
                 destination.availabilityModel = availabilityModel
             }
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

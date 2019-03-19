@@ -27,6 +27,9 @@ class PostLocationViewController: UIViewController {
     @IBAction func cancelButtonClicked(_ sender: Any) {
         performSegue(withIdentifier: "unwindToOwnerHomepageFromMap", sender: self)
     }
+    @IBAction func nextButtonClicked(_ sender: Any) {
+        performSegue(withIdentifier: "showNewPostDetailSegue", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
