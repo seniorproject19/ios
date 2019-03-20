@@ -2283,7 +2283,6 @@
         <!--Current Reservations-->
         <scene sceneID="r7C-eG-Cbw">
             <objects>
-                <tableViewController storyboardIdentifier="currentReservationListViewController" id="VrG-Xh-taA" sceneMemberID="viewController">
                 <tableViewController storyboardIdentifier="ownerCurrentReservationsListViewController" id="VrG-Xh-taA" customClass="OwnerCurrentReservationsListTableViewController" customModule="SeniorProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="IQr-03-qgF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>

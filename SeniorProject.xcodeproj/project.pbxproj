@@ -827,6 +827,8 @@
 			files = (
 				631DE4E8224225EC00A78677 /* ReservationDetailTitleAddressTableViewCell.swift in Sources */,
 				63A166E6220CEF590067BD89 /* Configurations.swift in Sources */,
+				D1CCCC6F2241EFA500F97DFD /* OwnerSignUpInputTableViewCell.swift in Sources */,
+				D1CCCC7B22420F8200F97DFD /* EditPostTableViewCell.swift in Sources */,
 				631DE4E22242142D00A78677 /* UserReservationTableViewCell.swift in Sources */,
 				634F396A22358E22000766D5 /* TimeAvailabilityModel.swift in Sources */,
 				63FF40A82229205000F5861E /* PostDetailViewController.swift in Sources */,
