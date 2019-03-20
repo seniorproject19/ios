@@ -80,6 +80,17 @@
 		D183CB2B2207CC660000BCE1 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D183CB2A2207CC660000BCE1 /* FirstPageViewController.swift */; };
 		D1A4338C22417CFA00FDCC0B /* SidebarProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A4338B22417CFA00FDCC0B /* SidebarProfileTableViewCell.swift */; };
 		D1A4338E22417D6600FDCC0B /* SidebarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A4338D22417D6600FDCC0B /* SidebarTableViewCell.swift */; };
+		D1CCCC6B2241DF4E00F97DFD /* UserSignUpInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CCCC6A2241DF4E00F97DFD /* UserSignUpInputTableViewCell.swift */; };
+		D1CCCC6D2241E0D500F97DFD /* UserSignUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CCCC6C2241E0D500F97DFD /* UserSignUpTableViewCell.swift */; };
+		D1CCCC6F2241EFA500F97DFD /* OwnerSignUpInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CCCC6E2241EFA500F97DFD /* OwnerSignUpInputTableViewCell.swift */; };
+		D1CCCC712241EFC300F97DFD /* OwnerSignUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CCCC702241EFC300F97DFD /* OwnerSignUpTableViewCell.swift */; };
+		D1CCCC732241F81300F97DFD /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CCCC722241F81300F97DFD /* LoginTableViewCell.swift */; };
+		D1CCCC752241F82300F97DFD /* LoginInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CCCC742241F82300F97DFD /* LoginInputTableViewCell.swift */; };
+		D1CCCC77224202D900F97DFD /* UserAddTimeSlotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CCCC76224202D900F97DFD /* UserAddTimeSlotTableViewCell.swift */; };
+		D1CCCC7922420E5700F97DFD /* EditPostInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CCCC7822420E5700F97DFD /* EditPostInputTableViewCell.swift */; };
+		D1CCCC7B22420F8200F97DFD /* EditPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CCCC7A22420F8200F97DFD /* EditPostTableViewCell.swift */; };
+		D1CCCC7D2242C00700F97DFD /* EditPostPhotoCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CCCC7C2242C00700F97DFD /* EditPostPhotoCollectionTableViewCell.swift */; };
+		D1CCCC7F2242CAEC00F97DFD /* UserAddTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CCCC7E2242CAEC00F97DFD /* UserAddTimeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +193,17 @@
 		D183CB2A2207CC660000BCE1 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		D1A4338B22417CFA00FDCC0B /* SidebarProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarProfileTableViewCell.swift; sourceTree = "<group>"; };
 		D1A4338D22417D6600FDCC0B /* SidebarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableViewCell.swift; sourceTree = "<group>"; };
+		D1CCCC6A2241DF4E00F97DFD /* UserSignUpInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignUpInputTableViewCell.swift; sourceTree = "<group>"; };
+		D1CCCC6C2241E0D500F97DFD /* UserSignUpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignUpTableViewCell.swift; sourceTree = "<group>"; };
+		D1CCCC6E2241EFA500F97DFD /* OwnerSignUpInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerSignUpInputTableViewCell.swift; sourceTree = "<group>"; };
+		D1CCCC702241EFC300F97DFD /* OwnerSignUpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerSignUpTableViewCell.swift; sourceTree = "<group>"; };
+		D1CCCC722241F81300F97DFD /* LoginTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
+		D1CCCC742241F82300F97DFD /* LoginInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputTableViewCell.swift; sourceTree = "<group>"; };
+		D1CCCC76224202D900F97DFD /* UserAddTimeSlotTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAddTimeSlotTableViewCell.swift; sourceTree = "<group>"; };
+		D1CCCC7822420E5700F97DFD /* EditPostInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostInputTableViewCell.swift; sourceTree = "<group>"; };
+		D1CCCC7A22420F8200F97DFD /* EditPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostTableViewCell.swift; sourceTree = "<group>"; };
+		D1CCCC7C2242C00700F97DFD /* EditPostPhotoCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostPhotoCollectionTableViewCell.swift; sourceTree = "<group>"; };
+		D1CCCC7E2242CAEC00F97DFD /* UserAddTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAddTimeTableViewCell.swift; sourceTree = "<group>"; };
 		E10C7E462D554EFD8E5FC9B1 /* Pods-SeniorProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProject/Pods-SeniorProject.release.xcconfig"; sourceTree = "<group>"; };
 		F29907D31978349848ABC6DF /* Pods-SeniorProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProjectTests/Pods-SeniorProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F88A75085F7F293E657A6CB1 /* Pods-SeniorProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProjectUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProjectUITests/Pods-SeniorProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -311,6 +333,9 @@
 				D1365204224086CD00B9F19A /* EditAddTimeSlotViewController.swift */,
 				631DE4BE22407A0200A78677 /* EditTimeSlotListTableViewController.swift */,
 				631DE4C022407A0C00A78677 /* EditPostDetailViewController.swift */,
+				D1CCCC7822420E5700F97DFD /* EditPostInputTableViewCell.swift */,
+				D1CCCC7A22420F8200F97DFD /* EditPostTableViewCell.swift */,
+				D1CCCC7C2242C00700F97DFD /* EditPostPhotoCollectionTableViewCell.swift */,
 			);
 			path = EditPost;
 			sourceTree = "<group>";
@@ -419,6 +444,8 @@
 			isa = PBXGroup;
 			children = (
 				6388B03222162672001E6DBA /* LoginViewController.swift */,
+				D1CCCC722241F81300F97DFD /* LoginTableViewCell.swift */,
+				D1CCCC742241F82300F97DFD /* LoginInputTableViewCell.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -455,6 +482,8 @@
 				634F396722358DE0000766D5 /* TimeSlotListTableViewController.swift */,
 				631DE4C222407A2700A78677 /* AddTimeSlotViewController.swift */,
 				63FF40BE222B92B500F5861E /* PostDetailMultiplePickerViewController.swift */,
+				D1CCCC76224202D900F97DFD /* UserAddTimeSlotTableViewCell.swift */,
+				D1CCCC7E2242CAEC00F97DFD /* UserAddTimeTableViewCell.swift */,
 			);
 			path = PostDetail;
 			sourceTree = "<group>";
@@ -464,6 +493,10 @@
 			children = (
 				63FF40B22229312800F5861E /* OwnerRegistrationViewController.swift */,
 				63611304223EF7DE003A32EC /* UserRegistrationViewController.swift */,
+				D1CCCC6A2241DF4E00F97DFD /* UserSignUpInputTableViewCell.swift */,
+				D1CCCC6C2241E0D500F97DFD /* UserSignUpTableViewCell.swift */,
+				D1CCCC6E2241EFA500F97DFD /* OwnerSignUpInputTableViewCell.swift */,
+				D1CCCC702241EFC300F97DFD /* OwnerSignUpTableViewCell.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -801,11 +834,14 @@
 				631DE4CE22415C8A00A78677 /* UserPostTitleAddressTableViewCell.swift in Sources */,
 				630D8C78223F6976003CF5F5 /* OwnerPostMapViewTableViewCell.swift in Sources */,
 				D1A4338E22417D6600FDCC0B /* SidebarTableViewCell.swift in Sources */,
+				D1CCCC7922420E5700F97DFD /* EditPostInputTableViewCell.swift in Sources */,
+				D1CCCC7D2242C00700F97DFD /* EditPostPhotoCollectionTableViewCell.swift in Sources */,
 				631DE4BC22405BF300A78677 /* MKMapViewExtension.swift in Sources */,
 				631DE4D022415DE300A78677 /* ReservationDetailModel.swift in Sources */,
 				631DE4E42242162700A78677 /* UserReservationTitleTableViewCell.swift in Sources */,
 				630D8C74223F68E7003CF5F5 /* OwnerPostTitleAddressTableViewCell.swift in Sources */,
 				631DE4B6224050EA00A78677 /* OwnerPostAvailabilityTableViewCell.swift in Sources */,
+				D1CCCC752241F82300F97DFD /* LoginInputTableViewCell.swift in Sources */,
 				63A166E2220CEC310067BD89 /* ServerAccessModel.swift in Sources */,
 				630D8C6F223F655A003CF5F5 /* OwnerPostTableViewController.swift in Sources */,
 				631DE4DF2241FA0400A78677 /* ReservationListModel.swift in Sources */,
@@ -813,18 +849,23 @@
 				631DE4D22241617900A78677 /* UserPostTableViewController.swift in Sources */,
 				636112EF223A1F0D003A32EC /* TimeAvailabilityTableModel.swift in Sources */,
 				63FF40BF222B92B500F5861E /* PostDetailMultiplePickerViewController.swift in Sources */,
+				D1CCCC6B2241DF4E00F97DFD /* UserSignUpInputTableViewCell.swift in Sources */,
 				6388B03522162781001E6DBA /* ViewControllerExtension.swift in Sources */,
 				63FF40AA222920EA00F5861E /* PostDetailSelectorImageCell.swift in Sources */,
+				D1CCCC77224202D900F97DFD /* UserAddTimeSlotTableViewCell.swift in Sources */,
 				631DE4CA2241521400A78677 /* PointOfInterestTableViewCell.swift in Sources */,
 				D183CB2B2207CC660000BCE1 /* FirstPageViewController.swift in Sources */,
+				D1CCCC732241F81300F97DFD /* LoginTableViewCell.swift in Sources */,
 				6388B02D22161E7F001E6DBA /* CurrentUserModel.swift in Sources */,
 				63611308223F07D1003A32EC /* OwnerSidebarTableViewController.swift in Sources */,
 				63FF40B32229312800F5861E /* OwnerRegistrationViewController.swift in Sources */,
+				D1CCCC6D2241E0D500F97DFD /* UserSignUpTableViewCell.swift in Sources */,
 				63A166DF220CEBF40067BD89 /* UserModel.swift in Sources */,
 				63611300223EE099003A32EC /* OwnerHomepageViewController.swift in Sources */,
 				63FF40AE2229212500F5861E /* LocationSearchTableViewController.swift in Sources */,
 				63FF40A52229203600F5861E /* PostLocationSearchTableViewController.swift in Sources */,
 				6388B02F2216207A001E6DBA /* SwiftyJSON.swift in Sources */,
+				D1CCCC712241EFC300F97DFD /* OwnerSignUpTableViewCell.swift in Sources */,
 				631DE4C122407A0C00A78677 /* EditPostDetailViewController.swift in Sources */,
 				636112FC223ED8F6003A32EC /* PostListEntryModel.swift in Sources */,
 				636112FE223EDB39003A32EC /* PostListModel.swift in Sources */,
@@ -853,6 +894,7 @@
 				631DE4DD2241F9CB00A78677 /* PastReservationModel.swift in Sources */,
 				636112F8223C97A0003A32EC /* TimeSlotTableViewCell.swift in Sources */,
 				634F396822358DE0000766D5 /* TimeSlotListTableViewController.swift in Sources */,
+				D1CCCC7F2242CAEC00F97DFD /* UserAddTimeTableViewCell.swift in Sources */,
 				631DE4C52240A40700A78677 /* BaseModel.swift in Sources */,
 				630D8C7A223F9327003CF5F5 /* OwnerPostImageScrollViewTableViewCell.swift in Sources */,
 				631DE4D82241E08400A78677 /* UserReservationsTableViewController.swift in Sources */,
