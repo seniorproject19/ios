@@ -79,4 +79,12 @@ extension ServerAccessModel {
         }
     }
     
+    func convertDateStringToMySQLDateString(dateString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let date = dateFormatter.date(from: dateString)
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        return dateFormatter.string(from: date!)
+    }
+    
 }

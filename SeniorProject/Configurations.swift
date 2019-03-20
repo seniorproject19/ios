@@ -29,6 +29,7 @@ class Configurations: NSObject {
         case getPost = "/post/get/"
         case getPostImagePathsList = "/post/image/list/"
         case getPostListInRegion = "/post/get_list/region"
+        case newRecord = "/record/new"
     }
 
 }

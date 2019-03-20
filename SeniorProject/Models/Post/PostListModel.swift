@@ -95,7 +95,6 @@ class PostListModel: ServerAccessModel, BaseModel {
             self.entries = [PostListEntryModel]()
             if statusCode == 200 {
                 let jsonData = JSON(responseData!)
-                print(jsonData)
                 let listData = jsonData["data"].arrayValue
                 for postEntry in listData {
                     self.entries.append(PostListEntryModel(jsonData: postEntry))

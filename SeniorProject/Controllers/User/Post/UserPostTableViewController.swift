@@ -48,6 +48,7 @@ class UserPostTableViewController: UITableViewController {
             cell.selectedTimeLabel.text = reservationModel!.requestedTimeDescription
             cell.reserveButton.setTitle("Reserve - $" + String(reservationModel!.totalRate!), for: .normal)
             cell.confirmButton.setTitle("Confirm - $" + String(reservationModel!.totalRate!), for: .normal)
+            cell.confirmHandler = handleConfirmClicked
             return cell
         } else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "userPostDescriptionCell", for: indexPath) as! OwnerPostDescriptionTableViewCell
@@ -61,6 +62,12 @@ class UserPostTableViewController: UITableViewController {
             cell.pageControl.numberOfPages = model!.imagePaths!.count
             cell.pageControl.currentPage = 0
             return cell
+        }
+    }
+    
+    func handleConfirmClicked() {
+        reservationModel?.post {
+            (result) in
         }
     }
     

@@ -9,6 +9,8 @@
 import UIKit
 
 class UserPostTitleAddressTableViewCell: UITableViewCell {
+    
+    var confirmHandler: (() -> Void)? = nil
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -32,6 +34,10 @@ class UserPostTitleAddressTableViewCell: UITableViewCell {
     @IBAction func reserveButtonClicked(_ sender: Any) {
         reserveButton.isHidden = true
         confirmButton.isHidden = false
+    }
+    
+    @IBAction func confirmButtonClicked(_ sender: Any) {
+        confirmHandler!()
     }
     
 }

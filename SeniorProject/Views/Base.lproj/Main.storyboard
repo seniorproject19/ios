@@ -2443,6 +2443,9 @@
                                                     <integer key="value" value="4"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="confirmButtonClicked:" destination="6b8-fT-m9G" eventType="touchUpInside" id="f5X-sh-mel"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
