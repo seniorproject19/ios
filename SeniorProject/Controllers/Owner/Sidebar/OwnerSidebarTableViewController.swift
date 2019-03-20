@@ -9,6 +9,8 @@
 import UIKit
 
 class OwnerSidebarTableViewController: UITableViewController {
+    
+    var currentUser: CurrentUserModel? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,23 +36,45 @@ class OwnerSidebarTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 4
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "sideBarProfileCell", for: indexPath) as! SidebarProfileTableViewCell
+            cell.nameLabel.text = currentUser!.user?.username
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "sideBarCell", for: indexPath) as! SidebarTableViewCell
+            if indexPath.row == 1 {
+                cell.sidebarTextLabel.text = "Current Reservations"
+            } else if indexPath.row == 2 {
+                cell.sidebarTextLabel.text = "Past Reservations"
+            } else {
+                cell.sidebarTextLabel.text = "Log out"
+            }
+            return cell
+        }
 
-        // Configure the cell...
-
-        return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 1 {
+            let destination = storyboard?.instantiateViewController(withIdentifier: "currentReservationListViewController")
+            navigationController?.pushViewController(destination!, animated: true)
+        }
+        else if indexPath.row == 2 {
+            let destination = storyboard?.instantiateViewController(withIdentifier: "pastReservationListViewController")
+            navigationController?.pushViewController(destination!, animated: true)
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.

@@ -67,6 +67,8 @@
 		D146959721FBCBD600C09E93 /* SeniorProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146959621FBCBD600C09E93 /* SeniorProjectUITests.swift */; };
 		D1513995223F48C800654311 /* POIAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1513994223F48C800654311 /* POIAnnotation.swift */; };
 		D183CB2B2207CC660000BCE1 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D183CB2A2207CC660000BCE1 /* FirstPageViewController.swift */; };
+		D1A4338C22417CFA00FDCC0B /* SidebarProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A4338B22417CFA00FDCC0B /* SidebarProfileTableViewCell.swift */; };
+		D1A4338E22417D6600FDCC0B /* SidebarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A4338D22417D6600FDCC0B /* SidebarTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +158,8 @@
 		D146959821FBCBD600C09E93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1513994223F48C800654311 /* POIAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIAnnotation.swift; sourceTree = "<group>"; };
 		D183CB2A2207CC660000BCE1 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
+		D1A4338B22417CFA00FDCC0B /* SidebarProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarProfileTableViewCell.swift; sourceTree = "<group>"; };
+		D1A4338D22417D6600FDCC0B /* SidebarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableViewCell.swift; sourceTree = "<group>"; };
 		E10C7E462D554EFD8E5FC9B1 /* Pods-SeniorProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProject/Pods-SeniorProject.release.xcconfig"; sourceTree = "<group>"; };
 		F29907D31978349848ABC6DF /* Pods-SeniorProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProjectTests/Pods-SeniorProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F88A75085F7F293E657A6CB1 /* Pods-SeniorProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProjectUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProjectUITests/Pods-SeniorProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -403,6 +407,7 @@
 		63FF40B7222B50BB00F5861E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D1A4338A22417CC000FDCC0B /* Sidebar */,
 				631DE4C8224151D000A78677 /* UserHomepage */,
 				630D8C70223F6871003CF5F5 /* Post */,
 				63611301223EE2DA003A32EC /* OwnerHomepage */,
@@ -489,6 +494,15 @@
 				D146959821FBCBD600C09E93 /* Info.plist */,
 			);
 			path = SeniorProjectUITests;
+			sourceTree = "<group>";
+		};
+		D1A4338A22417CC000FDCC0B /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				D1A4338B22417CFA00FDCC0B /* SidebarProfileTableViewCell.swift */,
+				D1A4338D22417D6600FDCC0B /* SidebarTableViewCell.swift */,
+			);
+			path = Sidebar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -711,6 +725,7 @@
 				D1513995223F48C800654311 /* POIAnnotation.swift in Sources */,
 				631DE4CE22415C8A00A78677 /* UserPostTitleAddressTableViewCell.swift in Sources */,
 				630D8C78223F6976003CF5F5 /* OwnerPostMapViewTableViewCell.swift in Sources */,
+				D1A4338E22417D6600FDCC0B /* SidebarTableViewCell.swift in Sources */,
 				631DE4BC22405BF300A78677 /* MKMapViewExtension.swift in Sources */,
 				631DE4D022415DE300A78677 /* ReservationDetailModel.swift in Sources */,
 				630D8C74223F68E7003CF5F5 /* OwnerPostTitleAddressTableViewCell.swift in Sources */,
@@ -745,6 +760,7 @@
 				6388B03322162672001E6DBA /* LoginViewController.swift in Sources */,
 				634F397022385C01000766D5 /* PostRateViewController.swift in Sources */,
 				63FF40A32229201700F5861E /* PostLocationViewController.swift in Sources */,
+				D1A4338C22417CFA00FDCC0B /* SidebarProfileTableViewCell.swift in Sources */,
 				63A166E4220CECDD0067BD89 /* LocalStorageModel.swift in Sources */,
 				63611303223EE302003A32EC /* PostListEntryTableViewCell.swift in Sources */,
 				631DE4BF22407A0200A78677 /* EditTimeSlotListTableViewController.swift in Sources */,
