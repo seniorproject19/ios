@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 class UserSelectTimeViewController: UIViewController {
     
@@ -38,16 +39,38 @@ class UserSelectTimeViewController: UIViewController {
             destinationModel.requestedEndHour = endTimeTextField.text
             destination.postList = destinationModel
             destination.currentUser = currentUser
+        } else if segue.identifier == "showSidebarFromDateTimePickerSegue" {
+            let destination = segue.destination as! UISideMenuNavigationController
+            let destinationView = destination.viewControllers.first as! UserSidebarTableViewController
+            destinationView.currentUser = currentUser
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if currentUser == nil {
+            currentUser = CurrentUserModel()
+            currentUser?.loadUser {
+                (succeeded) in
+                if !succeeded {
+                    self.updateUIAsync {
+                        let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! FirstPageViewController
+                        self.navigationController?.pushViewController(destination, animated: true)
+                    }
+                } else {
+                    self.setup()
+                }
+            }
+        } else {
+            setup()
+        }
+        
+    }
+    
+    func setup() {
         timeFormatter.dateFormat = "h:mm a"
         dateFormatter.dateFormat = "MM/dd/yyyy"
-        
-
-
         
         let currentDate = Date()
         var dateComponents = DateComponents()
@@ -71,9 +94,6 @@ class UserSelectTimeViewController: UIViewController {
         startTimeTextField.inputView = startTimePicker
         endTimeTextField.inputView = endTimePicker
         selectDayTextField.inputView = datePicker
-        
-        
-        // Do any additional setup after loading the view.
     }
     
     @objc func startTimePickerChanged(_ sender: UIDatePicker){
