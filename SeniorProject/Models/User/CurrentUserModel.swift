@@ -14,6 +14,7 @@ class CurrentUserModel: ServerAccessModel, LocalStorageModel {
     
     enum LoginResult {
         case success
+        case emptyFields
         case wrongUsername
         case wrongPassword
         case serverError
@@ -56,7 +57,10 @@ class CurrentUserModel: ServerAccessModel, LocalStorageModel {
         self.user = nil;
     }
     
-    func login(username: String, password: String, onCompletion callback: @escaping (LoginResult) -> Void) {
+    func login(username: String?, password: String?, onCompletion callback: @escaping (LoginResult) -> Void) {
+        if username == nil || password == nil {
+            callback(.emptyFields)
+        }
         let data = JSON(["username": username, "pwd": password])
         let apiURLString = Configurations.AUTH_ROOT + Configurations.AUTH_URL.login.rawValue
         sendPostRequest(toURL: apiURLString, withData: data.rawString(String.Encoding.utf8, options: [])!) {

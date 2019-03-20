@@ -8,30 +8,14 @@
 
 import UIKit
 import TLPhotoPicker
-class EditPostDetailViewController: UIViewController {
+class EditPostDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var photoCollectionView: UICollectionView!
-    @IBOutlet weak var descriptionTextField: UITextView!
-    @IBOutlet weak var titleTextField: UITextField!
     var model: PostModel? = nil
+    var photoCollectionView: UICollectionView? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        addressLabel.text = model!.address
-        titleTextField.text = model!.title
-        descriptionTextField.text = model!.description
-        
-
         // Do any additional setup after loading the view.
-    }
-    
-    @IBAction func nextClicked(_ sender: Any) {
-        model?.title = titleTextField.text
-        model?.description = descriptionTextField.text
-        model?.post {
-            // TODO: error handling
-        }
-        performSegue(withIdentifier: "showEditTimeSlotsSegue", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -66,6 +50,75 @@ class EditPostDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 2
+        } else if section == 1 {
+            return 1
+        }
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "editPostInputTableViewCell", for: indexPath) as! EditPostInputTableViewCell
+                cell.inputLabel.text = "Title"
+                cell.inputTextField.text = model!.title
+                cell.inputTextField.autocorrectionType = .no
+                cell.finishEditingHandler = updateTitle
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "editPostInputTableViewCell", for: indexPath) as! EditPostInputTableViewCell
+                cell.inputLabel.text = "Description"
+                cell.inputTextField.text = model!.description
+                cell.inputTextField.autocorrectionType = .no
+                cell.finishEditingHandler = updateDescription
+                return cell
+            }
+        } else if indexPath.section == 1 {
+             let cell = tableView.dequeueReusableCell(withIdentifier: "editPostPhotoCollectionTableViewCell", for: indexPath) as! EditPostPhotoCollectionTableViewCell
+             photoCollectionView = cell.photoCollectionView
+             cell.setCollectionViewDataSourceDelegate(self)
+             return cell
+        } else {
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "editPostTableViewCell", for: indexPath) as! EditPostTableViewCell
+                cell.buttonLabel.text = "Previous"
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "editPostTableViewCell", for: indexPath) as! EditPostTableViewCell
+                cell.buttonLabel.text = "Next"
+                return cell
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 2  {
+            if indexPath.row == 1 {
+                self.view.endEditing(true)
+                performSegue(withIdentifier: "showEditTimeSlotsSegue", sender: self)
+            }
+            else {
+                performSegue(withIdentifier: "unwindToOwnerHomepageFromEditPostViewControllerWithSegue", sender: self)
+            }
+        }
+    }
+    
+    func updateTitle(_ title: String?) {
+        self.model!.title = title
+    }
+    
+    func updateDescription(_ description: String?) {
+        self.model!.description = description
+    }
+    
 
 }
 
@@ -76,7 +129,7 @@ extension EditPostDetailViewController: TLPhotosPickerViewControllerDelegate {
             if let model = model {
                 model.addImages(image: asset.fullResolutionImage!)
             }
-            photoCollectionView.reloadData()
+            photoCollectionView!.reloadData()
         }
     }
     

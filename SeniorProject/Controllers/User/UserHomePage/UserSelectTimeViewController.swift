@@ -46,9 +46,6 @@ class UserSelectTimeViewController: UIViewController {
         timeFormatter.dateFormat = "h:mm a"
         dateFormatter.dateFormat = "MM/dd/yyyy"
         
-
-
-        
         let currentDate = Date()
         var dateComponents = DateComponents()
         let calendar = Calendar.init(identifier: .gregorian)
