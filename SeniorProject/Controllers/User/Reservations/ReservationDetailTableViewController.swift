@@ -1,16 +1,16 @@
 //
-//  OwnerPostTableViewController.swift
+//  ReservationDetailTableViewController.swift
 //  SeniorProject
 //
-//  Created by Zuoyuan Huang on 3/17/19.
+//  Created by Zuoyuan Huang on 3/20/19.
 //  Copyright © 2019 Jiaqing Mo. All rights reserved.
 //
 
 import UIKit
 
-class UserPostTableViewController: UITableViewController {
-    
-    var model: PostModel? = nil
+class ReservationDetailTableViewController: UITableViewController {
+
+    var pastReservationModel: PastReservationModel? = nil
     var reservationModel: ReservationDetailModel? = nil
     var currentUser: CurrentUserModel? = nil
     var cellPageControl: UIPageControl? = nil
@@ -25,6 +25,10 @@ class UserPostTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    @IBAction func doneButtonClicked(_ sender: Any) {
+        performSegue(withIdentifier: "unwindToUserReservationsSegue", sender: self)
+    }
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -34,6 +38,9 @@ class UserPostTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if pastReservationModel != nil {
+            return 3
+        }
         return 4
     }
     
@@ -42,47 +49,46 @@ class UserPostTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "userPostMapViewCell", for: indexPath) as! OwnerPostMapViewTableViewCell
             return cell
         } else if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "userPostTitleAddressCell", for: indexPath) as! UserPostTitleAddressTableViewCell
-            cell.titleLabel.text = model?.title
-            cell.addressLabel.text = model?.address
-            cell.selectedTimeLabel.text = reservationModel!.requestedTimeDescription
-            cell.reserveButton.setTitle("Reserve - $" + String(reservationModel!.totalRate!), for: .normal)
-            cell.confirmButton.setTitle("Confirm - $" + String(reservationModel!.totalRate!), for: .normal)
-            cell.confirmHandler = handleConfirmClicked
+            let cell = tableView.dequeueReusableCell(withIdentifier: "userPostTitleAddressCell", for: indexPath) as! ReservationDetailTitleAddressTableViewCell
+            if pastReservationModel != nil {
+                cell.reservationStatus.text = "Completed"
+                cell.reservationStatus.textColor = UIColor.orange
+                cell.titleLabel.text = pastReservationModel!.title
+                cell.addressLabel.text = pastReservationModel!.address
+                cell.plateLabel.text = pastReservationModel!.plate
+                cell.timeLabel.text = pastReservationModel!.requestedTimeDescription
+            } else {
+                cell.titleLabel.text = reservationModel!.title
+                cell.addressLabel.text = reservationModel!.address
+                cell.plateLabel.text = reservationModel!.plate
+                cell.timeLabel.text = reservationModel!.requestedTimeDescription
+            }
             return cell
         } else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "userPostDescriptionCell", for: indexPath) as! OwnerPostDescriptionTableViewCell
-            cell.descriptionContentLabel.text = model?.description
+            if pastReservationModel != nil {
+                cell.descriptionContentLabel.text = pastReservationModel?.description
+            } else {
+                cell.descriptionContentLabel.text = reservationModel?.postModel?.description
+            }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "userPostImageScrollViewCell", for: indexPath) as! OwnerPostImageScrollViewTableViewCell
             let imageViews = loadScrollImageViews()
             setupImageScrollView(scrollView: cell.scrollView, imageViews: imageViews)
             self.cellPageControl = cell.pageControl
-            cell.pageControl.numberOfPages = model!.imagePaths!.count
+            cell.pageControl.numberOfPages = reservationModel!.postModel!.imagePaths!.count
             cell.pageControl.currentPage = 0
             return cell
         }
     }
     
-    func handleConfirmClicked() {
-        reservationModel?.post {
-            (result) in
-            self.updateUIAsync {
-                let destination = self.storyboard?.instantiateViewController(withIdentifier: "userReservationsTableView") as! UserReservationsTableViewController
-                destination.currentUser = self.currentUser
-                destination.reservationList = ReservationListModel()
-                self.navigationController?.pushViewController(destination, animated: true)
-            }
-        }
-    }
-    
     func loadScrollImageViews() -> [PostImageScrollViewImageView] {
         var imageViews = [PostImageScrollViewImageView]()
-        for path in model!.imagePaths! {
+        for path in reservationModel!.postModel!.imagePaths! {
             let view = PostImageScrollViewImageView()
             view.imageView.image = UIImage(color: .lightGray)
-            model?.getImageFromServer(at: path) {
+            reservationModel!.postModel!.getImageFromServer(at: path) {
                 (image) in
                 self.updateUIAsync {
                     view.imageView.image = image
@@ -161,5 +167,5 @@ class UserPostTableViewController: UITableViewController {
      // Pass the selected object to the new view controller.
      }
      */
-    
+
 }

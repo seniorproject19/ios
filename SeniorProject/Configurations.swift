@@ -30,6 +30,8 @@ class Configurations: NSObject {
         case getPostImagePathsList = "/post/image/list/"
         case getPostListInRegion = "/post/get_list/region"
         case newRecord = "/record/new"
+        case getUserRecordList = "/record/user/list"
+        case getOwnerRecordList = "/record/owner/list"
     }
 
 }

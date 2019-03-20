@@ -13,6 +13,10 @@ protocol ServerAccessModel {
     
     func sendGetRequest(toURL url: String, onCompletion completion: @escaping (Int, Data?) -> Void)
     func sendPostRequest(toURL url: String, withData data: String?, onCompletion completion: @escaping (Int, Data?) -> Void)
+    func uploadImage(toURL url: String, image: UIImage, filename: String, forPost postId: String)
+    func downloadImage(fromURL url: String, onCompletion callback: @escaping (UIImage) -> Void)
+    func convertDateStringToMySQLDateString(dateString: String) -> String
+    func convertMySQLDateStringToDateString(mySQLDateString: String) -> String
 
 }
 
@@ -84,6 +88,15 @@ extension ServerAccessModel {
         dateFormatter.dateFormat = "MM/dd/yyyy"
         let date = dateFormatter.date(from: dateString)
         dateFormatter.dateFormat = "yyyy/MM/dd"
+        return dateFormatter.string(from: date!)
+    }
+    
+    func convertMySQLDateStringToDateString(mySQLDateString: String) -> String {
+        let dateString = String(mySQLDateString.split(separator: "T")[0])
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: dateString)
+        dateFormatter.dateFormat = "MM/dd/yyyy"
         return dateFormatter.string(from: date!)
     }
     

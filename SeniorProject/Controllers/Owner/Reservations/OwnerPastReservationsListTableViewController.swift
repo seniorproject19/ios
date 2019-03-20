@@ -1,16 +1,14 @@
 //
-//  OwnerSidebarTableViewController.swift
+//  OwnerPastReservationsListTableViewController.swift
 //  SeniorProject
 //
-//  Created by Zuoyuan Huang on 3/17/19.
+//  Created by Zuoyuan Huang on 3/20/19.
 //  Copyright © 2019 Jiaqing Mo. All rights reserved.
 //
 
 import UIKit
 
-class OwnerSidebarTableViewController: UITableViewController {
-    
-    var currentUser: CurrentUserModel? = nil
+class OwnerPastReservationsListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,60 +19,28 @@ class OwnerSidebarTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 0
     }
 
-    
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "sideBarProfileCell", for: indexPath) as! SidebarProfileTableViewCell
-            cell.nameLabel.text = currentUser!.user?.username
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "sideBarCell", for: indexPath) as! SidebarTableViewCell
-            if indexPath.row == 1 {
-                cell.sidebarTextLabel.text = "Current Reservations"
-            } else if indexPath.row == 2 {
-                cell.sidebarTextLabel.text = "Past Reservations"
-            } else {
-                cell.sidebarTextLabel.text = "Log out"
-            }
-            return cell
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
+        // Configure the cell...
+
+        return cell
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 1 {
-            let destination = storyboard?.instantiateViewController(withIdentifier: "ownerCurrentReservationsListViewController") as! OwnerCurrentReservationsListTableViewController
-            navigationController?.pushViewController(destination, animated: true)
-        }
-        else if indexPath.row == 2 {
-            let destination = storyboard?.instantiateViewController(withIdentifier: "ownerPastReservationsListViewController") as! OwnerPastReservationsListTableViewController
-            navigationController?.pushViewController(destination, animated: true)
-        }
-    }
+    */
 
     /*
     // Override to support conditional editing of the table view.

@@ -1,5 +1,5 @@
 //
-//  ReservationDetailModel.swift
+//  ReservationModel.swift
 //  SeniorProject
 //
 //  Created by Zuoyuan Huang on 3/19/19.
@@ -8,13 +8,18 @@
 
 import UIKit
 
-class ReservationDetailModel: ServerAccessModel, BaseModel {
+class ReservationModel: BaseModel {
     
-    var postModel: PostModel? = nil
     var totalRate: Double? = nil
     var requestedDateValue: String? = nil
     var requestedStartHourValue: Double? = nil
     var requestedEndHourValue: Double? = nil
+    var plate: String?
+    var title: String?
+    var description: String?
+    var address: String?
+    var latitude: Double?
+    var longitude: Double?
     
     var requestedDate: String?  {
         get {
@@ -55,37 +60,6 @@ class ReservationDetailModel: ServerAccessModel, BaseModel {
                 return ""
             }
             return requestedDate! + " " + requestedStartHour! + " - " + requestedEndHour!
-        }
-    }
-    
-    enum PostReservationResult {
-        case success
-        case availabilityAltered
-        case serverError
-    }
-    
-    func post(onCompletion callback: @escaping (PostReservationResult) -> Void) {
-        let formattedStartDate = convertDateStringToMySQLDateString(dateString: requestedDate!)
-        let data = JSON([
-            "pid": postModel!.pid!,
-            "start_date": formattedStartDate,
-            "start_time": requestedStartHourValue!,
-            "end_time": requestedEndHourValue!,
-            "plate": "CA 7YVD694",
-            "total_charges": totalRate!
-        ])
-        let apiURLString = Configurations.API_ROOT + Configurations.API_URL.newRecord.rawValue
-        sendPostRequest(toURL: apiURLString, withData: data.rawString(String.Encoding.utf8, options: [])!) {
-            (statusCode, responseData) in
-            if (statusCode != 200) {
-                if (statusCode == 409) {
-                    callback(.availabilityAltered)
-                } else {
-                    callback(.serverError)
-                }
-            } else {
-                callback(.success)
-            }
         }
     }
 

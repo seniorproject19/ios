@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import SideMenu
 
 protocol ChangeUserLocation {
     
@@ -59,14 +60,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
         
         locationSearchTable.mapView = mapView
         locationSearchTable.ChangeUserLocationDelegate = self
+        
+        centerMapInInitialCoordinates()
+
         // Do any additional setup after loading the view.
         
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        centerMapInInitialCoordinates()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -94,16 +93,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
             }
         }
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "userShowSidebarSegue" {
+            let destination = segue.destination as! UISideMenuNavigationController
+            let destinationView = destination.viewControllers.first as! UserSidebarTableViewController
+            destinationView.currentUser = currentUser
+        }
+    }
     
     func centerMapInInitialCoordinates() {
         // fixed user location at latitude: -77.01639, longitude: 38.88833
@@ -181,6 +178,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
                 self.updateUIAsync {
                     let destination = self.storyboard?.instantiateViewController(withIdentifier: "userPostDetailTableView") as! UserPostTableViewController
                     destination.model = postModel
+                    destination.currentUser = self.currentUser
                     destination.reservationModel = reservationModel
                     self.navigationController?.pushViewController(destination, animated: true)
                 }
