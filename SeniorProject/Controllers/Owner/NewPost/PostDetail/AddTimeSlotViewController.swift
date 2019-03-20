@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddTimeSlotViewController: UIViewController , UIPickerViewDataSource, UIPickerViewDelegate{
+class AddTimeSlotViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource{
     
     let weekDayPickerOptions = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     
@@ -28,41 +28,63 @@ class AddTimeSlotViewController: UIViewController , UIPickerViewDataSource, UIPi
         return picker
     }()
     */
-    let datePicker = UIDatePicker()
+    //let datePicker = UIDatePicker()
     let endTimePicker = UIDatePicker()
-    let dateFormatter = DateFormatter()
+    let startTimePicker = UIDatePicker()
+    let timeFormatter = DateFormatter()
+    //let dateFormatter = DateFormatter()
     
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        timeFormatter.dateFormat = "h:mm a"
+        //dateFormatter.dateFormat = "MM/dd/yyyy"
+        
         let dayPicker = UIPickerView()
         dayPicker.delegate = self
         selectDayTextField.inputView = dayPicker
-        
-        datePicker.datePickerMode = .time
-        datePicker.minuteInterval = 30
+        /*
+        let currentDate = Date()
+        var dateComponents = DateComponents()
+        let calendar = Calendar.init(identifier: .gregorian)
+        dateComponents.day = 5
+        let maxDate = calendar.date(byAdding: dateComponents, to: currentDate)
+       
+        datePicker.datePickerMode = .date
+        datePicker.minimumDate = currentDate
+        datePicker.maximumDate = maxDate
         datePicker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
+       */
+        startTimePicker.datePickerMode = .time
+        startTimePicker.minuteInterval = 30
+        startTimePicker.addTarget(self, action: #selector(startTimePickerChanged(_:)), for: .valueChanged)
 
         endTimePicker.datePickerMode = .time
         endTimePicker.minuteInterval = 30
         endTimePicker.addTarget(self, action: #selector(endTimePickerChanged(_:)), for: .valueChanged)
         
-        startTimeTextField.inputView = datePicker
+        startTimeTextField.inputView = startTimePicker
         endTimeTextField.inputView = endTimePicker
-        dateFormatter.dateFormat = "h:mm a"
+       // selectDayTextField.inputView = datePicker
+
 
         // Do any additional setup after loading the view.
     }
 
-    @objc func datePickerChanged(_ sender: UIDatePicker){
-        startTimeTextField.text = dateFormatter.string(from: sender.date)
+    @objc func startTimePickerChanged(_ sender: UIDatePicker){
+        startTimeTextField.text = timeFormatter.string(from: sender.date)
     }
     
     @objc func endTimePickerChanged(_ sender: UIDatePicker){
-        endTimeTextField.text = dateFormatter.string(from: sender.date)
+        endTimeTextField.text = timeFormatter.string(from: sender.date)
     }
-    
+    /*
+    @objc func datePickerChanged(_ sender: UIDatePicker){
+        selectDayTextField.text = dateFormatter.string(from: sender.date)
+    }
+    */
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

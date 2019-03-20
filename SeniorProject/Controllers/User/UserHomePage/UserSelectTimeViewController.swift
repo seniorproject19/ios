@@ -8,119 +8,27 @@
 
 import UIKit
 
-class UserSelectTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class UserSelectTimeViewController: UIViewController {
     
     var currentUser: CurrentUserModel? = nil
-    
-    var weekDayPickerOptions: [String] {
-        get {
-            var result = ["Today"]
-            for i in 1...6 {
-                result.append(getNextDate(offset: i))
-            }
-            return result
-        }
-    }
+    let datePicker = UIDatePicker()
+    let endTimePicker = UIDatePicker()
+    let startTimePicker = UIDatePicker()
+    let timeFormatter = DateFormatter()
+    let dateFormatter = DateFormatter()
+
     
     @IBOutlet weak var selectDayTextField: UITextField!
     @IBOutlet weak var startTimeTextField: UITextField!
     @IBOutlet weak var endTimeTextField: UITextField!
-    @IBOutlet weak var weekdayPicker: UIPickerView!
-    @IBOutlet weak var timePicker: UIDatePicker!
+  
     
     @IBAction func NextButtonClicked(_ sender: Any) {
         print(selectDayTextField.text ?? "N/A"," ",startTimeTextField.text ?? "N/A" , " ", endTimeTextField.text ?? "N/A")
         print("Hi \n")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if currentUser == nil {
-            currentUser = CurrentUserModel()
-            currentUser?.loadUser {
-                (succeeded) in
-                if !succeeded {
-                    self.updateUIAsync {
-                        let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! FirstPageViewController
-                        self.navigationController?.pushViewController(destination, animated: true)
-                    }
-                } else {
-                    self.updateUIAsync {
-                        self.setup()
-                    }
-                }
-            }
-        } else {
-            setup()
-        }
-
-        // Do any additional setup after loading the view.
-    }
-    
-    func setup() {
-        timePicker.tag = 5
-        weekdayPicker.tag = 6
-        selectDayTextField.tag = 7
-        startTimeTextField.tag = 8
-        endTimeTextField.tag = 9
-        timePicker.isHidden = true
-        weekdayPicker.isHidden = true
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return weekDayPickerOptions.count
-    }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return weekDayPickerOptions[row]
-    }
-    
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if (textField.tag == 7){
-            timePicker.isHidden = true
-            weekdayPicker.isHidden = false
-        } else {
-            timePicker.isHidden = false
-            weekdayPicker.isHidden = true
-        }
-        return true
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectDayTextField.text = weekDayPickerOptions[row]
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if (textField.tag == 8) {
-            
-            let dateFormatr = DateFormatter()
-            dateFormatr.dateFormat = "h:mm a"
-            let strDate = dateFormatr.string(from: (timePicker?.date)!)
-            textField.text = strDate
-            
-        } else if (textField.tag == 9) {
-            let dateFormatr = DateFormatter()
-            dateFormatr.dateFormat = "h:mm a"
-            let strDate = dateFormatr.string(from: (timePicker?.date)!)
-            textField.text = strDate
-        }
-        return true
-    }
-    
+ 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showUserMapViewSegue" {
             let destination = segue.destination as! MapViewController
@@ -131,5 +39,55 @@ class UserSelectTimeViewController: UIViewController, UIPickerViewDataSource, UI
             destination.postList = destinationModel
             destination.currentUser = currentUser
         }
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        timeFormatter.dateFormat = "h:mm a"
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        
+
+
+        
+        let currentDate = Date()
+        var dateComponents = DateComponents()
+        let calendar = Calendar.init(identifier: .gregorian)
+        dateComponents.day = 5
+        let maxDate = calendar.date(byAdding: dateComponents, to: currentDate)
+        
+        datePicker.datePickerMode = .date
+        datePicker.minimumDate = currentDate
+        datePicker.maximumDate = maxDate
+        datePicker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
+        
+        startTimePicker.datePickerMode = .time
+        startTimePicker.minuteInterval = 30
+        startTimePicker.addTarget(self, action: #selector(startTimePickerChanged(_:)), for: .valueChanged)
+        
+        endTimePicker.datePickerMode = .time
+        endTimePicker.minuteInterval = 30
+        endTimePicker.addTarget(self, action: #selector(endTimePickerChanged(_:)), for: .valueChanged)
+        
+        startTimeTextField.inputView = startTimePicker
+        endTimeTextField.inputView = endTimePicker
+        selectDayTextField.inputView = datePicker
+        
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    @objc func startTimePickerChanged(_ sender: UIDatePicker){
+        startTimeTextField.text = timeFormatter.string(from: sender.date)
+    }
+    
+    @objc func endTimePickerChanged(_ sender: UIDatePicker){
+        endTimeTextField.text = timeFormatter.string(from: sender.date)
+    }
+    
+    @objc func datePickerChanged(_ sender: UIDatePicker){
+        selectDayTextField.text = dateFormatter.string(from: sender.date)
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
