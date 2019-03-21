@@ -16,6 +16,8 @@ class OwnerPostDescriptionTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         descriptionContentLabel.lineBreakMode = .byWordWrapping
+        self.selectionStyle = UITableViewCell.SelectionStyle.none
+
         // Initialization code
     }
 

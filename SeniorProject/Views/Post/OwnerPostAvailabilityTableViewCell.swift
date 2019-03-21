@@ -16,6 +16,8 @@ class OwnerPostAvailabilityTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.availabilityContentLabel.lineBreakMode = .byWordWrapping
+        self.selectionStyle = UITableViewCell.SelectionStyle.none
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

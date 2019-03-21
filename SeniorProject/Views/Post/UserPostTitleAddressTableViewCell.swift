@@ -22,6 +22,8 @@ class UserPostTitleAddressTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         confirmButton.isHidden = true
+        self.selectionStyle = UITableViewCell.SelectionStyle.none
+
         // Initialization code
     }
 

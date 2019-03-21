@@ -92,12 +92,14 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     cell.inputTextField.text = defaultUsername
                     self.username = defaultUsername
                 }
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.inputTextField.autocorrectionType = .no
                 cell.finishEditingHandler = updateUsername
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "loginInputCell", for: indexPath) as! LoginInputTableViewCell
                 cell.inputLabel.text = "Password"
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.inputTextField.isSecureTextEntry = true
                 cell.finishEditingHandler = updatePassword
                 return cell
