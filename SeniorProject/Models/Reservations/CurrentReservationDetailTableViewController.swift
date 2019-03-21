@@ -1,5 +1,5 @@
 //
-//  OwnerPastReservationsListTableViewController.swift
+//  CurrentReservationDetailTableViewController.swift
 //  SeniorProject
 //
 //  Created by Zuoyuan Huang on 3/20/19.
@@ -8,19 +8,12 @@
 
 import UIKit
 
-class OwnerPastReservationsListTableViewController: UITableViewController {
+class CurrentReservationDetailTableViewController: UITableViewController {
     
-    var recordsList = ReservationListModel()
+    var postList: [ReservationDetailModel]? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        recordsList.loadOwnerData {
-            (result) in
-            self.updateUIAsync {
-                self.tableView.reloadData()
-            }
-        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -38,23 +31,19 @@ class OwnerPastReservationsListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if recordsList.pastReservations == nil {
+        if postList == nil {
             return 0
         }
-        return recordsList.pastReservations!.count
+        return postList!.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = recordsList.pastReservations![indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ownerPastReservationsCell", for: indexPath) as! OwnerPastReservationsTableViewCell
-        
-        cell.titleLabel.text = model.title
-        cell.timeLabel.text = model.requestedTimeDescription
-        cell.plateLabel.text = model.plate
-        cell.addressLabel.text = model.address
-        cell.priceLabel.text = "$" + String(model.totalRate!)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "currentReservationsDetailViewCell", for: indexPath) as! CurrentReservationsDetailViewTableViewCell
 
         // Configure the cell...
+        cell.timeTextLabel.text = postList![indexPath.row].requestedTimeDescription
+        cell.plateLabel.text = postList![indexPath.row].plate
+        cell.rateLabel.text = "$" + String(postList![indexPath.row].totalRate!)
 
         return cell
     }

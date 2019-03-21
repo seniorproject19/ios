@@ -37,6 +37,10 @@
 		631DE4E8224225EC00A78677 /* ReservationDetailTitleAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631DE4E7224225EC00A78677 /* ReservationDetailTitleAddressTableViewCell.swift */; };
 		631DE4EB2242DB7400A78677 /* OwnerPastReservationsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631DE4EA2242DB7400A78677 /* OwnerPastReservationsListTableViewController.swift */; };
 		631DE4ED2242DC9E00A78677 /* OwnerCurrentReservationsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631DE4EC2242DC9E00A78677 /* OwnerCurrentReservationsListTableViewController.swift */; };
+		631DE4EF2242EA1C00A78677 /* OwnerCurrentReservationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631DE4EE2242EA1C00A78677 /* OwnerCurrentReservationsTableViewCell.swift */; };
+		631DE4F12242FED500A78677 /* CurrentReservationDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631DE4F02242FED500A78677 /* CurrentReservationDetailTableViewController.swift */; };
+		631DE4F3224300F800A78677 /* CurrentReservationsDetailViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631DE4F2224300F800A78677 /* CurrentReservationsDetailViewTableViewCell.swift */; };
+		631DE4F52243071700A78677 /* OwnerPastReservationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631DE4F42243071700A78677 /* OwnerPastReservationsTableViewCell.swift */; };
 		634F396822358DE0000766D5 /* TimeSlotListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F396722358DE0000766D5 /* TimeSlotListTableViewController.swift */; };
 		634F396A22358E22000766D5 /* TimeAvailabilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F396922358E22000766D5 /* TimeAvailabilityModel.swift */; };
 		634F397022385C01000766D5 /* PostRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F396F22385C01000766D5 /* PostRateViewController.swift */; };
@@ -149,6 +153,10 @@
 		631DE4E7224225EC00A78677 /* ReservationDetailTitleAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationDetailTitleAddressTableViewCell.swift; sourceTree = "<group>"; };
 		631DE4EA2242DB7400A78677 /* OwnerPastReservationsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerPastReservationsListTableViewController.swift; sourceTree = "<group>"; };
 		631DE4EC2242DC9E00A78677 /* OwnerCurrentReservationsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerCurrentReservationsListTableViewController.swift; sourceTree = "<group>"; };
+		631DE4EE2242EA1C00A78677 /* OwnerCurrentReservationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerCurrentReservationsTableViewCell.swift; sourceTree = "<group>"; };
+		631DE4F02242FED500A78677 /* CurrentReservationDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentReservationDetailTableViewController.swift; sourceTree = "<group>"; };
+		631DE4F2224300F800A78677 /* CurrentReservationsDetailViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentReservationsDetailViewTableViewCell.swift; sourceTree = "<group>"; };
+		631DE4F42243071700A78677 /* OwnerPastReservationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerPastReservationsTableViewCell.swift; sourceTree = "<group>"; };
 		634F396722358DE0000766D5 /* TimeSlotListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSlotListTableViewController.swift; sourceTree = "<group>"; };
 		634F396922358E22000766D5 /* TimeAvailabilityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAvailabilityModel.swift; sourceTree = "<group>"; };
 		634F396F22385C01000766D5 /* PostRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRateViewController.swift; sourceTree = "<group>"; };
@@ -395,6 +403,7 @@
 				631DE4DA2241F97900A78677 /* ReservationModel.swift */,
 				631DE4DC2241F9CB00A78677 /* PastReservationModel.swift */,
 				631DE4DE2241FA0400A78677 /* ReservationListModel.swift */,
+				631DE4F02242FED500A78677 /* CurrentReservationDetailTableViewController.swift */,
 			);
 			path = Reservations;
 			sourceTree = "<group>";
@@ -405,6 +414,9 @@
 				631DE4E12242142D00A78677 /* UserReservationTableViewCell.swift */,
 				631DE4E32242162700A78677 /* UserReservationTitleTableViewCell.swift */,
 				631DE4E7224225EC00A78677 /* ReservationDetailTitleAddressTableViewCell.swift */,
+				631DE4EE2242EA1C00A78677 /* OwnerCurrentReservationsTableViewCell.swift */,
+				631DE4F2224300F800A78677 /* CurrentReservationsDetailViewTableViewCell.swift */,
+				631DE4F42243071700A78677 /* OwnerPastReservationsTableViewCell.swift */,
 			);
 			path = Reservation;
 			sourceTree = "<group>";
@@ -859,6 +871,7 @@
 				D1CCCC7922420E5700F97DFD /* EditPostInputTableViewCell.swift in Sources */,
 				D1CCCC7D2242C00700F97DFD /* EditPostPhotoCollectionTableViewCell.swift in Sources */,
 				631DE4BC22405BF300A78677 /* MKMapViewExtension.swift in Sources */,
+				631DE4F3224300F800A78677 /* CurrentReservationsDetailViewTableViewCell.swift in Sources */,
 				631DE4D022415DE300A78677 /* ReservationDetailModel.swift in Sources */,
 				631DE4E42242162700A78677 /* UserReservationTitleTableViewCell.swift in Sources */,
 				630D8C74223F68E7003CF5F5 /* OwnerPostTitleAddressTableViewCell.swift in Sources */,
@@ -892,12 +905,14 @@
 				D1CCCC712241EFC300F97DFD /* OwnerSignUpTableViewCell.swift in Sources */,
 				631DE4C122407A0C00A78677 /* EditPostDetailViewController.swift in Sources */,
 				636112FC223ED8F6003A32EC /* PostListEntryModel.swift in Sources */,
+				631DE4F52243071700A78677 /* OwnerPastReservationsTableViewCell.swift in Sources */,
 				636112FE223EDB39003A32EC /* PostListModel.swift in Sources */,
 				630D8C7E223F9A57003CF5F5 /* UIImageExtension.swift in Sources */,
 				63FF40B022292AB200F5861E /* UserRegisterModel.swift in Sources */,
 				63611305223EF7DE003A32EC /* UserRegistrationViewController.swift in Sources */,
 				630D8C76223F6917003CF5F5 /* OwnerPostDescriptionTableViewCell.swift in Sources */,
 				D162B8B22242F91700F49490 /* EditTimeSlotTableViewCell.swift in Sources */,
+				631DE4EF2242EA1C00A78677 /* OwnerCurrentReservationsTableViewCell.swift in Sources */,
 				631DE4C322407A2800A78677 /* AddTimeSlotViewController.swift in Sources */,
 				D1365205224086CD00B9F19A /* EditAddTimeSlotViewController.swift in Sources */,
 				D146957721FBCBD400C09E93 /* AppDelegate.swift in Sources */,
@@ -914,6 +929,7 @@
 				630D8C7C223F973C003CF5F5 /* PostImageScrollViewImageView.swift in Sources */,
 				63FF40BB222B578200F5861E /* PostModel.swift in Sources */,
 				63FF40AC2229210700F5861E /* MapViewController.swift in Sources */,
+				631DE4F12242FED500A78677 /* CurrentReservationDetailTableViewController.swift in Sources */,
 				D136520722408FAD00B9F19A /* EditPostRateViewController.swift in Sources */,
 				631DE4EB2242DB7400A78677 /* OwnerPastReservationsListTableViewController.swift in Sources */,
 				D162B8BC2243293C00F49490 /* PostTableViewCell.swift in Sources */,

@@ -85,7 +85,7 @@ class PostListModel: ServerAccessModel, BaseModel {
             "top_left_lat": topLeft.latitude,
             "bottom_right_long": bottomRight.longitude,
             "bottom_right_lat": bottomRight.latitude,
-            "date": requestedDate!,
+            "date": convertDateStringToMySQLDateString(dateString: requestedDate!),
             "weekday": getDayOfWeek(requestedDate!).prefix(3),
             "start": requestedStartHourValue!,
             "end": requestedEndHourValue!
