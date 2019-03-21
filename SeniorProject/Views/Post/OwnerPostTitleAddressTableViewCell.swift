@@ -18,6 +18,7 @@ class OwnerPostTitleAddressTableViewCell: UITableViewCell {
         super.awakeFromNib()
         titleLabel.lineBreakMode = .byWordWrapping
         addressLabel.lineBreakMode = .byWordWrapping
+        self.selectionStyle = UITableViewCell.SelectionStyle.none
         // Initialization code
     }
 

@@ -18,6 +18,7 @@ class UserSignUpInputTableViewCell: UITableViewCell, UITextFieldDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         inputTextField.delegate = self
+        self.selectionStyle = UITableViewCell.SelectionStyle.none
         // Initialization code
     }
 

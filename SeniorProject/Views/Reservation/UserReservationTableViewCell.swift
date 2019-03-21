@@ -33,6 +33,8 @@ class UserReservationTableViewCell: UITableViewCell, MKMapViewDelegate {
         timeRateLabel.lineBreakMode = .byWordWrapping
         timeRateLabel.lineBreakMode = .byWordWrapping
         addressLabel.lineBreakMode = .byWordWrapping
+        self.selectionStyle = UITableViewCell.SelectionStyle.none
+
     }
 
     func placeAnnotation() {
