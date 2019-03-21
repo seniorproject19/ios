@@ -9,10 +9,12 @@
 import UIKit
 
 class EditPostInputTableViewCell: UITableViewCell, UITextFieldDelegate {
+    
     var finishEditingHandler: ((String?) -> Void)? = nil
     
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var inputLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,5 +31,4 @@ class EditPostInputTableViewCell: UITableViewCell, UITextFieldDelegate {
         finishEditingHandler!(textField.text)
     }
     
-
 }

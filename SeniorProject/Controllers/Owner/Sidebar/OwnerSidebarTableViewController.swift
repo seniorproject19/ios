@@ -50,6 +50,7 @@ class OwnerSidebarTableViewController: UITableViewController {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sideBarProfileCell", for: indexPath) as! SidebarProfileTableViewCell
             cell.nameLabel.text = currentUser!.user?.username
+            cell.balanceLabel.text = "Balance: $" + String(currentUser!.user!.balance)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sideBarCell", for: indexPath) as! SidebarTableViewCell

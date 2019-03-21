@@ -106,6 +106,14 @@ class PostListModel: ServerAccessModel, BaseModel {
         }
     }
     
+    func removePost(at index: Int, onCompletion callback: @escaping () -> Void) {
+        let data = JSON(["pid": entries[index].pid])
+        sendPostRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.removePost.rawValue, withData: data.rawString(String.Encoding.utf8, options: [])!) {
+            (statusCode, responseData) in
+            callback()
+        }
+    }
+    
     func loadTestData() {
         self.entries.append(PostListEntryModel(pid: "1", title: "Test Data 1", address: "747 Howard St, San Francisco, CA 94103, United States", longitude: -122.400969, latitude: 37.783558))
         self.entries.append(PostListEntryModel(pid: "2", title: "Test Data 2", address: "900 Market St, San Francisco, CA 94102, United States", longitude: -122.408784, latitude: 37.784280))

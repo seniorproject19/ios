@@ -8,6 +8,7 @@
 
 import UIKit
 import TLPhotoPicker
+
 class EditPostDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var model: PostModel? = nil
@@ -39,8 +40,6 @@ class EditPostDetailViewController: UIViewController, UITableViewDelegate, UITab
         pickerViewController.configure = configure
         self.present(pickerViewController, animated: true, completion: nil)
     }
-    
-    
     
     /*
     // MARK: - Navigation
@@ -78,8 +77,7 @@ class EditPostDetailViewController: UIViewController, UITableViewDelegate, UITab
                 cell.inputTextField.autocorrectionType = .no
                 cell.finishEditingHandler = updateTitle
                 return cell
-            }
-            else {
+            } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "editPostInputTableViewCell", for: indexPath) as! EditPostInputTableViewCell
                 cell.inputLabel.text = "Description"
                 cell.inputTextField.text = model!.description
@@ -88,21 +86,25 @@ class EditPostDetailViewController: UIViewController, UITableViewDelegate, UITab
                 return cell
             }
         } else if indexPath.section == 1 {
-             let cell = tableView.dequeueReusableCell(withIdentifier: "editPostPhotoCollectionTableViewCell", for: indexPath) as! EditPostPhotoCollectionTableViewCell
-             photoCollectionView = cell.photoCollectionView
-             cell.setCollectionViewDataSourceDelegate(self)
-             return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "editPostPhotoCollectionTableViewCell", for: indexPath) as! EditPostPhotoCollectionTableViewCell
+            photoCollectionView = cell.photoCollectionView
+            cell.setCollectionViewDataSourceDelegate(self)
+            return cell
         } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "editPostTableViewCell", for: indexPath) as! EditPostTableViewCell
-                cell.buttonLabel.text = "Next"
-                return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "editPostTableViewCell", for: indexPath) as! EditPostTableViewCell
+            cell.buttonLabel.text = "Next"
+            return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 2  {
             self.view.endEditing(true)
-            performSegue(withIdentifier: "showEditTimeSlotsSegue", sender: self)
+            model?.update {
+                self.updateUIAsync {
+                    self.performSegue(withIdentifier: "showEditTimeSlotsSegue", sender: self)
+                }
+            }
         }
     }
     
@@ -164,6 +166,7 @@ extension EditPostDetailViewController: UICollectionViewDelegate, UICollectionVi
             return photoCell
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 100)
     }

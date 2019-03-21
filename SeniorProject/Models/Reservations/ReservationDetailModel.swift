@@ -19,6 +19,8 @@ class ReservationDetailModel: ReservationModel, ServerAccessModel {
     }
     
     func post(onCompletion callback: @escaping (PostReservationResult) -> Void) {
+        print("HELLO WOLRD!!!!!!!")
+        print(requestedStartHourValue)
         let formattedStartDate = convertDateStringToMySQLDateString(dateString: requestedDate!)
         let data = JSON([
             "pid": postModel!.pid!,

@@ -111,9 +111,34 @@ class PostModel: ServerAccessModel {
         }
     }
     
+    func update(onCompletion callback: @escaping () -> Void) {
+        let data = JSON([
+            "pid": pid!,
+            "title": title!,
+            "description": description!,
+        ])
+        sendPostRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.updatePost.rawValue, withData: data.rawString(String.Encoding.utf8, options: [])!) {
+            (statusCode, responseData) in
+            let postId = self.pid
+            let timestamp = NSDate().timeIntervalSince1970
+            if statusCode == 200 && self.images != nil {
+                for i in self.imagePaths!.count..<self.images!.count {
+                    let filename = postId! + "_" + String(Int(timestamp)) + "_" + String(i) + ".jpg"
+                    self.uploadImage(toURL: Configurations.API_ROOT + Configurations.API_URL.uploadImage.rawValue + postId!, image: self.images![i], filename: filename, forPost: postId!)
+                }
+            }
+            self.pid = postId
+            callback()
+        }
+    }
+    
     func getImageFromServer(at path: String, onCompletion callback: @escaping (UIImage) -> Void) {
         downloadImage(fromURL: Configurations.SERVER_ROOT + path) {
             (image) in
+            if self.images == nil {
+                self.images = [UIImage]()
+            }
+            self.images!.append(image)
             callback(image)
         }
     }

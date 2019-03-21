@@ -11,6 +11,7 @@ import UIKit
 class SidebarProfileTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var balanceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

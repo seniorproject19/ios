@@ -14,12 +14,14 @@ class UserModel: ServerAccessModel, LocalStorageModel {
     let username: String
     let email: String
     let isOwner: Bool
+    var balance: Double
     
-    init(uid: String, username: String, email: String, isOwner: Bool) {
+    init(uid: String, username: String, email: String, isOwner: Bool, balance: Double) {
         self.uid = uid
         self.username = username
         self.email = email
         self.isOwner = isOwner
+        self.balance = balance
     }
     
     init(userData: Data) {
@@ -28,6 +30,7 @@ class UserModel: ServerAccessModel, LocalStorageModel {
         self.username = jsonData["username"].stringValue
         self.email = jsonData["email"].stringValue
         self.isOwner = jsonData["is_owner"].boolValue
+        self.balance = jsonData["balance"].doubleValue
     }
     
 }

@@ -11,6 +11,7 @@ import UIKit
 class EditPostPhotoCollectionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var photoCollectionView: UICollectionView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,6 +24,7 @@ class EditPostPhotoCollectionTableViewCell: UITableViewCell {
     }
 
 }
+
 extension EditPostPhotoCollectionTableViewCell {    
     func setCollectionViewDataSourceDelegate<D: UICollectionViewDataSource & UICollectionViewDelegate>(_ dataSourceDelegate: D) {
         photoCollectionView.delegate = dataSourceDelegate
