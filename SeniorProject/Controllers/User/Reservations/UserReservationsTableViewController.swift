@@ -19,7 +19,22 @@ class UserReservationsTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.separatorColor = UIColor.clear
         
-        self.setup()
+        if currentUser == nil {
+            currentUser = CurrentUserModel()
+            currentUser?.loadUser {
+                (succeeded) in
+                if !succeeded {
+                    self.updateUIAsync {
+                        let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! LoginViewController
+                        self.navigationController?.pushViewController(destination, animated: true)
+                    }
+                } else {
+                    self.setup()
+                }
+            }
+        } else {
+            setup()
+        }
 
         
         // Uncomment the following line to preserve selection between presentations
@@ -106,6 +121,9 @@ class UserReservationsTableViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reservationEntryCell", for: indexPath) as! UserReservationTableViewCell
                 cell.titleLabel.text = reservationModel?.title
                 cell.addressLabel.text = reservationModel?.address
+                cell.latitude = reservationModel?.latitude
+                cell.longitude = reservationModel?.longitude
+                cell.placeAnnotation()
                 let date = reservationModel?.requestedDate ?? ""
                 let start = reservationModel?.requestedStartHour ?? ""
                 let end = reservationModel?.requestedEndHour ?? ""

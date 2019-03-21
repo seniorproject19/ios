@@ -10,20 +10,22 @@ import UIKit
 import MapKit
 
 class UserReservationTableViewCell: UITableViewCell, MKMapViewDelegate {
+    
+    var latitude: Double?
+    var longitude: Double?
+    let annotation = MKPointAnnotation()
 
     @IBOutlet weak var reservationEntryView: UIView!
     @IBOutlet weak var timeRateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var addressLabel: UILabel!
-    var latitude: Double?
-    var longitude: Double?
-    let annotation = MKPointAnnotation()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         mapView.delegate = self
+        mapView.isUserInteractionEnabled = false
         reservationEntryView.layer.borderColor = UIColor(red: 0.9137, green: 0.9137, blue: 0.9137, alpha: 1.0).cgColor
         reservationEntryView.layer.borderWidth = 1.0
         reservationEntryView.layer.masksToBounds = true

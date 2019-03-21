@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddTimeSlotViewController: UIViewController,UITableViewDelegate, UITableViewDataSource{
+class AddTimeSlotViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     var model: PostModel? = nil

@@ -10,10 +10,9 @@ import UIKit
 import SideMenu
 
 class UserSelectTimeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
     let destinationModel = PostListModel()
     var currentUser: CurrentUserModel? = nil
-
-
   
     /*
     @IBAction func NextButtonClicked(_ sender: Any) {
@@ -37,6 +36,7 @@ class UserSelectTimeViewController: UIViewController, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SideMenuManager.default.menuFadeStatusBar = false
         
         if currentUser == nil {
             currentUser = CurrentUserModel()
