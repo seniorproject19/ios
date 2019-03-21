@@ -26,9 +26,6 @@ class AddTimeSlotViewController: UIViewController,UITableViewDelegate, UITableVi
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         self.view.endEditing(true)
-        print(availabilityModel.weekday)
-        print(availabilityModel.startString)
-        print(availabilityModel.endString)
         if segue.identifier == "showHourlyRateSegue" {
             if let destination = segue.destination as? PostRateViewController {
                 destination.model = model

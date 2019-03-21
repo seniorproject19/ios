@@ -11,5 +11,6 @@ import UIKit
 class PostDetailSelectorImageCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
-    
+
 }
+

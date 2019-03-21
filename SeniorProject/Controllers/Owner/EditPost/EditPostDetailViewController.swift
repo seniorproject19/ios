@@ -19,6 +19,7 @@ class EditPostDetailViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        view.endEditing(true)
         if segue.identifier == "showEditTimeSlotsSegue" {
             if let destination = segue.destination as? EditTimeSlotListTableViewController {
                 destination.model = self.model
@@ -57,23 +58,28 @@ class EditPostDetailViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 2
-        } else if section == 1 {
+            return 3
+        } else {
             return 1
         }
-        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "editPostTableViewCell", for: indexPath) as! EditPostTableViewCell
+                let address = model!.address ?? ""
+                cell.buttonLabel.text = "Address\n \(address)"
+                return cell
+            } else if indexPath.row == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "editPostInputTableViewCell", for: indexPath) as! EditPostInputTableViewCell
                 cell.inputLabel.text = "Title"
                 cell.inputTextField.text = model!.title
                 cell.inputTextField.autocorrectionType = .no
                 cell.finishEditingHandler = updateTitle
                 return cell
-            } else {
+            }
+            else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "editPostInputTableViewCell", for: indexPath) as! EditPostInputTableViewCell
                 cell.inputLabel.text = "Description"
                 cell.inputTextField.text = model!.description
@@ -87,27 +93,16 @@ class EditPostDetailViewController: UIViewController, UITableViewDelegate, UITab
              cell.setCollectionViewDataSourceDelegate(self)
              return cell
         } else {
-            if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "editPostTableViewCell", for: indexPath) as! EditPostTableViewCell
-                cell.buttonLabel.text = "Previous"
-                return cell
-            } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "editPostTableViewCell", for: indexPath) as! EditPostTableViewCell
                 cell.buttonLabel.text = "Next"
                 return cell
-            }
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 2  {
-            if indexPath.row == 1 {
-                self.view.endEditing(true)
-                performSegue(withIdentifier: "showEditTimeSlotsSegue", sender: self)
-            }
-            else {
-                performSegue(withIdentifier: "unwindToOwnerHomepageFromEditPostViewControllerWithSegue", sender: self)
-            }
+            self.view.endEditing(true)
+            performSegue(withIdentifier: "showEditTimeSlotsSegue", sender: self)
         }
     }
     
@@ -155,7 +150,8 @@ extension EditPostDetailViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath)
-            cell.backgroundColor = UIColor.blue
+            cell.layer.borderColor = UIColor.gray.cgColor
+            cell.layer.borderWidth = 1
             return cell
         } else {
             let image = model?.getImage(atIndex: indexPath.row - 1)
@@ -167,6 +163,9 @@ extension EditPostDetailViewController: UICollectionViewDelegate, UICollectionVi
             photoCell.imageView.image = image
             return photoCell
         }
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 100)
     }
     
 }

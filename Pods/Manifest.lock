@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.0.0-beta.2)
+  - Alamofire (5.0.0-beta.3)
   - SideMenu (5.0.3)
   - TLPhotoPicker (1.8.3)
 
@@ -15,10 +15,10 @@ SPEC REPOS:
     - TLPhotoPicker
 
 SPEC CHECKSUMS:
-  Alamofire: d1e5493588babe3e7b56ae29e8032942f4de09fe
+  Alamofire: 50d6fa7e8cbe7f84559e86ab641ffd029db655f8
   SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
   TLPhotoPicker: 9955e20e4d59cf4a3accc2d3b320e1bf08f453bf
 
 PODFILE CHECKSUM: 8d0310323494aaf3cbb1a01012ee5ae4ecbddf80
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1
