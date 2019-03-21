@@ -1,20 +1,19 @@
 //
-//  EditPostTableViewCell.swift
+//  PostTableViewCell.swift
 //  SeniorProject
 //
-//  Created by Jiaqing Mo on 3/19/19.
+//  Created by Jiaqing Mo on 3/20/19.
 //  Copyright © 2019 Jiaqing Mo. All rights reserved.
 //
 
 import UIKit
 
-class EditPostTableViewCell: UITableViewCell {
+class PostTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var buttonLabel: UILabel!
+    @IBOutlet weak var label: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        buttonLabel.lineBreakMode = .byWordWrapping
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

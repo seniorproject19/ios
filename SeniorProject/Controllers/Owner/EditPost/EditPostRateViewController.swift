@@ -34,7 +34,7 @@ class EditPostRateViewController: UIViewController {
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let roundedValue = round(sender.value / step) * step
         sender.value = roundedValue
-        RateLabel.text = "$, \(rateSlider.value) per hour"
+        RateLabel.text = "$ \(rateSlider.value) per hour"
     }
     /*
     // MARK: - Navigation

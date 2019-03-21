@@ -1,5 +1,5 @@
 //
-//  EditPostPhotoCollectionTableViewCell.swift
+//  PostPhotoCollectionTableViewCell.swift
 //  SeniorProject
 //
 //  Created by Jiaqing Mo on 3/20/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditPostPhotoCollectionTableViewCell: UITableViewCell {
+class PostPhotoCollectionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var photoCollectionView: UICollectionView!
     override func awakeFromNib() {
@@ -23,10 +23,9 @@ class EditPostPhotoCollectionTableViewCell: UITableViewCell {
     }
 
 }
-extension EditPostPhotoCollectionTableViewCell {    
+extension PostPhotoCollectionTableViewCell {
     func setCollectionViewDataSourceDelegate<D: UICollectionViewDataSource & UICollectionViewDelegate>(_ dataSourceDelegate: D) {
         photoCollectionView.delegate = dataSourceDelegate
         photoCollectionView.dataSource = dataSourceDelegate
     }
 }
-
