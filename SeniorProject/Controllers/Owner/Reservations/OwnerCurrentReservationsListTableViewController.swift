@@ -14,6 +14,14 @@ class OwnerCurrentReservationsListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        recordsList.loadOwnerData {
+            (result) in
+            self.updateUIAsync {
+                self.recordsList.groupCurrentReservations()
+                self.tableView.reloadData()
+            }
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -26,23 +34,38 @@ class OwnerCurrentReservationsListTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if recordsList.ownerCurrentReservations == nil {
+            return 0
+        }
+        return recordsList.ownerCurrentReservations!.keys.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let recordsModel = recordsList.ownerCurrentReservations!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ownerCurrentReservationsCell", for: indexPath) as! OwnerCurrentReservationsTableViewCell
+        let key = Array(recordsModel.keys)[indexPath.row]
+        
+        cell.titleLabel.text = recordsModel[key]![0].title
+        cell.addressLabel.text = recordsModel[key]![0].address
+        cell.reservationsCountLabel.text = String(recordsModel[key]!.count) + " Reservations"
 
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let recordsModel = recordsList.ownerCurrentReservations!
+        let key = Array(recordsModel.keys)[indexPath.row]
+        let items = recordsModel[key]
+        
+        let destination = storyboard?.instantiateViewController(withIdentifier: "currentReservationsDetailView") as! CurrentReservationDetailTableViewController
+        destination.postList = items
+        navigationController?.pushViewController(destination, animated: true)
+    }
 
     /*
     // Override to support conditional editing of the table view.
