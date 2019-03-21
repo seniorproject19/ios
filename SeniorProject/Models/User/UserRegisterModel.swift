@@ -15,6 +15,7 @@ class UserRegisterModel: ServerAccessModel {
     var password: String? = nil
     var confirmPassword: String? = nil
     var isOwner: Bool? = nil
+    var plate: String? = nil
     
     enum RegisterResult {
         case success
@@ -44,7 +45,7 @@ class UserRegisterModel: ServerAccessModel {
         if validateResult != nil {
             callback(RegisterResult.illegalInput(msg: validateResult!))
         } else {
-            let data = JSON(["username": username!, "email": email!, "pwd": password!, "isOwner": isOwner!])
+            let data = JSON(["username": username!, "email": email!, "pwd": password!, "isOwner": isOwner!, "vehicle_info": plate ?? ""])
             let apiURLString = Configurations.AUTH_ROOT + Configurations.AUTH_URL.register.rawValue
             sendPostRequest(toURL: apiURLString, withData: data.rawString(String.Encoding.utf8, options: [])!) {
                 (statusCode, responseData) in

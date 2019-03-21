@@ -50,6 +50,7 @@ class UserPostTableViewController: UITableViewController {
             cell.titleLabel.text = model?.title
             cell.addressLabel.text = model?.address
             cell.selectedTimeLabel.text = reservationModel!.requestedTimeDescription
+            cell.plateNumberLabel.text = "Reserved for: " + String(reservationModel?.plate ?? "")
             cell.reserveButton.setTitle("Reserve - $" + String(reservationModel!.totalRate!), for: .normal)
             cell.confirmButton.setTitle("Confirm - $" + String(reservationModel!.totalRate!), for: .normal)
             cell.confirmHandler = handleConfirmClicked
@@ -78,6 +79,7 @@ class UserPostTableViewController: UITableViewController {
                 let destination = self.storyboard?.instantiateViewController(withIdentifier: "userReservationsTableView") as! UserReservationsTableViewController
                 destination.currentUser = self.currentUser
                 destination.reservationList = ReservationListModel()
+                destination.setup()
                 self.navigationController?.pushViewController(destination, animated: true)
             }
         }

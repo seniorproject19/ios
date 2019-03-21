@@ -19,7 +19,6 @@ class ReservationDetailModel: ReservationModel, ServerAccessModel {
     }
     
     func post(onCompletion callback: @escaping (PostReservationResult) -> Void) {
-        print("HELLO WOLRD!!!!!!!")
         print(requestedStartHourValue)
         let formattedStartDate = convertDateStringToMySQLDateString(dateString: requestedDate!)
         let data = JSON([
@@ -27,7 +26,7 @@ class ReservationDetailModel: ReservationModel, ServerAccessModel {
             "start_date": formattedStartDate,
             "start_time": requestedStartHourValue!,
             "end_time": requestedEndHourValue!,
-            "plate": "CA 7YVD694",
+            "plate": plate!,
             "total_charges": totalRate!
         ])
         let apiURLString = Configurations.API_ROOT + Configurations.API_URL.newRecord.rawValue

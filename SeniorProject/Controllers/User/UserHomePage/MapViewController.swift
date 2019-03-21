@@ -171,6 +171,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
         reservationModel.requestedDate = postList?.requestedDate
         reservationModel.requestedStartHour = postList?.requestedStartHour
         reservationModel.requestedEndHour = postList?.requestedEndHour
+        reservationModel.plate = currentUser?.user?.plate
         postModel.pid = point.pid
         postModel.loadData {
             (result) in

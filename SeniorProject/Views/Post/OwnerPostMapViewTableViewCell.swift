@@ -12,6 +12,7 @@ import MapKit
 class OwnerPostMapViewTableViewCell: UITableViewCell, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    
     var latitude: Double?
     var longitude: Double?
     let annotation = MKPointAnnotation()
