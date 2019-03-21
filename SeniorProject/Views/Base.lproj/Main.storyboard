@@ -2437,7 +2437,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Current Reservations" id="71X-Z7-x49">
-                        <barButtonItem key="leftBarButtonItem" title="Sidebar" style="plain" id="22p-p9-0v5"/>
+                        <barButtonItem key="leftBarButtonItem" title="Sidebar" style="plain" id="22p-p9-0v5">
+                            <connections>
+                                <segue destination="f8W-SQ-ogy" kind="presentation" identifier="showSidebarFromCurrentReservationsSegue" id="JCg-w5-bKs"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hYm-UM-0tm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3212,5 +3216,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Hzy-a0-PgQ"/>
+        <segue reference="JCg-w5-bKs"/>
     </inferredMetricsTieBreakers>
 </document>

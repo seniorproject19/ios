@@ -55,8 +55,10 @@ class OwnerSidebarTableViewController: UITableViewController {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sideBarCell", for: indexPath) as! SidebarTableViewCell
             if indexPath.row == 1 {
-                cell.sidebarTextLabel.text = "Current Reservations"
+                cell.sidebarTextLabel.text = "My Posts"
             } else if indexPath.row == 2 {
+                cell.sidebarTextLabel.text = "Current Reservations"
+            } else if indexPath.row == 3 {
                 cell.sidebarTextLabel.text = "Past Reservations"
             } else {
                 cell.sidebarTextLabel.text = "Log out"
@@ -68,12 +70,21 @@ class OwnerSidebarTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1 {
-            let destination = storyboard?.instantiateViewController(withIdentifier: "ownerCurrentReservationsListViewController") as! OwnerCurrentReservationsListTableViewController
+            let destination = storyboard?.instantiateViewController(withIdentifier: "ownerHomePageView") as! OwnerHomepageViewController
+            destination.currentUser = currentUser
             navigationController?.pushViewController(destination, animated: true)
-        }
-        else if indexPath.row == 2 {
+        } else if indexPath.row == 2 {
+            let destination = storyboard?.instantiateViewController(withIdentifier: "ownerCurrentReservationsListViewController") as! OwnerCurrentReservationsListTableViewController
+            destination.currentUser = currentUser
+            navigationController?.pushViewController(destination, animated: true)
+        } else if indexPath.row == 3 {
             let destination = storyboard?.instantiateViewController(withIdentifier: "ownerPastReservationsListViewController") as! OwnerPastReservationsListTableViewController
             navigationController?.pushViewController(destination, animated: true)
+        } else if indexPath.row == 4 {
+            currentUser?.logout {
+                let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! FirstPageViewController
+                self.navigationController?.pushViewController(destination, animated: true)
+            }
         }
     }
 

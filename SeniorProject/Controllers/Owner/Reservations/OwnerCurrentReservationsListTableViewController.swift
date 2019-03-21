@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import SideMenu
 
 class OwnerCurrentReservationsListTableViewController: UITableViewController {
     
+    var currentUser: CurrentUserModel? = nil
     var recordsList = ReservationListModel()
 
     override func viewDidLoad() {
@@ -102,14 +104,15 @@ class OwnerCurrentReservationsListTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showSidebarFromCurrentReservationsSegue" {
+            let destination = segue.destination as! UISideMenuNavigationController
+            let destinationTable = destination.viewControllers.first as! OwnerSidebarTableViewController
+            destinationTable.currentUser = currentUser
+        }
     }
-    */
 
 }

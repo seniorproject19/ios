@@ -97,6 +97,10 @@ class EditPostDetailViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
+    func reloadCollectionViewData() {
+        photoCollectionView?.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 2  {
             self.view.endEditing(true)

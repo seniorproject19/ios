@@ -106,6 +106,13 @@ class OwnerHomepageViewController: UITableViewController {
                 if result == .success {
                     self.updateUIAsync {
                         let destination = self.storyboard?.instantiateViewController(withIdentifier: "editPostDetailView") as! EditPostDetailViewController
+                        for path in postModel.imagePaths! {
+                            postModel.getImageFromServer(at: path) { _ in
+                                self.updateUIAsync {
+                                    destination.reloadCollectionViewData()
+                                }
+                            }
+                        }
                         destination.model = postModel
                         self.navigationController?.pushViewController(destination, animated: true)
                     }

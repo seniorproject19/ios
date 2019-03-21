@@ -33,6 +33,16 @@ class TimeSlotListTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         return 2
     }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") {
+            (action, indexPath) in
+            // delete item at indexPath
+            self.model!.availabilityTableModel.removeAvailability(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        return [delete]
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows

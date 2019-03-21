@@ -50,6 +50,14 @@ class TimeAvailabilityTableModel: ServerAccessModel {
         return AvailabilityPostResult.success
     }
     
+    func removeAvailability(at index: Int) {
+        let removedEntry = timeAvailabilityEntries.remove(at: index)
+        let removedEntryList = removedEntry.discreteListRepresentation
+        for availabilityItem in removedEntryList {
+            timeAvailabilityTable[removedEntry.weekday!]!.removeValue(forKey: availabilityItem)
+        }
+    }
+    
     func post(pid: String, onCompletion callback: @escaping () -> Void) {
         var availabilityItemList: [[String: String]] = []
         for availabilityModel in timeAvailabilityEntries {
