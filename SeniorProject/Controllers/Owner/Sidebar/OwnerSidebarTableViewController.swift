@@ -41,7 +41,7 @@ class OwnerSidebarTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 5
     }
 
     
@@ -60,6 +60,8 @@ class OwnerSidebarTableViewController: UITableViewController {
                 cell.sidebarTextLabel.text = "Current Reservations"
             } else if indexPath.row == 3 {
                 cell.sidebarTextLabel.text = "Past Reservations"
+            } else if indexPath.row == 3 {
+                cell.sidebarTextLabel.text = "Current Balance $"
             } else {
                 cell.sidebarTextLabel.text = "Log out"
             }

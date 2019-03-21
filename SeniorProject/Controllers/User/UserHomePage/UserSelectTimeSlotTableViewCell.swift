@@ -31,7 +31,7 @@ class UserSelectTimeSlotTableViewCell: UITableViewCell, UITextFieldDelegate {
         let currentDate = Date()
         var dateComponents = DateComponents()
         let calendar = Calendar.init(identifier: .gregorian)
-        dateComponents.day = 5
+        dateComponents.day = 7
         let maxDate = calendar.date(byAdding: dateComponents, to: currentDate)
         datePicker.datePickerMode = .date
         datePicker.minimumDate = currentDate

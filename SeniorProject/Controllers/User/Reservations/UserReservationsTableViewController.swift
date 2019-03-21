@@ -8,6 +8,7 @@
 
 import UIKit
 import SideMenu
+import MapKit
 
 class UserReservationsTableViewController: UITableViewController {
     
@@ -64,11 +65,15 @@ class UserReservationsTableViewController: UITableViewController {
             } else {
                 let reservationModel = reservationList?.pastReservations?[indexPath.row - 1]
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reservationEntryCell", for: indexPath) as! UserReservationTableViewCell
+                cell.latitude = reservationModel?.latitude
+                cell.longitude = reservationModel?.longitude
+                cell.placeAnnotation()
                 cell.titleLabel.text = reservationModel?.title
                 cell.addressLabel.text = reservationModel?.address
                 let date = reservationModel?.requestedDate ?? ""
                 let start = reservationModel?.requestedStartHour ?? ""
                 let end = reservationModel?.requestedEndHour ?? ""
+               
                 cell.timeRateLabel.text = date + " " + start + " - " + end
                 return cell
             }
@@ -80,6 +85,9 @@ class UserReservationsTableViewController: UITableViewController {
             } else if indexPath.row <= currentReservationsCount {
                 let reservationModel = reservationList?.currentReservations?[indexPath.row - 1]
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reservationEntryCell", for: indexPath) as! UserReservationTableViewCell
+                cell.latitude = reservationModel?.latitude
+                cell.longitude = reservationModel?.longitude
+                cell.placeAnnotation()
                 cell.titleLabel.text = reservationModel?.title
                 cell.addressLabel.text = reservationModel?.address
                 let date = reservationModel?.requestedDate ?? ""

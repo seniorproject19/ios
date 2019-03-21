@@ -15,13 +15,14 @@ protocol HandleMapSearch {
 
 class PostLocationViewController: UIViewController {
     
+    @IBOutlet weak var addressLabel: UILabel!
     let model = PostModel()
     let locationManager = CLLocationManager()
     
     var selectedPin: MKPlacemark? = nil
     var resultSearchController: UISearchController? = nil
     
-    @IBOutlet weak var addressText: UITextField!
+
     @IBOutlet weak var mapView: MKMapView!
     
     @IBAction func cancelButtonClicked(_ sender: Any) {
@@ -61,7 +62,7 @@ class PostLocationViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "showNewPostDetailSegue" {
-            model.address = addressText.text
+            model.address = addressLabel.text
             let destination = segue.destination as! PostDetailViewController
             destination.model = model
         }
@@ -105,7 +106,7 @@ extension PostLocationViewController: HandleMapSearch {
             let state = placemark.administrativeArea {
             annotation.subtitle = "\(city) \(state)"
         }
-        addressText.text = placemark.title
+        addressLabel.text = placemark.title
         let selectedLatitude =  placemark.coordinate.latitude
         let selectedLongitude = placemark.coordinate.longitude
         model.latitude = selectedLatitude

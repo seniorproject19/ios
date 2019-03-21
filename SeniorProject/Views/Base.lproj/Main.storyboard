@@ -659,54 +659,58 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ME-41-k1q">
-                                <rect key="frame" x="0.0" y="64" width="375" height="469"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="507.5"/>
                                 <connections>
                                     <outlet property="delegate" destination="eFD-Ay-N93" id="0nc-Lz-Dmz"/>
                                 </connections>
                             </mapView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zgA-7b-pkZ">
-                                <rect key="frame" x="16" y="563" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktF-Bi-geg">
-                                <rect key="frame" x="95" y="617" width="48" height="30"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="cancelButtonClicked:" destination="eFD-Ay-N93" eventType="touchUpInside" id="NEa-mQ-C7t"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TmC-Bx-ZoD">
-                                <rect key="frame" x="241" y="617" width="32" height="30"/>
-                                <state key="normal" title="Next"/>
+                                <rect key="frame" x="281" y="613" width="47" height="38"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" red="0.3821033835" green="0.81370532510000004" blue="0.67454075810000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
                                     <action selector="nextButtonClicked:" destination="eFD-Ay-N93" eventType="touchUpInside" id="Xs5-Ve-qAs"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2m-qJ-dXX">
+                                <rect key="frame" x="16" y="601" width="343" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktF-Bi-geg">
+                                <rect key="frame" x="50" y="613" width="56" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonClicked:" destination="eFD-Ay-N93" eventType="touchUpInside" id="NEa-mQ-C7t"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ktF-Bi-geg" firstAttribute="top" secondItem="B2m-qJ-dXX" secondAttribute="bottom" constant="12" id="1uU-5e-7US"/>
+                            <constraint firstItem="B2m-qJ-dXX" firstAttribute="leading" secondItem="HEm-pc-yfz" secondAttribute="leading" constant="16" id="3SG-FA-enS"/>
+                            <constraint firstItem="TmC-Bx-ZoD" firstAttribute="leading" secondItem="ktF-Bi-geg" secondAttribute="trailing" constant="175" id="5ah-O8-sBy"/>
                             <constraint firstItem="7ME-41-k1q" firstAttribute="trailing" secondItem="HEm-pc-yfz" secondAttribute="trailing" id="65o-wd-VpQ"/>
-                            <constraint firstItem="ktF-Bi-geg" firstAttribute="leading" secondItem="HEm-pc-yfz" secondAttribute="leading" constant="95" id="AGW-3r-BrG"/>
-                            <constraint firstItem="HEm-pc-yfz" firstAttribute="trailing" secondItem="zgA-7b-pkZ" secondAttribute="trailing" constant="16" id="Chh-SU-9pz"/>
-                            <constraint firstItem="zgA-7b-pkZ" firstAttribute="centerX" secondItem="HEm-pc-yfz" secondAttribute="centerX" id="FmS-cm-gyE"/>
-                            <constraint firstItem="ktF-Bi-geg" firstAttribute="top" secondItem="zgA-7b-pkZ" secondAttribute="bottom" constant="24" id="HgM-g5-6UW"/>
+                            <constraint firstItem="HEm-pc-yfz" firstAttribute="trailing" secondItem="B2m-qJ-dXX" secondAttribute="trailing" constant="16" id="H4N-Td-8Do"/>
+                            <constraint firstItem="HEm-pc-yfz" firstAttribute="trailing" secondItem="TmC-Bx-ZoD" secondAttribute="trailing" constant="47" id="JPr-Du-imx"/>
                             <constraint firstItem="7ME-41-k1q" firstAttribute="top" secondItem="HEm-pc-yfz" secondAttribute="top" id="PwC-fk-LRT"/>
-                            <constraint firstItem="HEm-pc-yfz" firstAttribute="bottom" secondItem="ktF-Bi-geg" secondAttribute="bottom" constant="20" id="QQD-7f-25B"/>
-                            <constraint firstItem="zgA-7b-pkZ" firstAttribute="top" secondItem="7ME-41-k1q" secondAttribute="bottom" constant="30" id="Uhb-UX-Zdh"/>
-                            <constraint firstItem="TmC-Bx-ZoD" firstAttribute="leading" secondItem="ktF-Bi-geg" secondAttribute="trailing" constant="98" id="V3i-BT-SbL"/>
-                            <constraint firstItem="zgA-7b-pkZ" firstAttribute="leading" secondItem="HEm-pc-yfz" secondAttribute="leading" constant="16" id="aC6-YW-PP9"/>
-                            <constraint firstItem="HEm-pc-yfz" firstAttribute="bottom" secondItem="TmC-Bx-ZoD" secondAttribute="bottom" constant="20" id="gI1-JG-rFa"/>
-                            <constraint firstItem="HEm-pc-yfz" firstAttribute="trailing" secondItem="TmC-Bx-ZoD" secondAttribute="trailing" constant="102" id="lB9-Cl-U9X"/>
-                            <constraint firstItem="TmC-Bx-ZoD" firstAttribute="top" secondItem="zgA-7b-pkZ" secondAttribute="bottom" constant="24" id="sqm-BX-MTA"/>
+                            <constraint firstItem="ktF-Bi-geg" firstAttribute="leading" secondItem="HEm-pc-yfz" secondAttribute="leading" constant="50" id="WNa-GT-dRo"/>
+                            <constraint firstItem="HEm-pc-yfz" firstAttribute="bottom" secondItem="TmC-Bx-ZoD" secondAttribute="bottom" constant="16" id="f37-1L-dBq"/>
+                            <constraint firstItem="HEm-pc-yfz" firstAttribute="bottom" secondItem="ktF-Bi-geg" secondAttribute="bottom" constant="20" id="i8l-qn-xMr"/>
+                            <constraint firstItem="B2m-qJ-dXX" firstAttribute="top" secondItem="7ME-41-k1q" secondAttribute="bottom" constant="29.5" id="qEB-Av-5JM"/>
                             <constraint firstItem="7ME-41-k1q" firstAttribute="leading" secondItem="HEm-pc-yfz" secondAttribute="leading" id="ufu-ZX-cue"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HEm-pc-yfz"/>
                     </view>
                     <navigationItem key="navigationItem" id="cu5-LB-Ro3"/>
                     <connections>
-                        <outlet property="addressText" destination="zgA-7b-pkZ" id="nXv-10-mjC"/>
+                        <outlet property="addressLabel" destination="B2m-qJ-dXX" id="E89-rQ-m7T"/>
                         <outlet property="mapView" destination="7ME-41-k1q" id="8WP-Fl-REf"/>
                         <segue destination="ZiI-H4-ldD" kind="show" identifier="showNewPostDetailSegue" id="uDJ-sV-QK2"/>
                         <segue destination="9H9-Nm-BDf" kind="unwind" identifier="unwindToOwnerHomepageFromMap" unwindAction="unwindToOwnerHomepageViewControllerWithSegue:" id="trt-ck-gUO"/>
@@ -715,7 +719,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="90k-xx-qHT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="9H9-Nm-BDf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5246" y="921"/>
+            <point key="canvasLocation" x="5245.6000000000004" y="920.68965517241384"/>
         </scene>
         <!--Post Location Search Table View Controller-->
         <scene sceneID="1cc-Jg-ki4">
@@ -2532,6 +2536,9 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="242.5" id="flE-HA-arl"/>
                                             </constraints>
+                                            <connections>
+                                                <outlet property="delegate" destination="EjO-Qk-lqc" id="e2k-2u-1dC"/>
+                                            </connections>
                                         </mapView>
                                     </subviews>
                                     <constraints>
@@ -3215,6 +3222,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="3TQ-V4-3yQ"/>
         <segue reference="Hzy-a0-PgQ"/>
         <segue reference="JCg-w5-bKs"/>
     </inferredMetricsTieBreakers>

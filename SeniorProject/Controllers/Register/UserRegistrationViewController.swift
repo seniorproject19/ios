@@ -25,7 +25,7 @@ class UserRegistrationViewController: UIViewController, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 4
+            return 5
         }
         return 1
     }
@@ -45,6 +45,12 @@ class UserRegistrationViewController: UIViewController, UITableViewDelegate, UIT
                 cell.finishEditingHandler = updateEmail
                 return cell
             } else if indexPath.row == 2 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "userSignUpInputCell", for: indexPath) as! UserSignUpInputTableViewCell
+                cell.inputLabel.text = "Plate Number"
+                cell.inputTextField.autocorrectionType = .no
+                cell.finishEditingHandler = updatePlate
+                return cell
+            } else if indexPath.row == 3 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "userSignUpInputCell", for: indexPath) as! UserSignUpInputTableViewCell
                 cell.inputLabel.text = "Password"
                 cell.inputTextField.isSecureTextEntry = true
@@ -93,6 +99,10 @@ class UserRegistrationViewController: UIViewController, UITableViewDelegate, UIT
     
     func updateUsername(_ username: String?) {
         self.model.username = username
+    }
+    
+    func updatePlate(_ plate: String?) {
+       // self.model.plate= plate
     }
     
     func updateEmail(_ email: String?) {
