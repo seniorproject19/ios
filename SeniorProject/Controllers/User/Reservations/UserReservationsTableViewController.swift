@@ -21,6 +21,7 @@ class UserReservationsTableViewController: UITableViewController {
         
         self.setup()
 
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -50,6 +51,7 @@ class UserReservationsTableViewController: UITableViewController {
         let currentReservationsCount = reservationList?.currentReservations?.count ?? 0
         let pastReservationsCount = reservationList?.pastReservations?.count ?? 0
         let categoryLabelCount = (currentReservationsCount == 0 ? 0 : 1) + (pastReservationsCount == 0 ? 0 : 1)
+        print("CNT" + String(currentReservationsCount + pastReservationsCount + categoryLabelCount))
         return currentReservationsCount + pastReservationsCount + categoryLabelCount
     }
 

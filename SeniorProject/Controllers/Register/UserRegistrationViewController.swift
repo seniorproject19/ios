@@ -12,7 +12,6 @@ class UserRegistrationViewController: UIViewController, UITableViewDelegate, UIT
     
     let model = UserRegisterModel()
     
-  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -102,7 +101,7 @@ class UserRegistrationViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func updatePlate(_ plate: String?) {
-       // self.model.plate= plate
+        self.model.plate = plate
     }
     
     func updateEmail(_ email: String?) {
