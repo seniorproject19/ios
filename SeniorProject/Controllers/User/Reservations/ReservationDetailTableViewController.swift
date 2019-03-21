@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class ReservationDetailTableViewController: UITableViewController {
 
@@ -47,6 +48,9 @@ class ReservationDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "userPostMapViewCell", for: indexPath) as! OwnerPostMapViewTableViewCell
+            cell.latitude = reservationModel?.latitude
+            cell.longitude = reservationModel?.longitude
+            cell.placeAnnotation()
             return cell
         } else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "userPostTitleAddressCell", for: indexPath) as! ReservationDetailTitleAddressTableViewCell

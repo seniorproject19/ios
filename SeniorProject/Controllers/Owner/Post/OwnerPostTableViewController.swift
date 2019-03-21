@@ -38,6 +38,9 @@ class OwnerPostTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ownerPostMapViewCell", for: indexPath) as! OwnerPostMapViewTableViewCell
+            cell.latitude = model?.latitude
+            cell.longitude = model?.longitude
+            cell.placeAnnotation()
             return cell
         } else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ownerPostTitleAddressCell", for: indexPath) as! OwnerPostTitleAddressTableViewCell

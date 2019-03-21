@@ -56,6 +56,8 @@ class UserSidebarTableViewController: UITableViewController {
                 cell.sidebarTextLabel.text = "Find a Spot"
             } else if indexPath.row == 2 {
                 cell.sidebarTextLabel.text = "My Reservations"
+            } else if indexPath.row == 3 {
+                cell.sidebarTextLabel.text = "Current Balance $"
             } else {
                 cell.sidebarTextLabel.text = "Log out"
             }

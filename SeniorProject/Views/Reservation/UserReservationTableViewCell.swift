@@ -9,17 +9,21 @@
 import UIKit
 import MapKit
 
-class UserReservationTableViewCell: UITableViewCell {
+class UserReservationTableViewCell: UITableViewCell, MKMapViewDelegate {
 
     @IBOutlet weak var reservationEntryView: UIView!
     @IBOutlet weak var timeRateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var addressLabel: UILabel!
+    var latitude: Double?
+    var longitude: Double?
+    let annotation = MKPointAnnotation()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        mapView.delegate = self
         reservationEntryView.layer.borderColor = UIColor(red: 0.9137, green: 0.9137, blue: 0.9137, alpha: 1.0).cgColor
         reservationEntryView.layer.borderWidth = 1.0
         reservationEntryView.layer.masksToBounds = true
@@ -29,10 +33,34 @@ class UserReservationTableViewCell: UITableViewCell {
         addressLabel.lineBreakMode = .byWordWrapping
     }
 
+    func placeAnnotation() {
+        annotation.coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+        mapView.addAnnotation(annotation)
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: annotation.coordinate, span: span)
+        mapView.setRegion(region, animated: false)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else { return nil }
+        
+        let identifier = "Annotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView!.canShowCallout = true
+        } else {
+            annotationView!.annotation = annotation
+        }
+        
+        return annotationView
+    }
+
 
 }
