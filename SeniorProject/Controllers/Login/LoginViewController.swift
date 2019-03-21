@@ -86,6 +86,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 cell.inputLabel.text = "Username"
                 if defaultUsername != nil {
                     cell.inputTextField.text = defaultUsername
+                    self.username = defaultUsername
                 }
                 cell.inputTextField.autocorrectionType = .no
                 cell.finishEditingHandler = updateUsername

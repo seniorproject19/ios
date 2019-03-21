@@ -57,8 +57,6 @@ class UserSidebarTableViewController: UITableViewController {
                 cell.sidebarTextLabel.text = "Find a Spot"
             } else if indexPath.row == 2 {
                 cell.sidebarTextLabel.text = "My Reservations"
-            } else if indexPath.row == 3 {
-                cell.sidebarTextLabel.text = "Current Balance $"
             } else {
                 cell.sidebarTextLabel.text = "Log out"
             }
@@ -79,8 +77,10 @@ class UserSidebarTableViewController: UITableViewController {
             navigationController?.pushViewController(destination, animated: true)
         } else if indexPath.row == 3 {
             currentUser?.logout {
-                let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! FirstPageViewController
-                self.navigationController?.pushViewController(destination, animated: true)
+                self.updateUIAsync {
+                    let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! FirstPageViewController
+                    self.navigationController?.pushViewController(destination, animated: true)
+                }
             }
         }
     }

@@ -60,8 +60,6 @@ class OwnerSidebarTableViewController: UITableViewController {
                 cell.sidebarTextLabel.text = "Current Reservations"
             } else if indexPath.row == 3 {
                 cell.sidebarTextLabel.text = "Past Reservations"
-            } else if indexPath.row == 3 {
-                cell.sidebarTextLabel.text = "Current Balance $"
             } else {
                 cell.sidebarTextLabel.text = "Log out"
             }
@@ -84,8 +82,10 @@ class OwnerSidebarTableViewController: UITableViewController {
             navigationController?.pushViewController(destination, animated: true)
         } else if indexPath.row == 4 {
             currentUser?.logout {
-                let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! FirstPageViewController
-                self.navigationController?.pushViewController(destination, animated: true)
+                self.updateUIAsync {
+                    let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! FirstPageViewController
+                    self.navigationController?.pushViewController(destination, animated: true)
+                }
             }
         }
     }

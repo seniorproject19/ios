@@ -18,7 +18,7 @@ protocol BaseModel {
 extension BaseModel {
     
     func timeStringRepresentationToDoubleRepresentation(time: String?) -> Double? {
-        if time == nil {
+        if time == nil || time == "" {
             return nil
         }
         let amPmSeperatedArray = time!.components(separatedBy: " ")
