@@ -87,7 +87,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
             } else {
                 self.updateUIAsync {
                     self.showAlert(withTitle: "Error", message: "Unable to load post list")
-                    let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! FirstPageViewController
+                    let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! LoginViewController
                     self.navigationController?.pushViewController(destination, animated: true)
                 }
             }

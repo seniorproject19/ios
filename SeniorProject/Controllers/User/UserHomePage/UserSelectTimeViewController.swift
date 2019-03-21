@@ -44,7 +44,7 @@ class UserSelectTimeViewController: UIViewController, UITableViewDataSource, UIT
                 (succeeded) in
                 if !succeeded {
                     self.updateUIAsync {
-                        let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! FirstPageViewController
+                        let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! LoginViewController
                         self.navigationController?.pushViewController(destination, animated: true)
                     }
                 }

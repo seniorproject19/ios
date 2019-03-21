@@ -79,7 +79,7 @@ class UserRegistrationViewController: UIViewController, UITableViewDelegate, UIT
                 switch result {
                 case .success:
                     self.updateUIAsync {
-                        let destination = self.storyboard?.instantiateViewController(withIdentifier: "loginView") as! LoginViewController
+                        let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! LoginViewController
                         destination.defaultUsername = self.model.username
                         self.navigationController?.pushViewController(destination, animated: false)
                     }

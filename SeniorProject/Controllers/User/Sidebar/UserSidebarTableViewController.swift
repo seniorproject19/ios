@@ -78,7 +78,7 @@ class UserSidebarTableViewController: UITableViewController {
         } else if indexPath.row == 3 {
             currentUser?.logout {
                 self.updateUIAsync {
-                    let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! FirstPageViewController
+                    let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! LoginViewController
                     self.navigationController?.pushViewController(destination, animated: true)
                 }
             }
