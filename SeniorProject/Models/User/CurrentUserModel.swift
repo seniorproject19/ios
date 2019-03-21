@@ -127,4 +127,12 @@ class CurrentUserModel: ServerAccessModel, LocalStorageModel {
         }
     }
     
+    func logout(onCompletion callback: @escaping () -> Void) {
+        sendPostRequest(toURL: Configurations.AUTH_ROOT + Configurations.AUTH_URL.logout.rawValue, withData: "") {
+            (statusCode, data) in
+            self.authenticationStatus = .unauthorized
+            callback()
+        }
+    }
+    
 }

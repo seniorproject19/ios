@@ -12,6 +12,7 @@ class UserAddTimeSlotTableViewCell: UITableViewCell,UIPickerViewDelegate, UIPick
     let dayPicker = UIPickerView()
     var finishEditingHandler: ((String?) -> Void)? = nil
     let weekDayPickerOptions = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var inputLabel: UILabel!
     
@@ -28,6 +29,7 @@ class UserAddTimeSlotTableViewCell: UITableViewCell,UIPickerViewDelegate, UIPick
 
         // Configure the view for the selected state
     }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         finishEditingHandler!(textField.text)
     }
@@ -43,6 +45,7 @@ class UserAddTimeSlotTableViewCell: UITableViewCell,UIPickerViewDelegate, UIPick
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return weekDayPickerOptions[row]
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         inputTextField.text = weekDayPickerOptions[row]
     }

@@ -85,7 +85,7 @@ class PostListModel: ServerAccessModel, BaseModel {
             "top_left_lat": topLeft.latitude,
             "bottom_right_long": bottomRight.longitude,
             "bottom_right_lat": bottomRight.latitude,
-            "date": requestedDate!,
+            "date": convertDateStringToMySQLDateString(dateString: requestedDate!),
             "weekday": getDayOfWeek(requestedDate!).prefix(3),
             "start": requestedStartHourValue!,
             "end": requestedEndHourValue!
@@ -103,6 +103,14 @@ class PostListModel: ServerAccessModel, BaseModel {
             } else {
                 callback(.failure)
             }
+        }
+    }
+    
+    func removePost(at index: Int, onCompletion callback: @escaping () -> Void) {
+        let data = JSON(["pid": entries[index].pid])
+        sendPostRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.removePost.rawValue, withData: data.rawString(String.Encoding.utf8, options: [])!) {
+            (statusCode, responseData) in
+            callback()
         }
     }
     

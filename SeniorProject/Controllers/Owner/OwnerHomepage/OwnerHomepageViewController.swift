@@ -87,9 +87,12 @@ class OwnerHomepageViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             // delete item at indexPath
-            self.postList.entries.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            print(self.postList.entries)
+            self.postList.removePost(at: indexPath.row) {
+                self.postList.entries.remove(at: indexPath.row)
+                self.updateUIAsync {
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                }
+            }
         }
         let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
             // share item at indexPath
@@ -103,6 +106,13 @@ class OwnerHomepageViewController: UITableViewController {
                 if result == .success {
                     self.updateUIAsync {
                         let destination = self.storyboard?.instantiateViewController(withIdentifier: "editPostDetailView") as! EditPostDetailViewController
+                        for path in postModel.imagePaths! {
+                            postModel.getImageFromServer(at: path) { _ in
+                                self.updateUIAsync {
+                                    destination.reloadCollectionViewData()
+                                }
+                            }
+                        }
                         destination.model = postModel
                         self.navigationController?.pushViewController(destination, animated: true)
                     }

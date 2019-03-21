@@ -11,6 +11,7 @@ import UIKit
 class EditPostTableViewCell: UITableViewCell {
 
     @IBOutlet weak var buttonLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

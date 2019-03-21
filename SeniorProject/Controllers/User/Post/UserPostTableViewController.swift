@@ -70,8 +70,10 @@ class UserPostTableViewController: UITableViewController {
     }
     
     func handleConfirmClicked() {
+        print("1: " + String(describing: reservationModel?.requestedStartHour))
         reservationModel?.post {
             (result) in
+            self.currentUser?.user?.balance -= self.reservationModel!.totalRate!
             self.updateUIAsync {
                 let destination = self.storyboard?.instantiateViewController(withIdentifier: "userReservationsTableView") as! UserReservationsTableViewController
                 destination.currentUser = self.currentUser

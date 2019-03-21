@@ -13,16 +13,33 @@ class ReservationListModel: ServerAccessModel, BaseModel {
     var currentReservations: [ReservationDetailModel]? = nil
     var pastReservations: [PastReservationModel]? = nil
     
-    var ownerCurrentReservations: [ReservationDetailModel]? = nil
-    var ownerPastReservations: [PastReservationModel]? = nil
+    var ownerCurrentReservations: [String: [ReservationDetailModel]]? = nil
     
-    enum LoadUserReservationListResult {
+    enum LoadReservationListResult {
         case success
         case failure
     }
     
-    func loadData(callback: @escaping (LoadUserReservationListResult) -> Void) {
+    func loadData(callback: @escaping (LoadReservationListResult) -> Void) {
         sendGetRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.getUserRecordList.rawValue) {
+            (statusCode, responseData) in
+            if statusCode == 200 {
+                let jsonData = JSON(responseData!)
+                let listData = jsonData["data"].arrayValue
+                self.currentReservations = [ReservationDetailModel]()
+                self.pastReservations = [PastReservationModel]()
+                for reservationEntry in listData {
+                    self.parseReservationData(jsonData: reservationEntry)
+                }
+                callback(.success)
+            } else {
+                callback(.failure)
+            }
+        }
+    }
+    
+    func loadOwnerData(callback: @escaping (LoadReservationListResult) -> Void) {
+        sendGetRequest(toURL: Configurations.API_ROOT + Configurations.API_URL.getOwnerRecordList.rawValue) {
             (statusCode, responseData) in
             if statusCode == 200 {
                 let jsonData = JSON(responseData!)
@@ -42,7 +59,6 @@ class ReservationListModel: ServerAccessModel, BaseModel {
     func parseReservationData(jsonData: JSON) {
         print(jsonData)
         let pid = jsonData["pid"].stringValue
-        print("PID " + pid)
         let startDate = convertMySQLDateStringToDateString(mySQLDateString: jsonData["start_date"].stringValue)
         let startTime = jsonData["start_time"].doubleValue
         let endTime = jsonData["end_time"].doubleValue
@@ -67,6 +83,7 @@ class ReservationListModel: ServerAccessModel, BaseModel {
             reservationModel.latitude = latitude
             reservationModel.longitude = longitude
             reservationModel.description = description
+            reservationModel.pid = pid
             pastReservations?.append(reservationModel)
             print(description)
         } else {
@@ -81,6 +98,7 @@ class ReservationListModel: ServerAccessModel, BaseModel {
             reservationModel.latitude = latitude
             reservationModel.longitude = longitude
             reservationModel.description = description
+            reservationModel.pid = pid
             reservationModel.postModel = PostModel()
             reservationModel.postModel?.pid = pid
             currentReservations?.append(reservationModel)
@@ -101,6 +119,17 @@ class ReservationListModel: ServerAccessModel, BaseModel {
         print(time)
         print(currentTime)
         return time < currentTime
+    }
+    
+    func groupCurrentReservations() {
+        ownerCurrentReservations = [String: [ReservationDetailModel]]()
+        for reservationModel in currentReservations! {
+            if ownerCurrentReservations![reservationModel.pid!] == nil {
+                ownerCurrentReservations![reservationModel.pid!] = [reservationModel]
+            } else {
+                ownerCurrentReservations![reservationModel.pid!]!.append(reservationModel)
+            }
+        }
     }
 
 }

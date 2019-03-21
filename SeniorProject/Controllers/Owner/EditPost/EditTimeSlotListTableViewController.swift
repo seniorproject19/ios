@@ -28,13 +28,12 @@ class EditTimeSlotListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") {
+            (action, indexPath) in
             // delete item at indexPath
-            //self.model!.availabilityTableModel.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            //print(self.postList.entries)
+            self.model!.availabilityTableModel.removeAvailability(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
         }
-        
         return [delete]
     }
     

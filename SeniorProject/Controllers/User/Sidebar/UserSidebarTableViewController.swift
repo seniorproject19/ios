@@ -49,6 +49,7 @@ class UserSidebarTableViewController: UITableViewController {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sideBarProfileCell", for: indexPath) as! SidebarProfileTableViewCell
             cell.nameLabel.text = currentUser!.user?.username
+            cell.balanceLabel.text = "Balance: $" + String(currentUser!.user!.balance)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sideBarCell", for: indexPath) as! SidebarTableViewCell
@@ -76,6 +77,11 @@ class UserSidebarTableViewController: UITableViewController {
             destination.reservationList = ReservationListModel()
             destination.currentUser = currentUser
             navigationController?.pushViewController(destination, animated: true)
+        } else if indexPath.row == 3 {
+            currentUser?.logout {
+                let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! FirstPageViewController
+                self.navigationController?.pushViewController(destination, animated: true)
+            }
         }
     }
     

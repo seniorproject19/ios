@@ -18,6 +18,7 @@ class Configurations: NSObject {
     enum AUTH_URL: String {
         case register = "/register"
         case login = "/login"
+        case logout = "/logout"
     }
     
     enum API_URL: String {
@@ -29,6 +30,8 @@ class Configurations: NSObject {
         case getPost = "/post/get/"
         case getPostImagePathsList = "/post/image/list/"
         case getPostListInRegion = "/post/get_list/region"
+        case removePost = "/post/remove"
+        case updatePost = "/post/update"
         case newRecord = "/record/new"
         case getUserRecordList = "/record/user/list"
         case getOwnerRecordList = "/record/owner/list"

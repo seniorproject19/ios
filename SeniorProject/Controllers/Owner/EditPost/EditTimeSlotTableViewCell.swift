@@ -9,11 +9,14 @@
 import UIKit
 
 class EditTimeSlotTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    
     let dayPicker = UIPickerView()
     var finishEditingHandler: ((String?) -> Void)? = nil
     let weekDayPickerOptions = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var label: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

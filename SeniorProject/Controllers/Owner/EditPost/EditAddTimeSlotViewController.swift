@@ -22,9 +22,6 @@ class EditAddTimeSlotViewController: UIViewController, UITableViewDataSource, UI
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-
-    
-
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         self.view.endEditing(true)

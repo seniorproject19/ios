@@ -20,6 +20,7 @@ class ReservationModel: BaseModel {
     var address: String?
     var latitude: Double?
     var longitude: Double?
+    var pid: String?
     
     var requestedDate: String?  {
         get {

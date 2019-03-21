@@ -1,17 +1,19 @@
 //
-//  SidebarProfileTableViewCell.swift
+//  OwnerCurrentReservationsTableViewCell.swift
 //  SeniorProject
 //
-//  Created by Jiaqing Mo on 3/19/19.
+//  Created by Zuoyuan Huang on 3/20/19.
 //  Copyright © 2019 Jiaqing Mo. All rights reserved.
 //
 
 import UIKit
 
-class SidebarProfileTableViewCell: UITableViewCell {
+class OwnerCurrentReservationsTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var balanceLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var reservationsCountLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

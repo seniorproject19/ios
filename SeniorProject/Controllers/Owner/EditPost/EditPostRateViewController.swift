@@ -9,11 +9,14 @@
 import UIKit
 
 class EditPostRateViewController: UIViewController {
+    
     var model: PostModel? = nil
     var availabilityModel: TimeAvailabilityModel? = nil
     let step: Float = 1
+    
     @IBOutlet weak var RateLabel: UILabel!
     @IBOutlet weak var rateSlider: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

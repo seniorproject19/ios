@@ -1,17 +1,18 @@
 //
-//  SidebarProfileTableViewCell.swift
+//  CurrentReservationsDetailViewTableViewCell.swift
 //  SeniorProject
 //
-//  Created by Jiaqing Mo on 3/19/19.
+//  Created by Zuoyuan Huang on 3/20/19.
 //  Copyright © 2019 Jiaqing Mo. All rights reserved.
 //
 
 import UIKit
 
-class SidebarProfileTableViewCell: UITableViewCell {
+class CurrentReservationsDetailViewTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var balanceLabel: UILabel!
+    @IBOutlet weak var timeTextLabel: UILabel!
+    @IBOutlet weak var plateLabel: UILabel!
+    @IBOutlet weak var rateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
