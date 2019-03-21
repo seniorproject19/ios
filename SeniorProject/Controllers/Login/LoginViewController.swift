@@ -19,6 +19,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true
         
 
         // Do any additional setup after loading the view.
@@ -69,14 +70,17 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     */
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 2
+        } else if section == 1 {
+            return 1
+        } else {
+            return 2
         }
-        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -98,10 +102,20 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 cell.finishEditingHandler = updatePassword
                 return cell
             }
-        } else {
+        } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "loginCell", for: indexPath) as! LoginTableViewCell
             cell.signUpLabel.text = "Login"
             return cell
+        } else {
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "loginSignUpTableViewCell", for: indexPath) as! LoginSignUpTableViewCell
+                cell.label.text = "New User? Sign Up"
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "loginSignUpTableViewCell", for: indexPath) as! LoginSignUpTableViewCell
+                cell.label.text = "New Parking Space Owner? Sign Up"
+                return cell
+            }
         }
     }
     
@@ -141,6 +155,12 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         self.showAlert(withTitle: "Username and Password cannot be Empty", message: "Please enter username or password")
                     }
                 }
+            }
+        } else if indexPath.section == 2 {
+            if indexPath.row == 0 {//
+                performSegue(withIdentifier: "loginSegueToNewUserSignUp", sender: self)
+            } else {
+                performSegue(withIdentifier: "loginSegueToNewOwnerSignUp", sender: self)
             }
         }
     }

@@ -27,7 +27,7 @@ class OwnerHomepageViewController: UITableViewController {
                 (succeeded) in
                 if !succeeded {
                     self.updateUIAsync {
-                        let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! FirstPageViewController
+                        let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! LoginViewController
                         self.navigationController?.pushViewController(destination, animated: true)
                     }
                 } else {
@@ -54,7 +54,7 @@ class OwnerHomepageViewController: UITableViewController {
                 }
             } else {
                 self.updateUIAsync {
-                    let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! FirstPageViewController
+                    let destination = self.storyboard?.instantiateViewController(withIdentifier: "appHomePage") as! LoginViewController
                     self.navigationController?.pushViewController(destination, animated: true)
                 }
             }

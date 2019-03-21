@@ -87,6 +87,7 @@
 		D162B8B82243287700F49490 /* PostInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D162B8B72243287700F49490 /* PostInputTableViewCell.swift */; };
 		D162B8BA224328EB00F49490 /* PostPhotoCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D162B8B9224328EB00F49490 /* PostPhotoCollectionTableViewCell.swift */; };
 		D162B8BC2243293C00F49490 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D162B8BB2243293C00F49490 /* PostTableViewCell.swift */; };
+		D162B8BE224418E600F49490 /* LoginSignUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D162B8BD224418E600F49490 /* LoginSignUpTableViewCell.swift */; };
 		D183CB2B2207CC660000BCE1 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D183CB2A2207CC660000BCE1 /* FirstPageViewController.swift */; };
 		D1A4338C22417CFA00FDCC0B /* SidebarProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A4338B22417CFA00FDCC0B /* SidebarProfileTableViewCell.swift */; };
 		D1A4338E22417D6600FDCC0B /* SidebarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A4338D22417D6600FDCC0B /* SidebarTableViewCell.swift */; };
@@ -210,6 +211,7 @@
 		D162B8B72243287700F49490 /* PostInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInputTableViewCell.swift; sourceTree = "<group>"; };
 		D162B8B9224328EB00F49490 /* PostPhotoCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPhotoCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		D162B8BB2243293C00F49490 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		D162B8BD224418E600F49490 /* LoginSignUpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignUpTableViewCell.swift; sourceTree = "<group>"; };
 		D183CB2A2207CC660000BCE1 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		D1A4338B22417CFA00FDCC0B /* SidebarProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarProfileTableViewCell.swift; sourceTree = "<group>"; };
 		D1A4338D22417D6600FDCC0B /* SidebarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableViewCell.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				6388B03222162672001E6DBA /* LoginViewController.swift */,
 				D1CCCC722241F81300F97DFD /* LoginTableViewCell.swift */,
 				D1CCCC742241F82300F97DFD /* LoginInputTableViewCell.swift */,
+				D162B8BD224418E600F49490 /* LoginSignUpTableViewCell.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -935,6 +938,7 @@
 				D162B8BC2243293C00F49490 /* PostTableViewCell.swift in Sources */,
 				631DE4DD2241F9CB00A78677 /* PastReservationModel.swift in Sources */,
 				636112F8223C97A0003A32EC /* TimeSlotTableViewCell.swift in Sources */,
+				D162B8BE224418E600F49490 /* LoginSignUpTableViewCell.swift in Sources */,
 				634F396822358DE0000766D5 /* TimeSlotListTableViewController.swift in Sources */,
 				D1CCCC7F2242CAEC00F97DFD /* UserAddTimeTableViewCell.swift in Sources */,
 				631DE4C52240A40700A78677 /* BaseModel.swift in Sources */,
